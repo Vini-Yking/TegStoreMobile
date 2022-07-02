@@ -1,9 +1,9 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-export const Home=()=> {
+export const Home = () => {
     return (
-        <View>
+        <View style={{ flex:1 , alignItems:"center" , justifyContent:"center"}}>
             <Text>Tegstore</Text>
         </View>
     )
