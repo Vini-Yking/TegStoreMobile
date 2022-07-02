@@ -5,7 +5,7 @@ import { Login } from './src/screen/Login'
 
 export default function App() {
   return (
-    <View >
+    <View style={{ flex: 1 }}>
       {/* <Home /> */}
       <Login />
       <StatusBar style="auto" />
