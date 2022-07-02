@@ -1,10 +1,11 @@
 import { View, Text, Button } from 'react-native'
+import React, { useContext } from 'react'
 
-export const Home = () => {
-
+export const Clientes = () => {
+    
     return (
         <View style={{ flex:1 , alignItems:"center" , justifyContent:"center"}}>
-            <Text>Tegstore</Text>
+            <Text>Clientes</Text>
         </View>
     )
 }
