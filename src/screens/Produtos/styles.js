@@ -47,11 +47,11 @@ export const styles = StyleSheet.create({
   },
   produtosContainer: {
     flex: 6,
-    width:"100%",
-    alignItems:"center",
+    width: "100%",
+    alignItems: "center",
   },
   cardProduto: {
-    width:300,
+    width: 300,
     alignItems: "center",
     backgroundColor: "white",
     marginVertical: 10,
