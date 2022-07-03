@@ -27,9 +27,9 @@ export const Produtos = () => {
 
   return (
     <>
-      <Logout />
       <View style={styles.containter}>
         <View style={styles.headerContainer}>
+          <Logout />
           <Text style={styles.title}>Produtos</Text>
           <Text style={styles.subTitle}>Categoria: x</Text>
           <View style={styles.pesquisaContainer}>
