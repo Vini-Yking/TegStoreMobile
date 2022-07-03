@@ -1,12 +1,4 @@
-import {
-  View,
-  Text,
-  Button,
-  TextInput,
-  Alert,
-  Image,
-  Pressable,
-} from "react-native";
+import { View, Text, TextInput, Alert, Image, Pressable } from "react-native";
 import { useState, useContext } from "react";
 import { styles } from "./styles";
 import { AuthContext, useAuth } from "../../context/AuthContext";
