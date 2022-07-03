@@ -7,7 +7,6 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
   },
   headerContainer: {
-    flex: 1,
     justifyContent: "space-between",
     width: "100%",
     alignItems: "center",
@@ -21,7 +20,6 @@ export const styles = StyleSheet.create({
     color: "indigo",
   },
   input: {
-    flex: 2,
     padding: 3,
     borderColor: "indigo",
     borderWidth: 2,
@@ -38,28 +36,28 @@ export const styles = StyleSheet.create({
     elevation: 4,
   },
   subTitle: {
-    flex: 1,
     color: "indigo",
     textAlign: "center",
   },
   pesquisaContainer: {
-    flex: 1,
     width: "100%",
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center",
   },
   produtosContainer: {
     flex: 6,
+    width:"100%",
+    alignItems:"center",
   },
   cardProduto: {
+    width:300,
     alignItems: "center",
     backgroundColor: "white",
     marginVertical: 10,
     borderRadius: 10,
     borderWidth: 3,
     borderColor: "indigo",
-
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
