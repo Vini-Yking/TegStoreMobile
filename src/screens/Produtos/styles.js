@@ -7,12 +7,20 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
   },
   headerContainer: {
-    justifyContent: "space-between",
+    backgroundColor: "white",
     width: "100%",
     alignItems: "center",
-    padding: 10,
-    borderBottomColor: "indigo",
-    borderBottomWidth: 2,
+    paddingBottom: 10,
+    zIndex: 1,
+    // Shadow
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 6,
   },
   title: {
     textAlign: "center",
@@ -50,13 +58,18 @@ export const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
   },
+  produtosTitle: {
+    borderColor: "indigo",
+    borderBottomWidth: 2,
+  },
   cardProduto: {
     width: 300,
+    alignSelf: "center",
     alignItems: "center",
     backgroundColor: "white",
     marginVertical: 10,
     borderRadius: 10,
-    borderWidth: 3,
+    borderWidth: 2,
     borderColor: "indigo",
     shadowColor: "#000",
     shadowOffset: {

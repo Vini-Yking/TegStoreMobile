@@ -1070,6 +1070,16 @@
   dependencies:
     "@types/hammerjs" "^2.0.36"
 
+"@expo-google-fonts/inter@^0.2.2":
+  "integrity" "sha512-dU6mSczI2xkRZbUhQQ5VB+D4AqLOF8ufCIfA1iBjrPZ/Qnka88E5Ez2Mvm41exdKR76norVvYD5GJIQYEEoO/Q=="
+  "resolved" "https://registry.npmjs.org/@expo-google-fonts/inter/-/inter-0.2.2.tgz"
+  "version" "0.2.2"
+
+"@expo-google-fonts/roboto@^0.2.2":
+  "integrity" "sha512-qP0oZsR8rTID5T9wEXSt9yCYMnKYKlvIlrJGGpd+t71Obt2J51+51PBpvxd5c8fpABEru3zx6ENmpU9lzwr8zw=="
+  "resolved" "https://registry.npmjs.org/@expo-google-fonts/roboto/-/roboto-0.2.2.tgz"
+  "version" "0.2.2"
+
 "@expo/bunyan@^4.0.0", "@expo/bunyan@4.0.0":
   "integrity" "sha512-Ydf4LidRB/EBI+YrB+cVLqIseiRfjUI/AeHBgjGMtq3GroraDu81OV7zqophRgupngoL3iS3JUMDMnxO7g39qA=="
   "resolved" "https://registry.npmjs.org/@expo/bunyan/-/bunyan-4.0.0.tgz"
@@ -3163,7 +3173,7 @@
     "@expo/config-plugins" "^4.0.14"
     "uuid" "^3.4.0"
 
-"expo-font@~10.1.0":
+"expo-font@^10.1.0", "expo-font@~10.1.0":
   "integrity" "sha512-vmhzpE95Ym4iOj8IELof+C/3Weert2B3LyxV5rBjGosjzBdov+o+S6b5mN7Yc9kyEGykwB6k7npL45X3hFYDQA=="
   "resolved" "https://registry.npmjs.org/expo-font/-/expo-font-10.1.0.tgz"
   "version" "10.1.0"

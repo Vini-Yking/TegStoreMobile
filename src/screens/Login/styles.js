@@ -33,15 +33,6 @@ export const styles = StyleSheet.create({
     width: 200,
     alignSelf: "center",
     borderRadius: 10,
-
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.23,
-    shadowRadius: 2.62,
-    elevation: 4,
   },
   button: {
     marginTop: 30,
@@ -49,7 +40,6 @@ export const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     backgroundColor: "indigo",
-
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
