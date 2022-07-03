@@ -1,22 +1,67 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-    containter: {
-        height: "100%",
-        alignItems: "center",
-        justifyContent: "center",
-        alignItems: 'center'
-    },
-    input: {
-        borderColor: "indigo",
-        borderWidth: 2,
-        marginBottom: 20,
-        marginTop: 20,
-        padding: 10,
-        width: "80%",
-        alignSelf: "center",
-        textAlign: "center",
-        borderRadius:5
-    },
+  containter: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  logoContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  formContainer: {
+    flex: 3,
+    alignItems: "center",
+  },
+  logo: {
+    width: 120,
+    height: 120,
+  },
+  title: {
+    textAlign: "center",
+    fontSize: 30,
+    color: "indigo",
+    marginBottom: 30,
+  },
+  input: {
+    borderColor: "indigo",
+    borderWidth: 2,
+    marginVertical: 20,
+    padding: 10,
+    width: 200,
+    alignSelf: "center",
+    borderRadius: 20,
 
-})
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+    elevation: 4,
+  },
+  button: {
+    marginTop: 30,
+    width: 200,
+    padding: 10,
+    borderRadius: 20,
+    backgroundColor: "indigo",
+
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+    elevation: 4,
+  },
+  buttonText: {
+    textAlign: "center",
+    fontSize: 14,
+    color: "white",
+  },
+});
