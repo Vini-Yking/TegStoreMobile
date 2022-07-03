@@ -38,7 +38,7 @@ export const Produtos = () => {
         </View>
         <SafeAreaView style={styles.produtosContainer}>
           <FlatList
-            style={{ flex: 1, width: "100%" }}
+            style={{ width: "100%" }}
             data={listaProdutos.data}
             showsVerticalScrollIndicator={true}
             renderItem={({ item }) => (
