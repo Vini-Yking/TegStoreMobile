@@ -1,7 +1,6 @@
 import {
   View,
   Text,
-  Button,
   FlatList,
   Image,
   TextInput,
@@ -12,6 +11,7 @@ import { Logout } from "../../util/Logout";
 import { styles } from "./styles";
 import { getAllProdutos } from "../../services/axiosclient";
 import { AuthContext } from "../../context/AuthContext";
+import AppStyles from "../../themes/AppStyles";
 
 export const Produtos = () => {
   const [listaProdutos, setListaProdutos] = useState([]);
@@ -30,10 +30,13 @@ export const Produtos = () => {
       <View style={styles.containter}>
         <View style={styles.headerContainer}>
           <Logout />
-          <Text style={styles.title}>Produtos</Text>
-          <Text style={styles.subTitle}>Categoria: x</Text>
+          <Text style={AppStyles.title}>Produtos</Text>
+          <Text style={AppStyles.subTitle}>Categoria: x</Text>
           <View style={styles.pesquisaContainer}>
-            <TextInput placeholder="Buscar" style={styles.input}></TextInput>
+            <TextInput
+              placeholder="Buscar"
+              style={[styles.input, AppStyles.text]}
+            ></TextInput>
           </View>
         </View>
         <SafeAreaView style={styles.produtosContainer}>
@@ -43,13 +46,11 @@ export const Produtos = () => {
             showsVerticalScrollIndicator={true}
             renderItem={({ item }) => (
               <View style={styles.cardProduto}>
-                <Text
-                  style={{ borderBottomWidth: 2, borderBottomColor: "indigo" }}
-                >
-                  {item.nomeProduto}
+                <Text style={[AppStyles.subTitle]}>{item.nomeProduto}</Text>
+                <Text style={AppStyles.text}>
+                  R$ {item.valorUnitario.toFixed(2)}
                 </Text>
-                <Text>R$ {item.valorUnitario} </Text>
-                <Text>{item.categoria.categoria} </Text>
+                <Text style={AppStyles.text}>{item.categoria.categoria} </Text>
                 <Image
                   source={{ uri: item.urlFoto }}
                   style={{ width: 200, height: 200 }}
