@@ -52,6 +52,7 @@ export const styles = StyleSheet.create({
   },
   cardProduto: {
     width:300,
+    alignSelf:"center",
     alignItems: "center",
     backgroundColor: "white",
     marginVertical: 10,

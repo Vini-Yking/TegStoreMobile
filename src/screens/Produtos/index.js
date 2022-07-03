@@ -1,4 +1,12 @@
-import { View, Text, Button, FlatList, Image, TextInput, SafeAreaView } from "react-native";
+import {
+  View,
+  Text,
+  Button,
+  FlatList,
+  Image,
+  TextInput,
+  SafeAreaView,
+} from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 import { Logout } from "../../util/Logout";
 import { styles } from "./styles";
@@ -23,14 +31,14 @@ export const Produtos = () => {
       <View style={styles.containter}>
         <View style={styles.headerContainer}>
           <Text style={styles.title}>Produtos</Text>
-            <Text style={styles.subTitle}>Categoria: x</Text>
+          <Text style={styles.subTitle}>Categoria: x</Text>
           <View style={styles.pesquisaContainer}>
             <TextInput placeholder="Buscar" style={styles.input}></TextInput>
           </View>
         </View>
         <SafeAreaView style={styles.produtosContainer}>
           <FlatList
-          style={{flex:1, width:"100%"}}
+            style={{ flex: 1, width: "100%" }}
             data={listaProdutos.data}
             showsVerticalScrollIndicator={true}
             renderItem={({ item }) => (
