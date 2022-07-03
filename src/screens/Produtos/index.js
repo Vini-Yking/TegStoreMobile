@@ -3,15 +3,15 @@ import React, { useContext, useEffect, useState } from "react";
 import { Logout } from "../../util/Logout";
 import { styles } from "./styles";
 import { getAllProdutos } from "../../services/axiosclient";
+import { AuthContext } from "../../context/AuthContext";
 
 export const Produtos = () => {
   const [listaProdutos, setListaProdutos] = useState([]);
+  const { categorias } = useContext(AuthContext);
 
   useEffect(() => {
     const GetProducts = async () => {
-      //como contornar um async dentro de um useEffect
       const produtos = await getAllProdutos();
-      console.log(produtos);
       setListaProdutos(produtos);
     };
     GetProducts();
@@ -19,9 +19,9 @@ export const Produtos = () => {
 
   return (
     <>
+      <Logout />
       <View style={styles.containter}>
         <View style={styles.headerContainer}>
-          <Logout />
           <Text style={styles.title}>Produtos</Text>
           <View style={styles.pesquisaContainer}>
             <TextInput placeholder="Buscar" style={styles.input}></TextInput>
@@ -35,9 +35,8 @@ export const Produtos = () => {
             renderItem={({ item }) => (
               <View style={styles.cardProduto}>
                 <Text
-                  style={{ borderBottomWidth: 2, borderBottomColor: "indigo" }}
-                >
-                  {item.nomeProduto}{" "}
+                  style={{ borderBottomWidth: 2, borderBottomColor: "indigo" }}>
+                  {item.nomeProduto}
                 </Text>
                 <Text>R$ {item.valorUnitario} </Text>
                 <Text>{item.categoria.categoria} </Text>
