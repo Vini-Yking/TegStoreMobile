@@ -8,9 +8,13 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState()
     const [loading, setLoading] = useState(true)
 
-    
+
+    const sair = async () => {
+        await AsyncStorage.removeItem("@TegMobile:user")
+        setUser(null)
+    }
     return (
-        <AuthContext.Provider value={{ user, setUser, loading, setLoading }}>
+        <AuthContext.Provider value={{ user, setUser, loading, setLoading, sair }}>
             {children}
         </AuthContext.Provider>
     )

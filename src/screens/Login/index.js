@@ -1,7 +1,7 @@
 import { View, Text, Button, TextInput, Alert, Image } from "react-native";
 import { useState, useContext } from "react";
 import { styles } from "./styles";
-import { AuthContext , useAuth } from "../../context/AuthContext";
+import { AuthContext, useAuth } from "../../context/AuthContext";
 import PngImg from '../../../assets/imgs/imagemlogos/LogoRoxo.png'
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -14,13 +14,13 @@ export const Login = () => {
   const [usuario, setUsuario] = useState("");
   const [senha, setSenha] = useState("")
 
-  const handleEntrar = async() => {
+  const handleEntrar = async () => {
     if (usuario == nome && senha == pass) {
       await AsyncStorage.setItem("@TegMobile:user", JSON.stringify(usuario));
       setUser(usuario)
       return
     }
-    Alert.alert("não logado" , "Usuário e senha incorretos!");
+    Alert.alert("não logado", "Usuário e senha incorretos!");
   };
 
   return (
@@ -29,7 +29,7 @@ export const Login = () => {
       <Image source={PngImg} resizeMethod="scale" style={{
         width: '80%',
         height: '30%',
-        marginHorizontal:-70
+        marginHorizontal: -70
       }} />
       <Text style={{ textAlign: "center", fontSize: 30 }}>Login</Text>
       <TextInput
