@@ -4,6 +4,7 @@ import { styles } from "./styles";
 import { AuthContext, useAuth } from "../../context/AuthContext";
 import PngImg from "../../../assets/imgs/imagemlogos/LogoRoxo.png";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import AppStyles from "../../themes/AppStyles";
 
 export const Login = () => {
   const nome = "admin"; // dado mockado
@@ -29,23 +30,23 @@ export const Login = () => {
       </View>
 
       <View style={styles.formContainer}>
-        <Text style={styles.title}>Login</Text>
+        <Text style={AppStyles.title}>Login</Text>
         <TextInput
           value={usuario}
           onChangeText={setUsuario}
           placeholder="Digite Seu Nome"
-          style={styles.input}
+          style={[styles.input, AppStyles.text]}
         />
         <TextInput
           value={senha}
           onChangeText={setSenha}
           placeholder="Digite Sua senha"
           secureTextEntry={true}
-          style={styles.input}
+          style={[styles.input, AppStyles.text]}
         />
         <View style={styles.button}>
           <Pressable title="ENTRAR" color={"indigo"} onPress={handleEntrar}>
-            <Text style={styles.buttonText}>ENTRAR</Text>
+            <Text style={AppStyles.buttonText}>ENTRAR</Text>
           </Pressable>
         </View>
       </View>

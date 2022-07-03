@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Logout } from "../../util/Logout";
 import { styles } from "../Produtos/styles";
 import { getAllClientes } from "../../services/axiosclient";
+import AppStyles from "../../themes/AppStyles";
 
 export const Clientes = () => {
   const [clientes, setClientes] = useState([]);
@@ -25,16 +26,19 @@ export const Clientes = () => {
           data={clientes.data}
           showsVerticalScrollIndicator={true}
           renderItem={({ item }) => (
-              <View style={styles.cardProduto}>
+            <View style={styles.cardProduto}>
               <Text
-                style={{ borderBottomWidth: 2, borderBottomColor: "indigo" }}
+                style={[
+                  { borderBottomWidth: 2, borderBottomColor: "indigo" },
+                  AppStyles.title,
+                ]}
               >
                 CPF: {item.cpf}
               </Text>
-              <Text>{item.nome} </Text>
-              <Text>{item.email} </Text>
-              <Text>{item.cep} </Text>
-              <Text>Foto aqui</Text>
+              <Text style={AppStyles.title}>{item.nome} </Text>
+              <Text style={AppStyles.title}>{item.email} </Text>
+              <Text style={AppStyles.title}>{item.cep} </Text>
+              <Text style={AppStyles.title}>Foto aqui</Text>
             </View>
           )}
           keyExtractor={(item) => item.id}

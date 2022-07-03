@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { View, Text, Button, FlatList, TouchableOpacity } from "react-native";
 import { AuthContext } from "../../context/AuthContext";
+import AppStyles from "../../themes/AppStyles";
 import { Logout } from "../../util/Logout";
 import { styles } from "../Produtos/styles";
 
@@ -10,8 +11,8 @@ export const Home = () => {
     <>
       <Logout />
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text style={styles.title}>Home</Text>
-        <Text style={styles.title}>Categorias</Text>
+        <Text style={AppStyles.title}>Home</Text>
+        <Text style={AppStyles.title}>Categorias</Text>
         <FlatList
           data={categorias.data}
           showsVerticalScrollIndicator={true}
@@ -19,7 +20,10 @@ export const Home = () => {
             <View>
               <TouchableOpacity>
                 <Text
-                  style={{ borderBottomWidth: 2, borderBottomColor: "indigo" }}
+                  style={
+                    (AppStyles.text,
+                    { borderBottomWidth: 2, borderBottomColor: "indigo" })
+                  }
                 >
                   {item.categoria}
                 </Text>

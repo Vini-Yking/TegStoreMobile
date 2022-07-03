@@ -1,7 +1,6 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-
   button: {
     width: 50,
     padding: 10,
@@ -20,5 +19,6 @@ export const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 14,
     color: "white",
+    fontFamily: "Roboto_400Regular",
   },
 });

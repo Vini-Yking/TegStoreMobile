@@ -58,6 +58,10 @@ export const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
   },
+  produtosTitle: {
+    borderColor: "indigo",
+    borderBottomWidth: 2,
+  },
   cardProduto: {
     width: 300,
     alignSelf: "center",
