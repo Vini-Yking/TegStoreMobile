@@ -3,15 +3,15 @@ import React, { useContext, useEffect, useState } from "react";
 import { Logout } from "../../util/Logout";
 import { styles } from "./styles";
 import { getAllProdutos } from "../../services/axiosclient";
+import { AuthContext } from "../../context/AuthContext";
 
 export const Produtos = () => {
   const [listaProdutos, setListaProdutos] = useState([]);
+  const { categorias } = useContext(AuthContext);
 
   useEffect(() => {
     const GetProducts = async () => {
-      //como contornar um async dentro de um useEffect
       const produtos = await getAllProdutos();
-      console.log(produtos);
       setListaProdutos(produtos);
     };
     GetProducts();
@@ -19,8 +19,8 @@ export const Produtos = () => {
 
   return (
     <>
+      <Logout />
       <View style={styles.containter}>
-        <Logout />
         <View style={styles.headerContainer}>
           <Text style={styles.title}>Produtos</Text>
             <Text style={styles.subTitle}>Categoria: x</Text>

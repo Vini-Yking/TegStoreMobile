@@ -1,6 +1,7 @@
 import { useContext } from "react";
-import { Button, View, StatusBar} from "react-native";
+import { Button, Pressable, Text, View , StatusBar } from "react-native";
 import { AuthContext } from "../context/AuthContext";
+import { styles } from "./styles";
 
 
 export const Logout = () => {
@@ -8,8 +9,11 @@ export const Logout = () => {
     return (
         <View style={{marginTop:StatusBar.currentHeight || 0, marginStart: '87%', alignItems: "center" }}>
             <View style={{ justifyContent: 'flex-start', alignContent: 'flex-end' }}>
-                <Button title='sair' color={"red"} onPress={sair} />
+                <Pressable style={styles.button} title='sair' onPress={sair}>
+                    <Text style={styles.buttonText}>Sair</Text>
+                </Pressable>
+
             </View>
-        </View>
+        </View >
     )
 }
