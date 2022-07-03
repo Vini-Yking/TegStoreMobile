@@ -7,8 +7,8 @@ import { styles } from "./styles";
 export const Logout = () => {
     const { sair } = useContext(AuthContext);
     return (
-        <View style={{marginTop:StatusBar.currentHeight || 0, marginStart: '87%', alignItems: "center" }}>
-            <View style={{ justifyContent: 'flex-start', alignContent: 'flex-end' }}>
+        <View style={{marginTop:StatusBar.currentHeight || 0 }}>
+            <View style={{ justifyContent: 'flex-start', alignSelf: 'flex-end' }}>
                 <Pressable style={styles.button} title='sair' onPress={sair}>
                     <Text style={styles.buttonText}>Sair</Text>
                 </Pressable>
