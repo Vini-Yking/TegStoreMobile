@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
     padding: 10,
     width: 200,
     alignSelf: "center",
-    borderRadius: 20,
+    borderRadius: 10,
 
     shadowColor: "#000",
     shadowOffset: {
@@ -47,7 +47,7 @@ export const styles = StyleSheet.create({
     marginTop: 30,
     width: 200,
     padding: 10,
-    borderRadius: 20,
+    borderRadius: 10,
     backgroundColor: "indigo",
 
     shadowColor: "#000",
