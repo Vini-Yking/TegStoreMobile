@@ -44,7 +44,7 @@ export const Produtos = () => {
             data={listaProdutos.data}
             showsVerticalScrollIndicator={true}
             renderItem={({ item }) => (
-              <View style={styles.cardProduto}>
+              <View style={AppStyles.card}>
                 <Text style={[AppStyles.subTitle]}>{item.nomeProduto}</Text>
                 <Text style={AppStyles.text}>
                   R$ {item.valorUnitario.toFixed(2)}

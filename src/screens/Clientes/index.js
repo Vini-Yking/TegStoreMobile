@@ -1,7 +1,6 @@
-import { View, Text, Button, FlatList, SafeAreaView } from "react-native";
+import { View, Text, FlatList, SafeAreaView } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 import { BotaoLogout } from "../../components/BotaoLogout";
-import { styles } from "../Produtos/styles";
 import { getAllClientes } from "../../services/axiosclient";
 import AppStyles from "../../themes/AppStyles";
 
@@ -26,7 +25,7 @@ export const Clientes = () => {
           data={clientes.data}
           showsVerticalScrollIndicator={true}
           renderItem={({ item }) => (
-            <View style={styles.cardProduto}>
+            <View style={AppStyles.card}>
               <Text
                 style={{ borderBottomWidth: 2, borderBottomColor: "indigo" }}
               >
