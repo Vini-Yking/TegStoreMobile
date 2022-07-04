@@ -26,19 +26,16 @@ export const Clientes = () => {
           data={clientes.data}
           showsVerticalScrollIndicator={true}
           renderItem={({ item }) => (
-            <View style={styles.cardProduto}>
+              <View style={styles.cardProduto}>
               <Text
-                style={[
-                  { borderBottomWidth: 2, borderBottomColor: "indigo" },
-                  AppStyles.title,
-                ]}
+                style={{ borderBottomWidth: 2, borderBottomColor: "indigo" }}
               >
                 CPF: {item.cpf}
               </Text>
-              <Text style={AppStyles.title}>{item.nome} </Text>
-              <Text style={AppStyles.title}>{item.email} </Text>
-              <Text style={AppStyles.title}>{item.cep} </Text>
-              <Text style={AppStyles.title}>Foto aqui</Text>
+              <Text style={AppStyles.text}>{item.nome} </Text>
+              <Text style={AppStyles.text}>{item.email} </Text>
+              <Text style={AppStyles.text}>{item.cep} </Text>
+              <Text style={AppStyles.text}>Foto aqui</Text>
             </View>
           )}
           keyExtractor={(item) => item.id}

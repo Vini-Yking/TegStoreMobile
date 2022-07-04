@@ -1,43 +1,24 @@
 import { View, Text, Button } from "react-native";
 import React, { useContext, useEffect } from "react";
 import { Logout } from "../../util/Logout";
-import { styles } from "../Produtos/styles";
+import appStyles from "../../themes/AppStyles";
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faUserTie } from '@fortawesome/free-solid-svg-icons/faUserTie'
+import { faCircle } from '@fortawesome/free-solid-svg-icons/faCircle'
+
 
 export const Perfil = () => {
-
-  const [clientes, setClientes] = useEffect([])
-  useEffect(() => {
-    const getClients = async () => {
-      const clients = await getAllClientes();
-      console.log(clients)
-      setClientes(clients);
-    };
-    getClients();
-  }, []);
   return (
-    <>
+    <View style={{flex:1}}>
       <Logout />
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <FlatList
-          data={clientes.data}
-          showsVerticalScrollIndicator={true}
-          renderItem={({ item }) => (
-            <View style={styles.cardProduto}>
-              <Text
-                style={{ borderBottomWidth: 2, borderBottomColor: "indigo" }}>
-                {item.nomeProduto}
-              </Text>
-              <Text>R$ {item.valorUnitario} </Text>
-              <Text>{item.categoria.categoria} </Text>
-              <Image
-                source={item.urlFoto}
-                style={{ width: 200, height: 200 }}
-              />
-            </View>
-          )}
-          keyExtractor={(item) => item.idProduto}
-        />
+      <View style={{flex:1, alignItems: "center", justifyContent: "space-around" }}>
+        <FontAwesomeIcon icon={ faUserTie } size={200} color="indigo" 
+        mask={faCircle} transform="shrink-6" />
+        <View style={{flex:.3, alignItems: "center", justifyContent: "flex-start"}}>
+        <Text style={appStyles.title} > Admin</Text>
+        <Text style={appStyles.title} > admin@mail.com</Text>
+        </View>
       </View>
-    </>
+    </View>
   );
 };
