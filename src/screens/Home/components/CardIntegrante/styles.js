@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
     width: "100%",
     marginTop: 3,
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
     padding: 1,
   },
   button: {
