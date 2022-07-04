@@ -7,7 +7,7 @@ import {
   SafeAreaView,
 } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
-import { Logout } from "../../util/Logout";
+import { BotaoLogout } from "../../components/BotaoLogout/index.js";
 import { styles } from "./styles";
 import { getAllProdutos } from "../../services/axiosclient";
 import { AuthContext } from "../../context/AuthContext";
@@ -29,9 +29,8 @@ export const Produtos = () => {
     <>
       <View style={styles.containter}>
         <View style={styles.headerContainer}>
-          <Logout />
-          <Text style={AppStyles.title}>Produtos</Text>
-          <Text style={AppStyles.subTitle}>Categoria: x</Text>
+          <BotaoLogout />
+          <Text style={AppStyles.title}>Categoria: x</Text>
           <View style={styles.pesquisaContainer}>
             <TextInput
               placeholder="Buscar"
