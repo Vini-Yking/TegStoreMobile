@@ -1,21 +1,26 @@
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
+import { faLinkedin } from "@fortawesome/free-brands-svg-icons/faLinkedin";
 import { Image, Pressable, Text, TouchableOpacity, View } from "react-native";
 import AppStyles from "../../../../themes/AppStyles";
+
 import { styles } from "./styles";
 
 const CardIntegrante = ({ nome, urlFoto }) => {
   return (
-    <View style={[{ padding: 20, width: 150 }]}>
+    <View style={[{ paddingVertical: 13, width: 150 }]}>
       <Image source={{ uri: urlFoto }} style={styles.foto} />
-      <Text style={[AppStyles.text, { textAlign: "center", color: "white" }]}>
+      <Text style={[AppStyles.text, { textAlign: "center", color: "white", fontSize: 20 }]}>
         {nome}
       </Text>
       <View style={styles.redesSociais}>
         <Pressable style={styles.button}>
-          <Text style={AppStyles.subTitle}>Linkedin</Text>
+          <FontAwesomeIcon icon={faLinkedin} size={30} color="indigo" />
         </Pressable>
         <Pressable style={styles.button}>
-          <Text style={AppStyles.subTitle}>Github</Text>
+          <FontAwesomeIcon icon={faGithub} size={30} color="indigo" />
         </Pressable>
+
       </View>
     </View>
   );
