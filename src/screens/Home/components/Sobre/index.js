@@ -9,9 +9,9 @@ const Sobre = () => {
       <View style={styles.textoContainer}>
         <Text style={AppStyles.title}>Quem somos</Text>
         <Text style={[AppStyles.text, { textAlign: "center" }]}>
-          Tegloja é uma loja e-commerce de material de construção, fundada por
-          alunos do Serratec no primeiro semestre de 2022, e desde seu início
-          tem se esforçado para oferecer produtos e atendimento de boa qualidade
+          Tegloja é uma loja e-commerce de tecnologia, fundada por alunos do
+          Serratec no primeiro semestre de 2022, e desde seu início tem se
+          esforçado para oferecer produtos e atendimento de boa qualidade
           prezando sempre por atender as necessidades de nossos clientes da
           melhor forma.
         </Text>
