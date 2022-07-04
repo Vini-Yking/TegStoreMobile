@@ -5,19 +5,19 @@ import { BotaoLogout } from "../../components/BotaoLogout";
 import CardCategoria from "./components/CardCategoria";
 import Sobre from "./components/Sobre";
 import { styles } from "./styles";
-import { MyCarousel } from "./components/carousel";
+import MyCarousel from "./components/Carousel";
 
 export const Home = () => {
   return (
     <ScrollView>
       <BotaoLogout />
-       <ScrollView style={[styles.categoriasContainer, {flexDirection: 'row'}]}>
+      <MyCarousel />
+       {/* <ScrollView style={[styles.categoriasContainer, {flexDirection: 'row'}]}> */}
         <CardCategoria nomeCategoria="Nome da Categoria" />
-      </ScrollView> 
+      {/* </ScrollView>  */}
       <View style={styles.sobreContainer}>
         <Sobre />
       </View>
-      <MyCarousel/>
     </ScrollView>
 
   );

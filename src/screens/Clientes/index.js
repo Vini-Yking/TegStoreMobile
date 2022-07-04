@@ -17,7 +17,12 @@ export const Clientes = () => {
   return (
     <>
       <SafeAreaView
-        style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+        style={{
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: "indigo",
+        }}
       >
         <BotaoLogout />
         <FlatList
