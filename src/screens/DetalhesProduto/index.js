@@ -4,6 +4,8 @@ import AppStyles from "../../themes/AppStyles";
 import { styles } from "./styles";
 import { BotaoEditar } from "../../components/BotaoEditar";
 import { BotaoRemover } from "../../components/BotaoRemover";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faArrowTurnRight } from "@fortawesome/free-solid-svg-icons/faArrowTurnRight";
 
 export const DetalhesProduto = ({ navigation, route }) => {
   const { produto } = route.params;
@@ -24,10 +26,20 @@ export const DetalhesProduto = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
-      <Pressable styles={styles.backButton} onPress={navigation.goBack}>
-        <Text style={AppStyles.text}>Voltar</Text>
-      </Pressable>
       <View style={styles.box}>
+        <View style={{ alignSelf: "start", right: '1%' }}>
+          <Pressable styles={[styles.backButton]} onPress={navigation.goBack}>
+            <FontAwesomeIcon icon={faArrowTurnRight} size={25} color="indigo" style={{
+              borderWidth:2,
+              backgroundColor: 'white'
+              , borderRadius: 5,
+              padding: 3,
+              transform: [{ rotate: '180deg' }]
+
+            }
+            } />
+          </Pressable>
+        </View>
         <Image
           source={{ uri: produto.item.urlFoto }}
           style={{ width: 300, height: 300 }}

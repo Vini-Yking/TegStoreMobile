@@ -1,3 +1,6 @@
+
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faPencil } from "@fortawesome/free-solid-svg-icons/faPencil";
 import { styles } from "./styles";
 import { putProduto } from "../../services/axiosclient";
 import { Pressable, Text, View } from "react-native";
@@ -7,8 +10,9 @@ export const BotaoEditar = ({ onPress, idProduto }) => {
   return (
     <View style={{}}>
       <Pressable style={styles.button} title="editar" onPress={onPress}>
-        <Text style={[AppStyles.text, { color: "white" }]}>Editar</Text>
+        <FontAwesomeIcon icon={faPencil} size={20} color="white" />
       </Pressable>
     </View>
   );
 };
+

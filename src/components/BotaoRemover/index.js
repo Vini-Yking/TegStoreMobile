@@ -1,3 +1,6 @@
+
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons/faTrashCan";
 import { Pressable, Text, View } from "react-native";
 import AppStyles from "../../themes/AppStyles";
 import { styles } from "./styles";
@@ -7,7 +10,7 @@ export const BotaoRemover = ({ onPress, idProduto }) => {
     <>
       <View style={{}}>
         <Pressable style={styles.button} title="editar" onPress={onPress}>
-          <Text style={[AppStyles.text, { color: "white" }]}>Remover</Text>
+          <FontAwesomeIcon icon={faTrashCan} size={20} color="white" />
         </Pressable>
       </View>
     </>
