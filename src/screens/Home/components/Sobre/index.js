@@ -23,7 +23,10 @@ const Sobre = () => {
           nome="Hítalo"
           urlFoto="https://avatars.githubusercontent.com/u/104807075?v=4"
         />
-        <CardIntegrante nome="Nícolas" urlFoto="" />
+        <CardIntegrante
+          nome="Nícolas"
+          urlFoto="https://media-exp2.licdn.com/dms/image/C4E03AQEOCOihgfjQcg/profile-displayphoto-shrink_800_800/0/1648866992101?e=1662595200&v=beta&t=BBp9YKatAJjbeCcchJu2WVNDNmSZgVte1GSTaRj8YLg"
+        />
         <CardIntegrante
           nome="Patricia"
           urlFoto="https://avatars.githubusercontent.com/u/104991190?v=4"
@@ -36,7 +39,10 @@ const Sobre = () => {
           nome="Vinicios"
           urlFoto="https://avatars.githubusercontent.com/u/23295030?v=4"
         />
-        <CardIntegrante nome="Wendel" urlFoto="" />
+        <CardIntegrante
+          nome="Wendel"
+          urlFoto="https://cdn.discordapp.com/attachments/971451001276072002/993563499064205432/wndel.jpeg"
+        />
       </View>
     </>
   );
