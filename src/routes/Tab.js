@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faUserTie } from '@fortawesome/free-solid-svg-icons/faUserTie';
 import { faCircle } from '@fortawesome/free-solid-svg-icons/faCircle';
 import { faHouseChimney } from '@fortawesome/free-solid-svg-icons/faHouseChimney';
+import { faIdBadge } from '@fortawesome/free-solid-svg-icons/faIdBadge';
+//import { faIdBadge } from '@fortawesome/free-solid-svg-icons/faIdBadge';
 
 
 
@@ -16,11 +18,14 @@ const Tab = () => {
   return (
     <MyTab.Navigator
     screenOptions={({route}) =>({
-      tabBarIcon: ({focused, color, size }) =>{
+      tabBarIcon: ({color, size }) =>{
         let iconName;
 
         if(route.name === "Home"){
           iconName = faHouseChimney;
+        }
+        if(route.name === "Perfil"){
+          iconName = faIdBadge;
         }
 
         return <FontAwesomeIcon icon={iconName} size={size} color={color} />
