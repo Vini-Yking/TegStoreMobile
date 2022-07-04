@@ -4,10 +4,10 @@ import { styles } from "./styles";
 
 const CardIntegrante = ({ nome, urlFoto }) => {
   return (
-    <View style={[AppStyles.card, { width: 150, borderWidth: 0 }]}>
+    <View style={[{ padding: 20, width: 150, borderWidth: 0 }]}>
       <TouchableOpacity>
         <Image source={{ uri: urlFoto }} style={styles.foto} />
-        <Text style={[AppStyles.subTitle, { textAlign: "center" }]}>
+        <Text style={[AppStyles.text, { textAlign: "center", color: "white" }]}>
           {nome}
         </Text>
       </TouchableOpacity>
