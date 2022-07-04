@@ -8,7 +8,7 @@ import { faCircle } from "@fortawesome/free-solid-svg-icons/faCircle";
 
 export const Perfil = () => {
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor: "white" }}>
       <BotaoLogout />
       <View
         style={{

@@ -45,6 +45,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
   produtosContainer: {
+    backgroundColor: "indigo",
     flex: 6,
     width: "100%",
     alignItems: "center",
