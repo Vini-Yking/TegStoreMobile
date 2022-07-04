@@ -10,17 +10,21 @@ const CardIntegrante = ({ nome, urlFoto }) => {
   return (
     <View style={[{ paddingVertical: 13, width: 150 }]}>
       <Image source={{ uri: urlFoto }} style={styles.foto} />
-      <Text style={[AppStyles.text, { textAlign: "center", color: "white", fontSize: 20 }]}>
+      <Text
+        style={[
+          AppStyles.text,
+          { textAlign: "center", color: "white", fontSize: 20 },
+        ]}
+      >
         {nome}
       </Text>
       <View style={styles.redesSociais}>
         <Pressable style={styles.button}>
-          <FontAwesomeIcon icon={faLinkedin} size={30} color="indigo" />
+          <FontAwesomeIcon icon={faLinkedin} size={20} color="white" />
         </Pressable>
         <Pressable style={styles.button}>
-          <FontAwesomeIcon icon={faGithub} size={30} color="indigo" />
+          <FontAwesomeIcon icon={faGithub} size={20} color="white" />
         </Pressable>
-
       </View>
     </View>
   );
