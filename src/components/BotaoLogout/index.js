@@ -7,7 +7,11 @@ export const BotaoLogout = () => {
   const { sair } = useContext(AuthContext);
   return (
     <View
-      style={{ marginTop: StatusBar.currentHeight || 0, alignSelf: "flex-end" }}
+      style={{
+        marginTop: StatusBar.currentHeight || 0,
+        alignSelf: "flex-end",
+        zIndex: 1,
+      }}
     >
       <View
         style={{
