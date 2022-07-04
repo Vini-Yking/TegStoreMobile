@@ -9,7 +9,7 @@ import { faCircle } from '@fortawesome/free-solid-svg-icons/faCircle';
 import { faHouseChimney } from '@fortawesome/free-solid-svg-icons/faHouseChimney';
 import { faIdBadge } from '@fortawesome/free-solid-svg-icons/faIdBadge';
 import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons/faPeopleGroup';
-//import { faMicrochip } from '@fortawesome/free-solid-svg-icons/faMicrochip';
+import { faMicrochip } from '@fortawesome/free-solid-svg-icons/faMicrochip';
 
 
 
