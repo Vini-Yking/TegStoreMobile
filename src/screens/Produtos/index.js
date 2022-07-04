@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-import { View, Text, Button, FlatList, Image, TextInput, SafeAreaView } from "react-native";
-=======
 import {
   View,
   Text,
@@ -9,7 +6,6 @@ import {
   TextInput,
   SafeAreaView,
 } from "react-native";
->>>>>>> 8e57ef1666ce644c209d46412e907f82e9deb3ff
 import React, { useContext, useEffect, useState } from "react";
 import { Logout } from "../../util/Logout";
 import { styles } from "./styles";
