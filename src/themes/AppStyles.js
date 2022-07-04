@@ -24,6 +24,7 @@ export default StyleSheet.create({
     fontFamily: "Roboto_400Regular",
   },
   card: {
+    padding: 10,
     minHeight: 50,
     justifyContent: "center",
     width: 300,
