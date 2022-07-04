@@ -8,7 +8,9 @@ import { faUserTie } from '@fortawesome/free-solid-svg-icons/faUserTie';
 import { faCircle } from '@fortawesome/free-solid-svg-icons/faCircle';
 import { faHouseChimney } from '@fortawesome/free-solid-svg-icons/faHouseChimney';
 import { faIdBadge } from '@fortawesome/free-solid-svg-icons/faIdBadge';
-//import { faIdBadge } from '@fortawesome/free-solid-svg-icons/faIdBadge';
+//import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons/faPeopleGroup';
+//import { faMicrochip } from '@fortawesome/free-solid-svg-icons/faMicrochip';
+
 
 
 
@@ -23,6 +25,12 @@ const Tab = () => {
 
         if(route.name === "Home"){
           iconName = faHouseChimney;
+        }
+        if (route.name === "Produtos"){
+          iconName = faMicrochip;
+        }
+        if(route.name === "Clientes"){
+          iconName = faPeopleGroup;
         }
         if(route.name === "Perfil"){
           iconName = faIdBadge;
