@@ -1,7 +1,6 @@
-import { View, Text, Button, FlatList, SafeAreaView } from "react-native";
+import { View, Text, FlatList, SafeAreaView } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
-import { Logout } from "../../util/Logout";
-import { styles } from "../Produtos/styles";
+import { BotaoLogout } from "../../components/BotaoLogout";
 import { getAllClientes } from "../../services/axiosclient";
 import AppStyles from "../../themes/AppStyles";
 
@@ -18,27 +17,29 @@ export const Clientes = () => {
   return (
     <>
       <SafeAreaView
-        style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+        style={{
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: "indigo",
+        }}
       >
-        <Logout />
+        <BotaoLogout />
         <FlatList
           style={{ width: "100%" }}
           data={clientes.data}
           showsVerticalScrollIndicator={true}
           renderItem={({ item }) => (
-            <View style={styles.cardProduto}>
+            <View style={AppStyles.card}>
               <Text
-                style={[
-                  { borderBottomWidth: 2, borderBottomColor: "indigo" },
-                  AppStyles.title,
-                ]}
+                style={{ borderBottomWidth: 2, borderBottomColor: "indigo" }}
               >
                 CPF: {item.cpf}
               </Text>
-              <Text style={AppStyles.title}>{item.nome} </Text>
-              <Text style={AppStyles.title}>{item.email} </Text>
-              <Text style={AppStyles.title}>{item.cep} </Text>
-              <Text style={AppStyles.title}>Foto aqui</Text>
+              <Text style={AppStyles.text}>{item.nome} </Text>
+              <Text style={AppStyles.text}>{item.email} </Text>
+              <Text style={AppStyles.text}>{item.cep} </Text>
+              <Text style={AppStyles.text}>Foto aqui</Text>
             </View>
           )}
           keyExtractor={(item) => item.id}

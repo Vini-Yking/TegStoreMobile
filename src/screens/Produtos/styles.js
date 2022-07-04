@@ -22,11 +22,6 @@ export const styles = StyleSheet.create({
     shadowRadius: 4.65,
     elevation: 6,
   },
-  title: {
-    textAlign: "center",
-    fontSize: 30,
-    color: "indigo",
-  },
   input: {
     padding: 3,
     borderColor: "indigo",
@@ -43,10 +38,6 @@ export const styles = StyleSheet.create({
     shadowRadius: 2.62,
     elevation: 4,
   },
-  subTitle: {
-    color: "indigo",
-    textAlign: "center",
-  },
   pesquisaContainer: {
     width: "100%",
     flexDirection: "row",
@@ -54,6 +45,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
   produtosContainer: {
+    backgroundColor: "indigo",
     flex: 6,
     width: "100%",
     alignItems: "center",
@@ -61,23 +53,5 @@ export const styles = StyleSheet.create({
   produtosTitle: {
     borderColor: "indigo",
     borderBottomWidth: 2,
-  },
-  cardProduto: {
-    width: 300,
-    alignSelf: "center",
-    alignItems: "center",
-    backgroundColor: "white",
-    marginVertical: 10,
-    borderRadius: 10,
-    borderWidth: 2,
-    borderColor: "indigo",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.23,
-    shadowRadius: 2.62,
-    elevation: 4,
   },
 });
