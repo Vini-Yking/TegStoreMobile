@@ -4,8 +4,6 @@ import { Produtos } from "../screens/Produtos";
 import { Clientes } from "../screens/Clientes";
 import { Perfil } from "../screens/Perfil";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faUserTie } from "@fortawesome/free-solid-svg-icons/faUserTie";
-import { faCircle } from "@fortawesome/free-solid-svg-icons/faCircle";
 import { faHouseChimney } from "@fortawesome/free-solid-svg-icons/faHouseChimney";
 import { faIdBadge } from "@fortawesome/free-solid-svg-icons/faIdBadge";
 import { faPeopleGroup } from "@fortawesome/free-solid-svg-icons/faPeopleGroup";

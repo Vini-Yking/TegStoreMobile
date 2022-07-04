@@ -8,7 +8,7 @@ import { faCircle } from "@fortawesome/free-solid-svg-icons/faCircle";
 
 export const Perfil = () => {
   return (
-    <View style={{ flex: 1, backgroundColor: "white" }}>
+    <View style={{ flex: 1, backgroundColor: "indigo" }}>
       <BotaoLogout />
       <View
         style={{
@@ -20,7 +20,7 @@ export const Perfil = () => {
         <FontAwesomeIcon
           icon={faUserTie}
           size={200}
-          color="indigo"
+          color="white"
           mask={faCircle}
           transform="shrink-6"
         />
@@ -31,8 +31,8 @@ export const Perfil = () => {
             justifyContent: "flex-start",
           }}
         >
-          <Text style={appStyles.title}> Admin</Text>
-          <Text style={appStyles.title}> admin@mail.com</Text>
+          <Text style={[appStyles.title , {color:"white"}]}> Admin</Text>
+          <Text style={[appStyles.title , {color:"white"}]}> admin@mail.com</Text>
         </View>
       </View>
     </View>
