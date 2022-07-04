@@ -22,13 +22,13 @@ export const DetalhesProduto = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
-      <Pressable onPress={navigation.goBack}>
+      <Pressable styles={styles.backButton} onPress={navigation.goBack}>
         <Text style={AppStyles.text}>Voltar</Text>
       </Pressable>
       <View style={styles.box}>
         <Image
           source={{ uri: produto.item.urlFoto }}
-          style={{ width: 200, height: 200 }}
+          style={{ width: 300, height: 300 }}
         />
         <Text style={AppStyles.title}>{produto.item.nomeProduto}</Text>
         <Text style={AppStyles.text}>id: {produto.item.idProduto}</Text>
@@ -42,8 +42,10 @@ export const DetalhesProduto = ({ navigation, route }) => {
         <Text style={AppStyles.text}>
           quantidade em estoque: {produto.item.quantidadeEstoque}
         </Text>
-        <BotaoEditar onPress={() => handleEditar()} />
-        <BotaoRemover onPress={() => handleRemover()} />
+        <View style={styles.buttons}>
+          <BotaoEditar onPress={() => handleEditar()} />
+          <BotaoRemover onPress={() => handleRemover()} />
+        </View>
       </View>
     </View>
   );

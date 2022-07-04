@@ -1,4 +1,5 @@
 import { Pressable, Text, View } from "react-native";
+import AppStyles from "../../themes/AppStyles";
 import { styles } from "./styles";
 
 export const BotaoRemover = ({ onPress, idProduto }) => {
@@ -6,7 +7,7 @@ export const BotaoRemover = ({ onPress, idProduto }) => {
     <>
       <View style={{}}>
         <Pressable style={styles.button} title="editar" onPress={onPress}>
-          <Text style={styles.buttonText}>Remover</Text>
+          <Text style={[AppStyles.text, { color: "white" }]}>Remover</Text>
         </Pressable>
       </View>
     </>
