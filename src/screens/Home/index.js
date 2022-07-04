@@ -2,17 +2,15 @@ import { useContext, useEffect } from "react";
 import { View, Text, Button, FlatList, TouchableOpacity } from "react-native";
 import { AuthContext } from "../../context/AuthContext";
 import AppStyles from "../../themes/AppStyles";
-import { Logout } from "../../util/Logout";
+import { BotaoLogout } from "../../components/BotaoLogout";
 import { styles } from "../Produtos/styles";
 
 export const Home = () => {
   const { categorias } = useContext(AuthContext);
   return (
     <>
-      <Logout />
+      <BotaoLogout />
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text style={AppStyles.title}>Home</Text>
-        <Text style={AppStyles.title}>Categorias</Text>
         <FlatList
           data={categorias.data}
           showsVerticalScrollIndicator={true}
