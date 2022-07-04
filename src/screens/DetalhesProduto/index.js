@@ -13,7 +13,9 @@ export const DetalhesProduto = ({ navigation, route }) => {
   }, []);
 
   const handleEditar = () => {
-    navigation.navigate("Cadastro");
+    navigation.navigate("Cadastro", {
+      produto: produto.item,
+    });
   };
 
   const handleRemover = () => {

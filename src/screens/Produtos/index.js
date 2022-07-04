@@ -21,6 +21,7 @@ export const Produtos = ({ navigation }) => {
   useEffect(() => {
     const GetProducts = async () => {
       const produtos = await getAllProdutos();
+      // como fazer pra ir pegando aos poucos
       setListaProdutos(produtos);
     };
     GetProducts();
