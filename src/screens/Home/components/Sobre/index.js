@@ -1,3 +1,5 @@
-export default Sobre = () => {
+const Sobre = () => {
   return <></>;
 };
+
+export default Sobre;
