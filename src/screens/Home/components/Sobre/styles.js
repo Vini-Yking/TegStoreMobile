@@ -3,7 +3,6 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   textoContainer: {
     padding: 10,
-    backgroundColor: "white",
   },
   integrantesContainer: {
     flex: 1,
@@ -11,6 +10,5 @@ export const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "space-between",
     padding: 10,
-    backgroundColor: "white",
   },
 });

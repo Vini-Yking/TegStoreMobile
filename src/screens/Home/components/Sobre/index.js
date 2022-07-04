@@ -7,8 +7,10 @@ const Sobre = () => {
   return (
     <>
       <View style={styles.textoContainer}>
-        <Text style={AppStyles.title}>Quem somos</Text>
-        <Text style={[AppStyles.text, { textAlign: "center" }]}>
+        <Text style={[AppStyles.title, { color: "white", marginBottom: 20 }]}>
+          Quem somos
+        </Text>
+        <Text style={[AppStyles.text, { textAlign: "center", color: "white" }]}>
           Tegloja é uma loja e-commerce de tecnologia, fundada por alunos do
           Serratec no primeiro semestre de 2022, e desde seu início tem se
           esforçado para oferecer produtos e atendimento de boa qualidade
