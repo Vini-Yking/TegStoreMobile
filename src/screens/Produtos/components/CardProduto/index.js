@@ -7,6 +7,8 @@ import {
   ActivityIndicator,
 } from "react-native";
 import AppStyles from "../../../../themes/AppStyles";
+import { BotaoEditar } from "../../../../components/BotaoEditar";
+import { BotaoRemover } from "../../../../components/BotaoRemover";
 
 export const CardProduto = ({
   item,
@@ -15,6 +17,8 @@ export const CardProduto = ({
   categoria,
   urlFoto,
   navigation,
+  handleEditar,
+  removerProduto,
 }) => {
   const [loadingImage, setLoadingImage] = useState(true);
 
@@ -31,6 +35,17 @@ export const CardProduto = ({
         />
         {loadingImage && <ActivityIndicator />}
       </TouchableOpacity>
+      <View
+        style={{
+          flex: 1,
+          flexDirection: "row",
+          width: "100%",
+          justifyContent: "space-evenly",
+        }}
+      >
+        <BotaoEditar onPress={() => handleEditar(item)} />
+        <BotaoRemover onPress={() => removerProduto(item)} />
+      </View>
     </View>
   );
 };

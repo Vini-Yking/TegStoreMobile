@@ -17,27 +17,29 @@ export const DetalhesProduto = ({ navigation, route }) => {
     });
   };
 
-
   const handleDelete = async () => {
-
-    const response = await deleteProduto(produto.item.idProduto)
+    const response = await deleteProduto(produto.item.idProduto);
     Alert.alert("Produto excluir com sucesso!");
-    navigation.navigate("Produtos")
-  }
+    navigation.navigate("Produtos");
+  };
 
   return (
     <View style={styles.container}>
       <View style={styles.box}>
-        <View style={{ alignSelf: "start", right: '1%', borderRadius: 4 }}>
+        <View style={{ alignSelf: "start", right: "1%", borderRadius: 4 }}>
           <Pressable styles={[styles.backButton]} onPress={navigation.goBack}>
-            <FontAwesomeIcon icon={faArrowTurnRight} size={25} color="indigo" style={{
-              borderWidth: 2,
-              backgroundColor: 'white'
-              , borderRadius: 5,
-              padding: 3,
-              transform: [{ rotate: '180deg' }]
-            }
-            } />
+            <FontAwesomeIcon
+              icon={faArrowTurnRight}
+              size={25}
+              color="indigo"
+              style={{
+                borderWidth: 2,
+                backgroundColor: "white",
+                borderRadius: 5,
+                padding: 3,
+                transform: [{ rotate: "180deg" }],
+              }}
+            />
           </Pressable>
         </View>
         <Image
@@ -57,7 +59,7 @@ export const DetalhesProduto = ({ navigation, route }) => {
           quantidade em estoque: {produto.item.quantidadeEstoque}
         </Text>
         <View style={styles.buttons}>
-          <BotaoEditar onPress={() => handleEditar()} />
+          <BotaoEditar onPress={handleEditar} />
           <BotaoRemover onPress={handleDelete} />
         </View>
       </View>

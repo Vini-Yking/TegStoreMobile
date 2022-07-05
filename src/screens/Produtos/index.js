@@ -9,7 +9,11 @@ import {
 import React, { useContext, useEffect, useState } from "react";
 import { BotaoLogout } from "../../components/BotaoLogout/index.js";
 import { styles } from "./styles";
-import { getAllProdutos, getProdutoByName } from "../../services/axiosclient";
+import {
+  getAllProdutos,
+  getProdutoByName,
+  getAllProdutosPaginados,
+} from "../../services/axiosclient";
 import { AuthContext } from "../../context/AuthContext";
 import AppStyles from "../../themes/AppStyles";
 import { CardProduto } from "./components/CardProduto";
@@ -20,6 +24,36 @@ export const Produtos = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
   const [pesquisa, setPesquisa] = useState("");
   const { categorias } = useContext(AuthContext);
+  const [page, setPage] = useState(0);
+
+  // AJEITAR PAGEABLE DA API
+  // const handlePesquisa = async () => {
+  //   const pageSize = 10;
+  //   console.log(listaProdutos);
+  //   setPage(page + 1);
+  //   if (pesquisa.length === 0) {
+  //     // Pega todos
+  //     const produtos = await getAllProdutosPaginados(page, pageSize);
+  //     setListaProdutos([...listaProdutos, ...produtos.data.content]);
+  //     console.log(produtos);
+  //     console.log(page);
+  //     return;
+  //   }
+  //   // Filtra pelo nome
+  //   const produtosByName = await getProdutoByName(pesquisa, page, pageSize);
+  //   setListaProdutos([...listaProdutos, ...produtosByName.data.content]);
+  //   setPage(page + 1);
+  //   console.log(listaProdutos);
+  // };
+
+  // Pesquisa novo produto
+  // useEffect(() => {
+  //   setLoading(true);
+  //   setListaProdutos([]);
+  //   setPage(0);
+  //   handlePesquisa();
+  //   setLoading(false);
+  // }, [pesquisa]);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -45,6 +79,18 @@ export const Produtos = ({ navigation }) => {
     });
   };
 
+  const handleEditar = (item) => {
+    navigation.navigate("Cadastro", {
+      produto: item,
+    });
+  };
+
+  const handleDelete = async (item) => {
+    const response = await deleteProduto(item.idProduto);
+    Alert.alert("Produto excluir com sucesso!");
+    navigation.navigate("Produtos");
+  };
+
   return (
     <>
       <View style={styles.containter}>
@@ -68,6 +114,7 @@ export const Produtos = ({ navigation }) => {
               style={{ width: "100%" }}
               data={listaProdutos}
               showsVerticalScrollIndicator={true}
+              // onEndReached={handlePesquisa}
               renderItem={({ item }) => (
                 <CardProduto
                   nomeProduto={item.nomeProduto}
@@ -76,6 +123,8 @@ export const Produtos = ({ navigation }) => {
                   urlFoto={item.urlFoto}
                   item={item}
                   navigation={() => handleNavigation(item)}
+                  handleEditar={handleEditar}
+                  handleRemover={handleDelete}
                 />
               )}
               keyExtractor={(item) => String(item.idProduto)}
