@@ -1890,14 +1890,6 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-native-snap-carousel@^3.8.5":
-  "integrity" "sha512-EMBwQo/om2HZM/J6u8Bvz7i0BEO/v6frrpmlvUQ579CMsgYQPlYzQ1ne4KDdRq08+yDSG8/8AwIi1R+185ROsg=="
-  "resolved" "https://registry.npmjs.org/@types/react-native-snap-carousel/-/react-native-snap-carousel-3.8.5.tgz"
-  "version" "3.8.5"
-  dependencies:
-    "@types/react" "*"
-    "@types/react-native" "*"
-
 "@types/react-native@*":
   "integrity" "sha512-AVdWv4B8/++T5QQdnpveb2OVqD+0i8SOoT63ZRD+lNtQIYxzDak91V0k6olthy+H261d4t/MRBC1cfX1Rwsb6A=="
   "resolved" "https://registry.npmjs.org/@types/react-native/-/react-native-0.69.2.tgz"
@@ -5887,14 +5879,6 @@
   dependencies:
     "react-freeze" "^1.0.0"
     "warn-once" "^0.1.0"
-
-"react-native-snap-carousel@^4.0.0-beta.6":
-  "integrity" "sha512-jr6Kesrn+/047FwL32JRwAL6/l4Soz2uw73rFM5LfoGTgZhPatUsw60eTE3bznqFewPhoFIKezYe2m3LypTnIA=="
-  "resolved" "https://registry.npmjs.org/react-native-snap-carousel/-/react-native-snap-carousel-4.0.0-beta.6.tgz"
-  "version" "4.0.0-beta.6"
-  dependencies:
-    "@types/react-addons-shallow-compare" "^0.14.22"
-    "react-addons-shallow-compare" "15.6.2"
 
 "react-native-svg@^12.3.0", "react-native-svg@>= 11.x":
   "integrity" "sha512-ESG1g1j7/WLD7X3XRFTQHVv0r6DpbHNNcdusngAODIxG88wpTWUZkhcM3A2HJTb+BbXTFDamHv7FwtRKWQ/ALg=="

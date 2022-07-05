@@ -1,22 +1,21 @@
-import { View, Text, FlatList, ScrollView } from "react-native";
+import { View, Text, FlatList, ScrollView, SafeAreaView } from "react-native";
 import { BotaoLogout } from "../../components/BotaoLogout";
 import CardCategoria from "./components/CardCategoria";
 import Sobre from "./components/Sobre";
 import { styles } from "./styles";
-import MyCarousel from "./components/Carousel";
+import ListaHorizontal from "./components/Carousel";
 
 export const Home = () => {
   return (
     <ScrollView>
       <BotaoLogout />
-      <MyCarousel />
-       {/* <ScrollView style={[styles.categoriasContainer, {flexDirection: 'row'}]}> */}
+      <View style={styles.categoriasContainer}>
+        <ListaHorizontal />
         <CardCategoria nomeCategoria="Nome da Categoria" />
-      {/* </ScrollView>  */}
+      </View>
       <View style={styles.sobreContainer}>
         <Sobre />
       </View>
     </ScrollView>
-
   );
 };
