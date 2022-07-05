@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
     elevation: 6,
   },
   input: {
-    padding: 3,
+    padding: 6,
     borderColor: "indigo",
     borderWidth: 2,
     width: 200,
