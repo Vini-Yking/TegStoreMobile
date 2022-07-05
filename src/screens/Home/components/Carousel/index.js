@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, View, Dimensions, Image } from "react-native";
+import { FlatList, View, Dimensions, Image, TouchableOpacity, Text } from "react-native";
 import data from "./data";
 
 const { width } = Dimensions.get("window");
@@ -9,10 +9,9 @@ const ListaHorizontal = () => {
   return (
     <FlatList
       data={data}
-      keyExtractor={(item) => String(item)}
       showsHorizontalScrollIndicator={false}
       snapToOffsets={[...Array(data.length)].map(
-        (x, i) => i * (valor -10 - 40) + (i - 1) * 40)}
+        (x, i) => x= i * valor )}
              // index*(largura - margem de cada lado ) + (index - 1)*margem
       horizontal
       snapToAlignment={"start"}
@@ -28,8 +27,10 @@ const ListaHorizontal = () => {
             borderRadius: 12,
           }}
         >
-          <Image source={{ uri: item.imgUrl }} 
+          <TouchableOpacity>
+          <Image  source={{ uri: item.imgUrl }} 
           style={{width:valor , height:valor}} />
+          </TouchableOpacity>
         </View>
       )}
     />

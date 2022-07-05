@@ -7,15 +7,16 @@ import ListaHorizontal from "./components/Carousel";
 
 export const Home = () => {
   return (
-    <ScrollView>
+    <View>
       <BotaoLogout />
-      <View style={styles.categoriasContainer}>
-        <ListaHorizontal />
-        <CardCategoria nomeCategoria="Nome da Categoria" />
-      </View>
-      <View style={styles.sobreContainer}>
-        <Sobre />
-      </View>
-    </ScrollView>
+      <ScrollView style={{ backgroundColor: "indigo" }}>
+        <View style={styles.categoriasContainer}>
+          <ListaHorizontal />
+        </View>
+        <View style={styles.sobreContainer}>
+          <Sobre />
+        </View>
+      </ScrollView>
+    </View>
   );
 };

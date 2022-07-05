@@ -2,9 +2,11 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   categoriasContainer: {
+    backgroundColor: "indigo",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 50,
+    marginTop: 40,
+    padding: 10
   },
   sobreContainer: {
     backgroundColor: "indigo",
