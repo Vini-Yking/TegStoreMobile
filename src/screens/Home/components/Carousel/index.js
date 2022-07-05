@@ -3,7 +3,7 @@ import { FlatList, View, Dimensions, Image, TouchableOpacity, Text } from "react
 import data from "./data";
 
 const { width } = Dimensions.get("window");
-const valor = (width /3)
+const valor = (width /2)
 
 const ListaHorizontal = () => {
   return (
@@ -11,25 +11,26 @@ const ListaHorizontal = () => {
       data={data}
       showsHorizontalScrollIndicator={false}
       snapToOffsets={[...Array(data.length)].map(
-        (x, i) => x= i * valor )}
+         (x, i) => x= i * valor )}
              // index*(largura - margem de cada lado ) + (index - 1)*margem
       horizontal
+      pagingEnabled
       snapToAlignment={"start"}
       scrollEventThorottle={16}
       decelerationRate="fast"
-      style={{ maginTop: 20 }}
+      style={{marginTop: 20}}
       renderItem={({ item }) => (
         <View
           style={{
             backgroundColor:'#fff',
             maginHorizontal: 10,
-            // padding:10,
-            borderRadius: 12,
+            margin: 5, 
+            borderRadius: 45,
           }}
         >
           <TouchableOpacity>
           <Image  source={{ uri: item.imgUrl }} 
-          style={{width:valor , height:valor}} />
+          style={{width:valor , height:valor,}} />
           </TouchableOpacity>
         </View>
       )}

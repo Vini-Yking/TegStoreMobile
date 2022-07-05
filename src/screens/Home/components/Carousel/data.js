@@ -1,9 +1,13 @@
+import { View } from "react-native-web"
 
 
 const data = [
+ 
   {
-    imgUrl: "https://cdn-icons-png.flaticon.com/512/1/1443.png",
+    
+    imgUrl : "https://cdn-icons-png.flaticon.com/512/1/1443.png",
   },
+ 
   {
     imgUrl: "https://cdn-icons-png.flaticon.com/512/1/1321.png",
   },
@@ -37,6 +41,8 @@ const data = [
   {
     imgUrl: "https://cdn-icons-png.flaticon.com/512/1373/1373664.png",
   },
+  
 ];
+
 
 export default data;
