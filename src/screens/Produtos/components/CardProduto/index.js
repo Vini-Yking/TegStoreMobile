@@ -9,25 +9,21 @@ import {
 import AppStyles from "../../../../themes/AppStyles";
 
 export const CardProduto = ({
+  item,
   nomeProduto,
   valorUnitario,
   categoria,
   urlFoto,
+  navigation,
 }) => {
   const [loadingImage, setLoadingImage] = useState(true);
-
-  const handleImage = (item) => {
-    navigation.navigate("DetalhesProduto", {
-      produto: { item },
-    });
-  };
 
   return (
     <View style={AppStyles.card}>
       <Text style={[AppStyles.subTitle]}>{nomeProduto}</Text>
       <Text style={AppStyles.text}>R$ {valorUnitario.toFixed(2)}</Text>
       <Text style={AppStyles.text}>{categoria} </Text>
-      <TouchableOpacity onPress={() => handleImage(item)}>
+      <TouchableOpacity onPress={navigation}>
         <Image
           source={{ uri: urlFoto }}
           style={{ width: 200, height: 200 }}

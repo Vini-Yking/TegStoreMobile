@@ -31,6 +31,12 @@ export const Produtos = ({ navigation }) => {
     GetProducts();
   }, []);
 
+  const handleNavigation = (item) => {
+    navigation.navigate("DetalhesProduto", {
+      produto: { item },
+    });
+  };
+
   return (
     <>
       <View style={styles.containter}>
@@ -58,6 +64,8 @@ export const Produtos = ({ navigation }) => {
                   valorUnitario={item.valorUnitario}
                   categoria={item.categoria.categoria}
                   urlFoto={item.urlFoto}
+                  item={item}
+                  navigation={() => handleNavigation(item)}
                 />
               )}
               keyExtractor={(item) => item.idProduto}
