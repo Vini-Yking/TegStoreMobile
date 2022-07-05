@@ -9,7 +9,7 @@ import {
 import React, { useContext, useEffect, useState } from "react";
 import { BotaoLogout } from "../../components/BotaoLogout/index.js";
 import { styles } from "./styles";
-import { getAllProdutos } from "../../services/axiosclient";
+import { getAllProdutos, getProdutoByName } from "../../services/axiosclient";
 import { AuthContext } from "../../context/AuthContext";
 import AppStyles from "../../themes/AppStyles";
 import { CardProduto } from "./components/CardProduto";
@@ -18,18 +18,26 @@ import { noAuto } from "@fortawesome/fontawesome-svg-core";
 export const Produtos = ({ navigation }) => {
   const [listaProdutos, setListaProdutos] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [pesquisa, setPesquisa] = useState("");
   const { categorias } = useContext(AuthContext);
 
   useEffect(() => {
-    const GetProducts = async () => {
+    const getProducts = async () => {
       setLoading(true);
-      const produtos = await getAllProdutos();
-      // como fazer pra ir pegando aos poucos
-      setListaProdutos(produtos);
+      if (pesquisa.length === 0) {
+        // Pega todos
+        const produtos = await getAllProdutos();
+        setListaProdutos(produtos.data);
+        setLoading(false);
+        return;
+      }
+      // Filtra pelo nome
+      const produtosByName = await getProdutoByName(pesquisa);
+      setListaProdutos(produtosByName.data.content);
       setLoading(false);
     };
-    GetProducts();
-  }, []);
+    getProducts();
+  }, [pesquisa]);
 
   const handleNavigation = (item) => {
     navigation.navigate("DetalhesProduto", {
@@ -47,6 +55,8 @@ export const Produtos = ({ navigation }) => {
             <TextInput
               placeholder="Buscar"
               style={[styles.input, AppStyles.text]}
+              value={pesquisa}
+              onChangeText={setPesquisa}
             ></TextInput>
           </View>
         </View>
@@ -56,7 +66,7 @@ export const Produtos = ({ navigation }) => {
           ) : (
             <FlatList
               style={{ width: "100%" }}
-              data={listaProdutos.data}
+              data={listaProdutos}
               showsVerticalScrollIndicator={true}
               renderItem={({ item }) => (
                 <CardProduto

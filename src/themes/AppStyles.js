@@ -31,7 +31,7 @@ export default StyleSheet.create({
     alignSelf: "center",
     alignItems: "center",
     backgroundColor: "white",
-    marginVertical: 10,
+    marginVertical: 5,
     borderRadius: 10,
     borderWidth: 2,
     borderColor: "indigo",
