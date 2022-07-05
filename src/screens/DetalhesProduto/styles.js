@@ -17,7 +17,8 @@ export const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     width: "100%",
-    justifyContent: "space-around",
+    justifyContent: "space-evenly",
+    marginTop:1
   },
   box: {
     borderRadius: 10,
@@ -27,5 +28,6 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "white",
+    width:'50%'
   },
 });
