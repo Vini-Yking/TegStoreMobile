@@ -98,7 +98,6 @@ export const Produtos = ({ navigation }) => {
         <View style={styles.headerContainer}>
           <BotaoLogout />
           <Text style={AppStyles.title}>Categoria: x</Text>
-          <BotaoAdicionar />
           <View style={styles.pesquisaContainer}>
             <TextInput
               placeholder="Buscar"
@@ -107,7 +106,9 @@ export const Produtos = ({ navigation }) => {
               onChangeText={setPesquisa}
             ></TextInput><BotaoPesquisa />
           </View>
+          <BotaoAdicionar />
         </View>
+        
         <SafeAreaView style={styles.produtosContainer}>
           {loading ? (
             <ActivityIndicator style={{ alignSelf: "center", marginTop: 20 }} />
