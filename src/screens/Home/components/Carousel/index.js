@@ -3,7 +3,7 @@ import { FlatList, View, Dimensions, Image, TouchableOpacity, Text } from "react
 import data from "./data";
 
 const { width } = Dimensions.get("window");
-const valor = (width /2)
+const valor = (width /3)
 
 const ListaHorizontal = () => {
   return (
@@ -21,7 +21,7 @@ const ListaHorizontal = () => {
       renderItem={({ item }) => (
         <View
           style={{
-            backgroundColor: "blueviolet",
+            backgroundColor:'#fff',
             maginHorizontal: 10,
             // padding:10,
             borderRadius: 12,
