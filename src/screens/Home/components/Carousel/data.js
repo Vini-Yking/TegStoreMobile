@@ -1,64 +1,42 @@
-const data = [
-    {
-      title: "Aenean leo",
-      body: "Ut tincidunt tincidunt erat. Sed cursus turpis vitae tortor. Quisque malesuada placerat nisl. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.",
-      imgUrl: "https://picsum.photos/id/11/200/300",
-    },
-    {
-      title: "In turpis",
-      body: "Aenean ut eros et nisl sagittis vestibulum. Donec posuere vulputate arcu. Proin faucibus arcu quis ante. Curabitur at lacus ac velit ornare lobortis. ",
-      imgUrl: "https://picsum.photos/id/10/200/300",
-    },
-    {
-      title: "Lorem Ipsum",
-      body: "Phasellus ullamcorper ipsum rutrum nunc. Nullam quis ante. Etiam ultricies nisi vel augue. Aenean tellus metus, bibendum sed, posuere ac, mattis non, nunc.",
-      imgUrl: "https://picsum.photos/id/12/200/300",
-    },
-    {
-        title: "Aenean leo",
-        body: "Ut tincidunt tincidunt erat. Sed cursus turpis vitae tortor. Quisque malesuada placerat nisl. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.",
-        imgUrl: "https://picsum.photos/id/11/200/300",
-      },
-      {
-        title: "In turpis",
-        body: "Aenean ut eros et nisl sagittis vestibulum. Donec posuere vulputate arcu. Proin faucibus arcu quis ante. Curabitur at lacus ac velit ornare lobortis. ",
-        imgUrl: "https://picsum.photos/id/10/200/300",
-      },
-      {
-        title: "Lorem Ipsum",
-        body: "Phasellus ullamcorper ipsum rutrum nunc. Nullam quis ante. Etiam ultricies nisi vel augue. Aenean tellus metus, bibendum sed, posuere ac, mattis non, nunc.",
-        imgUrl: "https://picsum.photos/id/12/200/300",
-      },
-      {
-        title: "Aenean leo",
-        body: "Ut tincidunt tincidunt erat. Sed cursus turpis vitae tortor. Quisque malesuada placerat nisl. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.",
-        imgUrl: "https://picsum.photos/id/11/200/300",
-      },
-      {
-        title: "In turpis",
-        body: "Aenean ut eros et nisl sagittis vestibulum. Donec posuere vulputate arcu. Proin faucibus arcu quis ante. Curabitur at lacus ac velit ornare lobortis. ",
-        imgUrl: "https://picsum.photos/id/10/200/300",
-      },
-      {
-        title: "Lorem Ipsum",
-        body: "Phasellus ullamcorper ipsum rutrum nunc. Nullam quis ante. Etiam ultricies nisi vel augue. Aenean tellus metus, bibendum sed, posuere ac, mattis non, nunc.",
-        imgUrl: "https://picsum.photos/id/12/200/300",
-      },
-      {
-        title: "Aenean leo",
-        body: "Ut tincidunt tincidunt erat. Sed cursus turpis vitae tortor. Quisque malesuada placerat nisl. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.",
-        imgUrl: "https://picsum.photos/id/11/200/300",
-      },
-      {
-        title: "In turpis",
-        body: "Aenean ut eros et nisl sagittis vestibulum. Donec posuere vulputate arcu. Proin faucibus arcu quis ante. Curabitur at lacus ac velit ornare lobortis. ",
-        imgUrl: "https://picsum.photos/id/10/200/300",
-      },
-      {
-        title: "Lorem Ipsum",
-        body: "Phasellus ullamcorper ipsum rutrum nunc. Nullam quis ante. Etiam ultricies nisi vel augue. Aenean tellus metus, bibendum sed, posuere ac, mattis non, nunc.",
-        imgUrl: "https://picsum.photos/id/12/200/300",
-      },
-  ];
 
-  export default data;
+
+const data = [
+  {
+    imgUrl: "https://cdn-icons-png.flaticon.com/512/1/1443.png",
+  },
+  {
+    imgUrl: "https://cdn-icons-png.flaticon.com/512/1/1321.png",
+  },
+  {
+    imgUrl: "https://cdn-icons-png.flaticon.com/512/1/1816.png",
+  },
+  {
+    imgUrl: "https://cdn-icons-png.flaticon.com/512/25/25374.png",
+  },
+  {
+    imgUrl: "https://cdn-icons-png.flaticon.com/512/37/37760.png",
+  },
+  {
+    imgUrl: "https://cdn-icons-png.flaticon.com/512/73/73610.png",
+  },
+  {
+    imgUrl: "https://cdn-icons-png.flaticon.com/512/871/871469.png",
+  },
+  {
+    imgUrl: "https://cdn-icons.flaticon.com/png/512/3670/premium/3670382.png?token=exp=1657050143~hmac=33f2fe7ffc1b490cad4b85841719092f",
+  },
+  {
+    imgUrl: "https://cdn-icons-png.flaticon.com/512/26/26099.png",
+  },
+  {
+    imgUrl: "https://cdn-icons-png.flaticon.com/512/59/59505.png",
+  },
+  {
+    imgUrl: "https://cdn-icons-png.flaticon.com/512/74/74634.png",
+  },
+  {
+    imgUrl: "https://cdn-icons-png.flaticon.com/512/1373/1373664.png",
+  },
+];
+
+export default data;
