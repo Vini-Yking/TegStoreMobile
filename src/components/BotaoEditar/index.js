@@ -7,6 +7,7 @@ import { Pressable, Text, View } from "react-native";
 import AppStyles from "../../themes/AppStyles";
 
 export const BotaoEditar = ({ onPress, idProduto }) => {
+  
   return (
     <View style={{}}>
       <Pressable style={styles.button} title="editar" onPress={onPress}>

@@ -13,7 +13,7 @@ const AuthProvider = ({ children }) => {
         const getCategs = async () => {
             const categ = await getAllCategorias();
             console.log(categ);
-            setCategorias(categ);
+            setCategorias(categ.data);
         };
         getCategs();
     }, []);
