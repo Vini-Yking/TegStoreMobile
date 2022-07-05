@@ -16,7 +16,7 @@ export const getAllProdutos = async () => {
 export const getAllProdutosPaginados = async (pageNumber, pageSize) => {
   try {
     const response = await api.get(
-      "/produtos/pagina?pageNumber=" + pageNumber + "&pageSize=" + pageSize
+      "/produtos/pagina?page=" + pageNumber + "&size=" + pageSize
     );
     return response;
   } catch (error) {
@@ -29,9 +29,9 @@ export const getProdutoByName = async (nome, pageNumber, pageSize) => {
     const response = await api.get(
       "/produtos/pesquisar?nome=" +
         nome +
-        "&pageNumber=" +
+        "&page=" +
         pageNumber +
-        "&pageSize=" +
+        "&size=" +
         pageSize
     );
     return response;
