@@ -31,7 +31,7 @@ const ListaHorizontal = () => {
             }}>
           <Image  source={{ uri: item.imgUrl }} 
           resizeMode="contain"
-          style={{width:"85%" , height:"85%",}}
+          style={{width:"75%" , height:"75%",}}
            />
           </TouchableOpacity>
       )}
