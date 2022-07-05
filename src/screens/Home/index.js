@@ -7,7 +7,7 @@ import ListaHorizontal from "./components/Carousel";
 
 export const Home = () => {
   return (
-    <View>
+    <ScrollView>
       <BotaoLogout />
       <ScrollView style={{ backgroundColor: "indigo" }}>
         <View style={styles.categoriasContainer}>
@@ -17,6 +17,6 @@ export const Home = () => {
           <Sobre />
         </View>
       </ScrollView>
-    </View>
+    </ScrollView>
   );
 };

@@ -78,7 +78,7 @@ export const Produtos = ({ navigation }) => {
                   navigation={() => handleNavigation(item)}
                 />
               )}
-              keyExtractor={(item) => item.idProduto}
+              keyExtractor={(item) => String(item.idProduto)}
             />
           )}
         </SafeAreaView>
