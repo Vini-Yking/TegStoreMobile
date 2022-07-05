@@ -8,20 +8,19 @@ import {
   TouchableOpacity,
   View,
   Linking,
+  ActivityIndicator,
 } from "react-native";
 import AppStyles from "../../../../themes/AppStyles";
 
 import { styles } from "./styles";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 
 const CardIntegrante = ({ nome, urlFoto, urlLinkedin, urlGithub }) => {
-  const handleLinkedin = useCallback(async () => {
-    // Checking if the link is supported for links with custom URL scheme.
-    const supported = await Linking.canOpenURL(urlLinkedin);
+  const [loading, setLoading] = useState(true);
 
+  const handleLinkedin = useCallback(async () => {
+    const supported = await Linking.canOpenURL(urlLinkedin);
     if (supported) {
-      // Opening the link with some app, if the URL scheme is "http" the web link should be opened
-      // by some browser in the mobile
       await Linking.openURL(urlLinkedin);
     } else {
       Alert.alert(`Don't know how to open this URL: ${urlLinkedin}`);
@@ -29,12 +28,8 @@ const CardIntegrante = ({ nome, urlFoto, urlLinkedin, urlGithub }) => {
   }, [urlLinkedin]);
 
   const handleGithub = useCallback(async () => {
-    // Checking if the link is supported for links with custom URL scheme.
     const supported = await Linking.canOpenURL(urlGithub);
-
     if (supported) {
-      // Opening the link with some app, if the URL scheme is "http" the web link should be opened
-      // by some browser in the mobile
       await Linking.openURL(urlGithub);
     } else {
       Alert.alert(`Don't know how to open this URL: ${urlGithub}`);
@@ -43,7 +38,12 @@ const CardIntegrante = ({ nome, urlFoto, urlLinkedin, urlGithub }) => {
 
   return (
     <View style={[{ paddingVertical: 13, width: 150 }]}>
-      <Image source={{ uri: urlFoto }} style={styles.foto} />
+      <Image
+        source={{ uri: urlFoto }}
+        style={styles.foto}
+        onLoad={() => setLoading(false)}
+      />
+      {loading && <ActivityIndicator />}
       <Text
         style={[
           AppStyles.text,

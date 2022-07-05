@@ -6,6 +6,7 @@ import {
   TextInput,
   SafeAreaView,
   TouchableOpacity,
+  ActivityIndicator,
 } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 import { BotaoLogout } from "../../components/BotaoLogout/index.js";
@@ -16,13 +17,16 @@ import AppStyles from "../../themes/AppStyles";
 
 export const Produtos = ({ navigation }) => {
   const [listaProdutos, setListaProdutos] = useState([]);
+  const [loading, setLoading] = useState(false);
   const { categorias } = useContext(AuthContext);
 
   useEffect(() => {
     const GetProducts = async () => {
+      setLoading(true);
       const produtos = await getAllProdutos();
       // como fazer pra ir pegando aos poucos
       setListaProdutos(produtos);
+      setLoading(false);
     };
     GetProducts();
   }, []);
@@ -47,30 +51,36 @@ export const Produtos = ({ navigation }) => {
           </View>
         </View>
         <SafeAreaView style={styles.produtosContainer}>
-          <FlatList
-            style={{ width: "100%" }}
-            data={listaProdutos.data}
-            showsVerticalScrollIndicator={true}
-            renderItem={({ item }) => (
-              <View style={AppStyles.card}>
-                <Text style={[AppStyles.subTitle]}>{item.nomeProduto}</Text>
-                <Text style={AppStyles.text}>
-                  R$ {item.valorUnitario.toFixed(2)}
-                </Text>
-                <Text style={AppStyles.text}>{item.categoria.categoria} </Text>
-                <TouchableOpacity
-                  style={styles.button}
-                  onPress={() => onPress(item)}
-                >
-                  <Image
-                    source={{ uri: item.urlFoto }}
-                    style={{ width: 200, height: 200 }}
-                  />
-                </TouchableOpacity>
-              </View>
-            )}
-            keyExtractor={(item) => item.idProduto}
-          />
+          {loading ? (
+            <ActivityIndicator style={{ alignSelf: "center", marginTop: 20 }} />
+          ) : (
+            <FlatList
+              style={{ width: "100%" }}
+              data={listaProdutos.data}
+              showsVerticalScrollIndicator={true}
+              renderItem={({ item }) => (
+                <View style={AppStyles.card}>
+                  <Text style={[AppStyles.subTitle]}>{item.nomeProduto}</Text>
+                  <Text style={AppStyles.text}>
+                    R$ {item.valorUnitario.toFixed(2)}
+                  </Text>
+                  <Text style={AppStyles.text}>
+                    {item.categoria.categoria}{" "}
+                  </Text>
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => onPress(item)}
+                  >
+                    <Image
+                      source={{ uri: item.urlFoto }}
+                      style={{ width: 200, height: 200 }}
+                    />
+                  </TouchableOpacity>
+                </View>
+              )}
+              keyExtractor={(item) => item.idProduto}
+            />
+          )}
         </SafeAreaView>
       </View>
     </>
