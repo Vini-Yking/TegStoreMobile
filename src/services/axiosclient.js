@@ -56,14 +56,15 @@ export const deleteProduto = async (idProduto) => {
     }
 }
 
-export const putProduto = async (idProduto, idCategoria, nomeProduto, quantidadeEstoque, valorUnitario) => {
+export const putProduto = async (idProduto, idCategoria, nomeProduto, quantidadeEstoque, valorUnitario, urlFoto) => {
     try {
         const response = await api.put("/produtos/" + idProduto,
             {
                 "idCategoria": idCategoria,
                 "nomeProduto": nomeProduto,
                 "quantidadeEstoque": quantidadeEstoque,
-                "valorUnitario": valorUnitario
+                "valorUnitario": valorUnitario,
+                "urlFoto": urlFoto
             }
         )
         return response;

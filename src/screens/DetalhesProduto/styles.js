@@ -23,11 +23,10 @@ export const styles = StyleSheet.create({
   box: {
     borderRadius: 10,
     padding: 12,
-    width: 300,
     borderWidth: 1,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "white",
-    width:'50%'
+    minWidth:'80%'
   },
 });

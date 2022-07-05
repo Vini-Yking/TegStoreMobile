@@ -6,6 +6,7 @@ import AppStyles from "../../themes/AppStyles";
 import { styles } from "./styles";
 
 export const BotaoRemover = ({ onPress, idProduto }) => {
+
   return (
     <>
       <View style={{}}>

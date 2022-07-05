@@ -9,7 +9,7 @@ export const Home = () => {
   return (
     <ScrollView>
       <BotaoLogout />
-      <MyCarousel />
+      {/* <MyCarousel /> */}
        {/* <ScrollView style={[styles.categoriasContainer, {flexDirection: 'row'}]}> */}
         <CardCategoria nomeCategoria="Nome da Categoria" />
       {/* </ScrollView>  */}
