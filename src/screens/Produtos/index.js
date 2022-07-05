@@ -2,10 +2,8 @@ import {
   View,
   Text,
   FlatList,
-  Image,
   TextInput,
   SafeAreaView,
-  TouchableOpacity,
   ActivityIndicator,
 } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
@@ -14,6 +12,8 @@ import { styles } from "./styles";
 import { getAllProdutos } from "../../services/axiosclient";
 import { AuthContext } from "../../context/AuthContext";
 import AppStyles from "../../themes/AppStyles";
+import { CardProduto } from "./components/CardProduto";
+import { noAuto } from "@fortawesome/fontawesome-svg-core";
 
 export const Produtos = ({ navigation }) => {
   const [listaProdutos, setListaProdutos] = useState([]);
@@ -30,12 +30,6 @@ export const Produtos = ({ navigation }) => {
     };
     GetProducts();
   }, []);
-
-  const onPress = (item) => {
-    navigation.navigate("DetalhesProduto", {
-      produto: { item },
-    });
-  };
 
   return (
     <>
@@ -59,24 +53,12 @@ export const Produtos = ({ navigation }) => {
               data={listaProdutos.data}
               showsVerticalScrollIndicator={true}
               renderItem={({ item }) => (
-                <View style={AppStyles.card}>
-                  <Text style={[AppStyles.subTitle]}>{item.nomeProduto}</Text>
-                  <Text style={AppStyles.text}>
-                    R$ {item.valorUnitario.toFixed(2)}
-                  </Text>
-                  <Text style={AppStyles.text}>
-                    {item.categoria.categoria}{" "}
-                  </Text>
-                  <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => onPress(item)}
-                  >
-                    <Image
-                      source={{ uri: item.urlFoto }}
-                      style={{ width: 200, height: 200 }}
-                    />
-                  </TouchableOpacity>
-                </View>
+                <CardProduto
+                  nomeProduto={item.nomeProduto}
+                  valorUnitario={item.valorUnitario}
+                  categoria={item.categoria.categoria}
+                  urlFoto={item.urlFoto}
+                />
               )}
               keyExtractor={(item) => item.idProduto}
             />
