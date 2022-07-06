@@ -13,11 +13,11 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
-  
+
   return (
     <AuthProvider>
       <Routes />
-      <StatusBar backgroundColor="indigo" style="light"/>
+      <StatusBar backgroundColor="indigo" style="light" />
     </AuthProvider>
   );
 }
