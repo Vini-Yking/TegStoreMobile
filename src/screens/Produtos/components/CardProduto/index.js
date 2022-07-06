@@ -41,6 +41,7 @@ export const CardProduto = ({
           flexDirection: "row",
           width: "100%",
           justifyContent: "space-evenly",
+          marginTop:4
         }}
       >
         <BotaoEditar onPress={() => handleEditar(item)} />

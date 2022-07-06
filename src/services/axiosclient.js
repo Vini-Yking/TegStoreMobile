@@ -28,11 +28,11 @@ export const getProdutoByName = async (nome, pageNumber, pageSize) => {
   try {
     const response = await api.get(
       "/produtos/pesquisar?nome=" +
-        nome +
-        "&page=" +
-        pageNumber +
-        "&size=" +
-        pageSize
+      nome +
+      "&page=" +
+      pageNumber +
+      "&size=" +
+      pageSize
     );
     return response;
   } catch (error) {
@@ -53,7 +53,8 @@ export const postProduto = async (
   idCategoria,
   nomeProduto,
   quantidadeEstoque,
-  valorUnitario
+  valorUnitario,
+  urlFoto
 ) => {
   try {
     const response = await api.post("/produtos", {
@@ -61,6 +62,7 @@ export const postProduto = async (
       nomeProduto: nomeProduto,
       quantidadeEstoque: quantidadeEstoque,
       valorUnitario: valorUnitario,
+      urlFoto: urlFoto
     });
     return response;
   } catch (error) {

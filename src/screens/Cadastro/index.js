@@ -6,7 +6,7 @@ import { Pressable, Text, TextInput, View, Alert, Image } from "react-native";
 import { styles } from "./styles";
 import AppStyles from "../../themes/AppStyles";
 import { AuthContext } from "../../context/AuthContext";
-import { deleteProduto, putProduto } from "../../services/axiosclient";
+import { deleteProduto, postProduto, putProduto } from "../../services/axiosclient";
 
 export const Cadastro = ({ navigation, route }) => {
   const { produto } = route.params;
@@ -30,11 +30,11 @@ export const Cadastro = ({ navigation, route }) => {
     }
     const get = async () => {
       const cats = await categorias
-      // console.log(cats);
       setCategs(cats.map((item) => (item.categoria))) //cria o array de categorias para usar no dropDown não ainda não implementado
     };
     get();
   }, [])
+
 
   const handleInput = () => {
     if (!idCategoria && !nomeProduto && quantidadeEstoque <= 0 && valorUnitario < 0.01 && !produtoFoto) {
@@ -44,15 +44,22 @@ export const Cadastro = ({ navigation, route }) => {
       Alert.alert("Produto editado com sucesso!");//não sta funcionando
       if (!produto) {
         console.log("isso vai para post " + produto.item)
+        handlerPost()
+        navigation.goBack();
       } else {
         console.log("isso vai para put " + produto.item)
-        // handlerEdit()
+        handlerPut();
+        navigation.goBack();
       }
     }
   }
 
-  const handlerEdit = async () => {
-    const response = await putProduto(produto.idProduto, idCategoria, nomeProduto, quantidadeEstoque, valorUnitario, produtoFoto);
+  const handlerPut = async () => {
+    const response = await putProduto(produto.item.idProduto, idCategoria, nomeProduto, quantidadeEstoque, valorUnitario, produtoFoto);
+    navigation.navigate("Produtos")
+  }
+  const handlerPost = async () => {
+    const response = await postProduto(idCategoria, nomeProduto, quantidadeEstoque, valorUnitario, produtoFoto);
     navigation.navigate("Produtos")
   }
 
@@ -111,7 +118,7 @@ export const Cadastro = ({ navigation, route }) => {
           <Pressable style={[styles.button, { backgroundColor: `#006400` }]} onPress={handleInput}>
             <FontAwesomeIcon icon={faCheck} size={20} color="white" />
           </Pressable>
-          <Pressable style={[styles.button, { backgroundColor: '#8b0000' }]} onPress={() => navigation.goBack()}>
+          <Pressable style={[styles.button, { backgroundColor: '#8b0000' }]} onPress={() => (navigation.goBack())}>
             <FontAwesomeIcon icon={faBan} size={20} color="white" />
           </Pressable>
         </View>
