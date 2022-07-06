@@ -3,7 +3,7 @@ import { FlatList, View, Dimensions, Image, TouchableOpacity, Text } from "react
 import data from "./data";
 
 const { width } = Dimensions.get("window");
-const valor = (width /2) - 10
+const valor = (width /2) - 20
 
 const ListaHorizontal = ({ handleCategoria }) => {
   return (
@@ -12,7 +12,6 @@ const ListaHorizontal = ({ handleCategoria }) => {
       showsHorizontalScrollIndicator={false}
       snapToOffsets={[...Array(data.length)].map(
          (x, i) => x= (i * valor) + (i * 10) )}
-             // index*(largura - margem de cada lado ) + (index - 1)*margem
       horizontal
       pagingEnabled
       snapToAlignment={"start"}
@@ -25,6 +24,8 @@ const ListaHorizontal = ({ handleCategoria }) => {
             margin: 5, 
             borderRadius: 45,
             width:valor ,
+            maxWidth: 200,
+            maxHeight:200,
              height:valor,
              justifyContent:"center",
              alignItems:"center" 

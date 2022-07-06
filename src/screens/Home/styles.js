@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 40,
-    // padding: 10
+    paddingHorizontal: 10
   },
   sobreContainer: {
     backgroundColor: "indigo",
