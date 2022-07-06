@@ -60,7 +60,7 @@ export const Produtos = ({ navigation }) => {
 
   const handleEditar = (item) => {
     navigation.navigate("Cadastro", {
-      produto: item,
+      produto: {item},
     });
   };
 
@@ -82,7 +82,7 @@ export const Produtos = ({ navigation }) => {
       <SafeAreaView style={styles.containter}>
         <View style={styles.headerContainer}>
           <BotaoLogout />
-          <Text style={AppStyles.title}>Categoria: x</Text>
+          <Text style={[AppStyles.title,{marginTop:3}]}>Categoria: x</Text>
           <View style={styles.pesquisaContainer}>
             <TextInput
               placeholder="Buscar"

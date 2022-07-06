@@ -13,7 +13,7 @@ export const DetalhesProduto = ({ navigation, route }) => {
 
   const handleEditar = () => {
     navigation.navigate("Cadastro", {
-      produto: produto.item,
+      produto: produto,
     });
   };
 
@@ -30,7 +30,7 @@ export const DetalhesProduto = ({ navigation, route }) => {
           <Pressable styles={[styles.backButton]} onPress={navigation.goBack}>
             <FontAwesomeIcon
               icon={faArrowTurnRight}
-              size={25}
+              size={35}
               color="indigo"
               style={{
                 borderWidth: 2,

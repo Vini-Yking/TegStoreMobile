@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
     elevation: 6,
   },
   input: {
-    padding: 6,
+    padding: 4,
     borderColor: "indigo",
     borderWidth: 2,
     width: 200,
@@ -39,7 +39,7 @@ export const styles = StyleSheet.create({
     elevation: 4,
   },
   pesquisaContainer: {
-    marginTop: 20,
+    marginTop: 15,
     width: "100%",
     flexDirection: "row",
     justifyContent: "center",

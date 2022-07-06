@@ -11,7 +11,7 @@ import { deleteProduto, putProduto } from "../../services/axiosclient";
 export const Cadastro = ({ navigation, route }) => {
   const { produto } = route.params;
   const [nomeProduto, setNomeProduto] = useState("");
-  const [produtoFoto, setProdutoFoto] = useState();
+  const [produtoFoto, setProdutoFoto] = useState("")
   const [idCategoria, setIdCategoria] = useState("");
   const [valorUnitario, setValorUnitario] = useState("");
   const [quantidadeEstoque, setQuantidadeEstoque] = useState("");
@@ -21,20 +21,13 @@ export const Cadastro = ({ navigation, route }) => {
 
   useEffect(() => {
 
-    if (produto === "") {
-      setNomeProduto("");
-      setProdutoFoto("")
-      setValorUnitario("")
-      setQuantidadeEstoque("")
-      setIdCategoria("")
-    } else {
-      setNomeProduto(produto.nomeProduto);
-      setProdutoFoto(produto.urlFoto)
-      setValorUnitario(produto.valorUnitario)
-      setQuantidadeEstoque(produto.quantidadeEstoque)
-      setIdCategoria(produto.categoria.id)
+    if (produto) {
+      setNomeProduto(produto.item.nomeProduto);
+      setProdutoFoto(produto.item.urlFoto)
+      setValorUnitario(produto.item.valorUnitario)
+      setQuantidadeEstoque(produto.item.quantidadeEstoque)
+      setIdCategoria(produto.item.categoria.id)
     }
-    console.log(idCategoria)
     const get = async () => {
       const cats = await categorias
       // console.log(cats);
@@ -44,16 +37,16 @@ export const Cadastro = ({ navigation, route }) => {
   }, [])
 
   const handleInput = () => {
-    if (idCategoria === 'undefined' && nomeProduto === 'undefined' && quantidadeEstoque <= 0 && valorUnitario < 0.01 && produtoFoto === 'undefined') {
+    if (!idCategoria && !nomeProduto && quantidadeEstoque <= 0 && valorUnitario < 0.01 && !produtoFoto) {
       Alert.alert("campos estão em branco por favor preencha");//não sta funcionando
       return
     } else {
       Alert.alert("Produto editado com sucesso!");//não sta funcionando
-      // handlerEdit()
-      if (produto === "") {
-        console.log(produto)
+      if (!produto) {
+        console.log("isso vai para post " + produto.item)
       } else {
-        console.log("produto nulo")
+        console.log("isso vai para put " + produto.item)
+        // handlerEdit()
       }
     }
   }
@@ -115,11 +108,11 @@ export const Cadastro = ({ navigation, route }) => {
           style={[styles.input, AppStyles.text]}
         />
         <View style={{ width: 20, alignSelf: "center", flexDirection: "row", justifyContent: "center" }}>
-          <Pressable style={styles.button} onPress={handleInput}>
-            <FontAwesomeIcon icon={faCheck} size={30} color="white" />
+          <Pressable style={[styles.button, { backgroundColor: `#006400` }]} onPress={handleInput}>
+            <FontAwesomeIcon icon={faCheck} size={20} color="white" />
           </Pressable>
-          <Pressable style={styles.button} onPress={() => navigation.goBack()}>
-            <FontAwesomeIcon icon={faBan} size={30} color="white" />
+          <Pressable style={[styles.button, { backgroundColor: '#8b0000' }]} onPress={() => navigation.goBack()}>
+            <FontAwesomeIcon icon={faBan} size={20} color="white" />
           </Pressable>
         </View>
       </View>
