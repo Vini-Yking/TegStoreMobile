@@ -86,6 +86,13 @@ export const Produtos = ({ navigation }) => {
     });
   };
 
+  const handleCriar = () => {
+    navigation.navigate("Cadastro", {
+      produto: "",
+    });
+
+  };
+
   const handleDelete = async (item) => {
     const response = await deleteProduto(item.idProduto);
     Alert.alert("Produto excluir com sucesso!");
@@ -106,9 +113,9 @@ export const Produtos = ({ navigation }) => {
               onChangeText={setPesquisa}
             ></TextInput><BotaoPesquisa />
           </View>
-          <BotaoAdicionar />
+          <BotaoAdicionar onPress={handleCriar} />
         </View>
-        
+
         <SafeAreaView style={styles.produtosContainer}>
           {loading ? (
             <ActivityIndicator style={{ alignSelf: "center", marginTop: 20 }} />

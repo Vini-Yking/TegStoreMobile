@@ -6,7 +6,7 @@ import { Pressable, Text, View } from "react-native";
 
 export const BotaoAdicionar = ({ onPress }) => {
   return (
-    <View style={{ alignSelf: "flex-end", right: '18%', top: '25%' }}>
+    <View style={{ alignSelf: "flex-end", right: '3%', top: '25%' }}>
       <Pressable style={styles.button} title="editar" onPress={onPress}>
         <FontAwesomeIcon icon={faPlus} size={30} color="white" />
       </Pressable>
