@@ -72,7 +72,7 @@ export const Produtos = ({ navigation }) => {
 
   return (
     <>
-      <View style={styles.containter}>
+      <SafeAreaView style={styles.containter}>
         <View style={styles.headerContainer}>
           <BotaoLogout />
           <Text style={AppStyles.title}>Categoria: x</Text>
@@ -110,7 +110,7 @@ export const Produtos = ({ navigation }) => {
             ListFooterComponent={<FooterList load={loading} />}
           />
         </SafeAreaView>
-      </View>
+      </SafeAreaView>
     </>
   );
 };

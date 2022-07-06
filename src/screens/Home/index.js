@@ -13,6 +13,7 @@ export const Home = ({ navigation }) => {
   }
 
   return (
+  <SafeAreaView>
     <ScrollView>
       <BotaoLogout />
       <ScrollView style={{ backgroundColor: "indigo" }}>
@@ -24,5 +25,6 @@ export const Home = ({ navigation }) => {
         </View>
       </ScrollView>
     </ScrollView>
+  </SafeAreaView>
   );
 };

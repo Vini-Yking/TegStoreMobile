@@ -10,7 +10,7 @@ const data = [
     imgUrl: "https://cdn-icons-png.flaticon.com/512/1/1321.png",
   },
   {
-    imgUrl: "https://cdn-icons-png.flaticon.com/512/1/1816.png",
+    imgUrl: "https://cdn-icons-png.flaticon.com/512/732/732068.png  ",
   },
   {
     imgUrl: "https://cdn-icons-png.flaticon.com/512/25/25374.png",
