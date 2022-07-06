@@ -12,7 +12,7 @@ const data = [
   },
   {
     categoria : "Microsoft",
-    imgUrl: "https://cdn-icons-png.flaticon.com/512/732/732068.png  ",
+    imgUrl: "https://cdn-icons-png.flaticon.com/512/732/732068.png",
   },
   {
     categoria : "Android",
