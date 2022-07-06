@@ -5,9 +5,11 @@ import appStyles from "../../themes/AppStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faUserTie } from "@fortawesome/free-solid-svg-icons/faUserTie";
 import { faCircle } from "@fortawesome/free-solid-svg-icons/faCircle";
-
+import { AuthContext } from "../../context/AuthContext";
 
 export const Perfil = () => {
+  const { user } = useContext(AuthContext);
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "indigo" }}>
       <BotaoLogout />
@@ -32,8 +34,10 @@ export const Perfil = () => {
             justifyContent: "flex-start",
           }}
         >
-          <Text style={[appStyles.title , {color:"white"}]}> Admin</Text>
-          <Text style={[appStyles.title , {color:"white"}]}> admin@mail.com</Text>
+          <Text style={[appStyles.title, { color: "white" }]}>{user.nome}</Text>
+          <Text style={[appStyles.title, { color: "white" }]}>
+            {user.email}
+          </Text>
         </View>
       </View>
     </SafeAreaView>
