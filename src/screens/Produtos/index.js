@@ -1,10 +1,11 @@
-import { View, Text, FlatList, TextInput, SafeAreaView } from "react-native";
+import { View, Text, FlatList, TextInput, SafeAreaView, Alert } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 import { BotaoLogout } from "../../components/BotaoLogout/index.js";
 import { styles } from "./styles";
 import {
   getProdutoByName,
   getAllProdutosPaginados,
+  deleteProduto,
 } from "../../services/axiosclient";
 import { AuthContext } from "../../context/AuthContext";
 import AppStyles from "../../themes/AppStyles";
@@ -18,6 +19,7 @@ export const Produtos = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
   const [pesquisa, setPesquisa] = useState("");
   const [nomeProduto, setNomeProduto] = useState("");
+  const [apagando, setApagando] = useState(false);
   const { categorias } = useContext(AuthContext);
   const [page, setPage] = useState(0);
 
@@ -35,7 +37,6 @@ export const Produtos = ({ navigation }) => {
       return;
     }
     // pesquisa pelo nome
-    setListaProdutos([]);
     const produtosByName = await getProdutoByName(nomeProduto, page, pageSize);
     setListaProdutos([...listaProdutos, ...produtosByName.data.content]);
     setPage((page) => page + 1);
@@ -51,6 +52,10 @@ export const Produtos = ({ navigation }) => {
   useEffect(() => {
     handleBuscaPaginada();
   }, []);
+
+  useEffect(() => {
+    handleBuscaPaginada();
+  }, [apagando]);
 
   const handleNavigation = (item) => {
     navigation.navigate("DetalhesProduto", {
@@ -72,9 +77,12 @@ export const Produtos = ({ navigation }) => {
   };
 
   const handleDelete = async (item) => {
+    setListaProdutos([])
     const response = await deleteProduto(item.idProduto);
+    setPage(0)
+    !apagando ? setApagando(true) : setApagando(false)
+    if (loading) return;
     Alert.alert("Produto excluido com sucesso!");
-    navigation.navigate("Produtos");
   };
 
   return (
@@ -110,7 +118,7 @@ export const Produtos = ({ navigation }) => {
                 item={item}
                 navigation={() => handleNavigation(item)}
                 handleEditar={handleEditar}
-                handleRemover={handleDelete}
+                handleDelete={handleDelete}
               />
             )}
             keyExtractor={(item) => String(item.idProduto)}

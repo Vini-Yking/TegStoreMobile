@@ -46,24 +46,24 @@ export const Cadastro = ({ navigation, route }) => {
           "Tem erros aqui",
           response.erros.reduce((a, b) => a + " \n" + b)
         );
-      } else{
-        Alert.alert("Sucesso",`O produto ${nomeProduto} foi cadastrado com sucesso`)
+      } else {
+        Alert.alert("Sucesso", `O produto ${nomeProduto} foi cadastrado com sucesso`)
         navigation.goBack();
       }
     } else {
-        const response = await handlerPut();
-        if (response.status === 400) {
-          Alert.alert(
-            "Tem erros aqui",
-            response.erros.reduce((a, b) => a + " \n" + b)
-          );
-        } else{
-          Alert.alert("Sucesso",`O produto ${nomeProduto} foi alterado com sucesso`)
-          navigation.goBack();
-        }
+      const response = await handlerPut();
+      if (response.status === 400) {
+        Alert.alert(
+          "Tem erros aqui",
+          response.erros.reduce((a, b) => a + " \n" + b)
+        );
+      } else {
+        Alert.alert("Sucesso", `O produto ${nomeProduto} foi alterado com sucesso`)
+        navigation.goBack();
+      }
 
-  };
-}
+    };
+  }
 
   const handlerPut = async () => {
     const response = await putProduto(

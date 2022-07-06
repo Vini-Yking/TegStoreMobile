@@ -18,7 +18,7 @@ export const CardProduto = ({
   urlFoto,
   navigation,
   handleEditar,
-  removerProduto,
+  handleDelete
 }) => {
   const [loadingImage, setLoadingImage] = useState(true);
 
@@ -41,11 +41,11 @@ export const CardProduto = ({
           flexDirection: "row",
           width: "100%",
           justifyContent: "space-evenly",
-          marginTop:4
+          marginTop: 4
         }}
       >
         <BotaoEditar onPress={() => handleEditar(item)} />
-        <BotaoRemover onPress={() => removerProduto(item)} />
+        <BotaoRemover onPress={() => handleDelete(item)} />
       </View>
     </View>
   );
