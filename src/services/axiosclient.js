@@ -66,7 +66,7 @@ export const postProduto = async (
     });
     return response;
   } catch (error) {
-    console.error(error);
+    return error.response.data
   }
 };
 
@@ -97,7 +97,7 @@ export const putProduto = async (
     });
     return response;
   } catch (error) {
-    console.error(error);
+    return error.response.data
   }
 };
 

@@ -6,71 +6,98 @@ import { Pressable, Text, TextInput, View, Alert, Image } from "react-native";
 import { styles } from "./styles";
 import AppStyles from "../../themes/AppStyles";
 import { AuthContext } from "../../context/AuthContext";
-import { deleteProduto, postProduto, putProduto } from "../../services/axiosclient";
+import {
+  deleteProduto,
+  postProduto,
+  putProduto,
+} from "../../services/axiosclient";
 
 export const Cadastro = ({ navigation, route }) => {
   const { produto } = route.params;
   const [nomeProduto, setNomeProduto] = useState("");
-  const [produtoFoto, setProdutoFoto] = useState("")
+  const [produtoFoto, setProdutoFoto] = useState("");
   const [idCategoria, setIdCategoria] = useState("");
   const [valorUnitario, setValorUnitario] = useState("");
   const [quantidadeEstoque, setQuantidadeEstoque] = useState("");
   const { categorias } = useContext(AuthContext);
   const [loadingImage, setLoadingImage] = useState(true);
-  const [categs, setCategs] = useState([])
+  const [categs, setCategs] = useState([]);
 
   useEffect(() => {
-
     if (produto) {
       setNomeProduto(produto.item.nomeProduto);
-      setProdutoFoto(produto.item.urlFoto)
-      setValorUnitario(produto.item.valorUnitario)
-      setQuantidadeEstoque(produto.item.quantidadeEstoque)
-      setIdCategoria(produto.item.categoria.id)
+      setProdutoFoto(produto.item.urlFoto);
+      setValorUnitario(String(produto.item.valorUnitario));
+      setQuantidadeEstoque(String(produto.item.quantidadeEstoque));
+      setIdCategoria(String(produto.item.categoria.id));
     }
     const get = async () => {
-      const cats = await categorias
-      setCategs(cats.map((item) => (item.categoria))) //cria o array de categorias para usar no dropDown não ainda não implementado
+      const cats = await categorias;
+      setCategs(cats.map((item) => item.categoria)); //cria o array de categorias para usar no dropDown não ainda não implementado
     };
     get();
-  }, [])
+  }, []);
 
-
-  const handleInput = () => {
-    if (!idCategoria && !nomeProduto && quantidadeEstoque <= 0 && valorUnitario < 0.01 && !produtoFoto) {
-      Alert.alert("campos estão em branco por favor preencha");//não sta funcionando
-      return
-    } else {
-      Alert.alert("Produto editado com sucesso!");//não sta funcionando
-      if (!produto) {
-        console.log("isso vai para post " + produto.item)
-        handlerPost()
-        navigation.goBack();
-      } else {
-        console.log("isso vai para put " + produto.item)
-        handlerPut();
+  const handleInput = async () => {
+    if (!produto) {
+      const response = await handlerPost();
+      if (response.status === 400) {
+        Alert.alert(
+          "Tem erros aqui",
+          response.erros.reduce((a, b) => a + " \n" + b)
+        );
+      } else{
+        Alert.alert("Sucesso",`O produto ${nomeProduto} foi cadastrado com sucesso`)
         navigation.goBack();
       }
-    }
-  }
+    } else {
+        const response = await handlerPut();
+        if (response.status === 400) {
+          Alert.alert(
+            "Tem erros aqui",
+            response.erros.reduce((a, b) => a + " \n" + b)
+          );
+        } else{
+          Alert.alert("Sucesso",`O produto ${nomeProduto} foi alterado com sucesso`)
+          navigation.goBack();
+        }
+
+  };
+}
 
   const handlerPut = async () => {
-    const response = await putProduto(produto.item.idProduto, idCategoria, nomeProduto, quantidadeEstoque, valorUnitario, produtoFoto);
-    navigation.navigate("Produtos")
-  }
+    const response = await putProduto(
+      produto.item.idProduto,
+      idCategoria,
+      nomeProduto,
+      quantidadeEstoque,
+      valorUnitario,
+      produtoFoto
+    );
+    console.log(response)
+    return response;
+  };
   const handlerPost = async () => {
-    const response = await postProduto(idCategoria, nomeProduto, quantidadeEstoque, valorUnitario, produtoFoto);
-    navigation.navigate("Produtos")
-  }
+    const response = await postProduto(
+      idCategoria,
+      nomeProduto,
+      quantidadeEstoque,
+      valorUnitario,
+      produtoFoto
+    );
+    return response;
+  };
 
   return (
     <View style={styles.container}>
       <View style={styles.box}>
-        <Image
-          source={{ uri: produtoFoto }}
-          style={{ width: 200, height: 200, alignSelf: "center" }}
-          onLoad={() => setLoadingImage(false)}
-        />
+        {produtoFoto && (
+          <Image
+            source={{ uri: produtoFoto }}
+            style={{ width: 200, height: 200, alignSelf: "center" }}
+            onLoad={() => setLoadingImage(false)}
+          />
+        )}
         <Text style={[AppStyles.text, { textAlign: "center" }]}>
           Nome do produto:{" "}
         </Text>
@@ -114,11 +141,24 @@ export const Cadastro = ({ navigation, route }) => {
           placeholder="Foto do produto"
           style={[styles.input, AppStyles.text]}
         />
-        <View style={{ width: 20, alignSelf: "center", flexDirection: "row", justifyContent: "center" }}>
-          <Pressable style={[styles.button, { backgroundColor: `#006400` }]} onPress={handleInput}>
+        <View
+          style={{
+            width: 20,
+            alignSelf: "center",
+            flexDirection: "row",
+            justifyContent: "center",
+          }}
+        >
+          <Pressable
+            style={[styles.button, { backgroundColor: `#006400` }]}
+            onPress={handleInput}
+          >
             <FontAwesomeIcon icon={faCheck} size={20} color="white" />
           </Pressable>
-          <Pressable style={[styles.button, { backgroundColor: '#8b0000' }]} onPress={() => (navigation.goBack())}>
+          <Pressable
+            style={[styles.button, { backgroundColor: "#8b0000" }]}
+            onPress={() => navigation.goBack()}
+          >
             <FontAwesomeIcon icon={faBan} size={20} color="white" />
           </Pressable>
         </View>
