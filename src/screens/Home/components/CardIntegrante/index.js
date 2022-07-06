@@ -43,7 +43,7 @@ const CardIntegrante = ({ nome, urlFoto, urlLinkedin, urlGithub }) => {
         style={styles.foto}
         onLoad={() => setLoading(false)}
       />
-      {loading && <ActivityIndicator />}
+      {loading && <ActivityIndicator size={25} color="white" />}
       <Text
         style={[
           AppStyles.text,
