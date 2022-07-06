@@ -25,7 +25,7 @@ export const Routes = () => {
   if (loading) {
     return (
       <View style={{ flex: 1, justifyContent: "center" }}>
-        <ActivityIndicator size="large" />
+        <ActivityIndicator size="large" color="indigo" />
       </View>
     );
   }

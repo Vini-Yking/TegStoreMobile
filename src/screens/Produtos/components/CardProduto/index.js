@@ -33,7 +33,7 @@ export const CardProduto = ({
           style={{ width: 200, height: 200 }}
           onLoad={() => setLoadingImage(false)}
         />
-        {loadingImage && <ActivityIndicator />}
+        {loadingImage && <ActivityIndicator size={25} color="indigo" />}
       </TouchableOpacity>
       <View
         style={{

@@ -5,7 +5,7 @@ import data from "./data";
 const { width } = Dimensions.get("window");
 const valor = (width /2) - 10
 
-const ListaHorizontal = () => {
+const ListaHorizontal = ({ handleCategoria }) => {
   return (
     <FlatList
       data={data}
@@ -28,7 +28,9 @@ const ListaHorizontal = () => {
              height:valor,
              justifyContent:"center",
              alignItems:"center" 
-            }}>
+            }}
+            onPress={()=>handleCategoria(item.categoria)}
+            >
           <Image  source={{ uri: item.imgUrl }} 
           resizeMode="contain"
           style={{width:"75%" , height:"75%",}}

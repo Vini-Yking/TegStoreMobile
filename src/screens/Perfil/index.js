@@ -1,4 +1,4 @@
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, SafeAreaView } from "react-native";
 import React, { useContext, useEffect } from "react";
 import { BotaoLogout } from "../../components/BotaoLogout";
 import appStyles from "../../themes/AppStyles";
@@ -6,9 +6,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faUserTie } from "@fortawesome/free-solid-svg-icons/faUserTie";
 import { faCircle } from "@fortawesome/free-solid-svg-icons/faCircle";
 
+
 export const Perfil = () => {
   return (
-    <View style={{ flex: 1, backgroundColor: "indigo" }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "indigo" }}>
       <BotaoLogout />
       <View
         style={{
@@ -35,6 +36,6 @@ export const Perfil = () => {
           <Text style={[appStyles.title , {color:"white"}]}> admin@mail.com</Text>
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };

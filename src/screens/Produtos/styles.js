@@ -39,6 +39,7 @@ export const styles = StyleSheet.create({
     elevation: 4,
   },
   pesquisaContainer: {
+    marginTop: 20,
     width: "100%",
     flexDirection: "row",
     justifyContent: "center",
