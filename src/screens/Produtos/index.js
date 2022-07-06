@@ -96,10 +96,7 @@ export const Produtos = ({ navigation }) => {
               value={pesquisa}
               onChangeText={setPesquisa}
             ></TextInput>
-            <Pressable onPress={handlePesquisa}>
-              <Text>Pesquisar</Text>
-            </Pressable>
-            <BotaoPesquisa />
+            <BotaoPesquisa onPress={handlePesquisa} />
           </View>
           <BotaoAdicionar />
         </View>
