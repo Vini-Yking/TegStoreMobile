@@ -15,7 +15,7 @@ const AuthProvider = ({ children }) => {
     const pass = "123"; //dado mockado
     if (nomeInput == nome && senhaInput == pass) {
       const { user } = await login();
-      await AsyncStorage.setItem("@TegMobile:user", JSON.stringify(nome));
+      await AsyncStorage.setItem("@TegMobile:user", JSON.stringify(user));
       setUser(user);
       return;
     }
