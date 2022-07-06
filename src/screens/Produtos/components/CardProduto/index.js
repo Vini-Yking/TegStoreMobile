@@ -28,14 +28,12 @@ export const CardProduto = ({
       <Text style={AppStyles.text}>R$ {valorUnitario.toFixed(2)}</Text>
       <Text style={AppStyles.text}>{categoria} </Text>
       <TouchableOpacity onPress={navigation}>
-        <View style={{ flex: 1, justifyContent: "center" }}>
-          <Image
-            source={{ uri: urlFoto }}
-            style={{ width: 200, height: 200 }}
-            onLoad={() => setLoadingImage(false)}
-          />
-          {loadingImage && <ActivityIndicator size={25} color="indigo" />}
-        </View>
+        <Image
+          source={{ uri: urlFoto }}
+          style={{ width: 200, height: 200 }}
+          onLoad={() => setLoadingImage(false)}
+        />
+        {loadingImage && <ActivityIndicator size={25} color="indigo" />}
       </TouchableOpacity>
       <View
         style={{

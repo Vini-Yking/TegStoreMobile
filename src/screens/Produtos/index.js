@@ -1,24 +1,14 @@
-import {
-  View,
-  Text,
-  FlatList,
-  TextInput,
-  SafeAreaView,
-  ActivityIndicator,
-  Pressable,
-} from "react-native";
+import { View, Text, FlatList, TextInput, SafeAreaView } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 import { BotaoLogout } from "../../components/BotaoLogout/index.js";
 import { styles } from "./styles";
 import {
-  getAllProdutos,
   getProdutoByName,
   getAllProdutosPaginados,
 } from "../../services/axiosclient";
 import { AuthContext } from "../../context/AuthContext";
 import AppStyles from "../../themes/AppStyles";
 import { CardProduto } from "./components/CardProduto";
-import { noAuto } from "@fortawesome/fontawesome-svg-core";
 import { BotaoAdicionar } from "../../components/BotaoAdicionar/index.js";
 import { FooterList } from "./components/FooterList/index.js";
 import { BotaoPesquisa } from "../../components/BotaoPesquisa/index.js";
@@ -34,9 +24,9 @@ export const Produtos = ({ navigation }) => {
   const handleBuscaPaginada = async () => {
     if (loading) return;
     setLoading(true);
-    const pageSize = 15;
+    const pageSize = 15; // número de itens por page
     if (nomeProduto.length === 0) {
-      // Pega todos
+      // pega todos
       const produtos = await getAllProdutosPaginados(page, pageSize);
       console.log(page);
       setListaProdutos([...listaProdutos, ...produtos.data.content]);
@@ -44,13 +34,10 @@ export const Produtos = ({ navigation }) => {
       setLoading(false);
       return;
     }
-    // Filtra pelo nome
+    // pesquisa pelo nome
     setListaProdutos([]);
-    console.log(nomeProduto);
     const produtosByName = await getProdutoByName(nomeProduto, page, pageSize);
-    console.log(produtosByName);
     setListaProdutos([...listaProdutos, ...produtosByName.data.content]);
-    console.log(listaProdutos);
     setPage((page) => page + 1);
     setLoading(false);
   };
