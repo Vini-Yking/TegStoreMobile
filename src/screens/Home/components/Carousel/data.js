@@ -2,7 +2,7 @@
 const data = [
  
   {
-    
+    categoria : "nomeDaCategoria",
     imgUrl : "https://cdn-icons-png.flaticon.com/512/1/1443.png",
   },
  
