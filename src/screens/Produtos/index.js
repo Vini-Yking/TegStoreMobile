@@ -44,9 +44,10 @@ export const Produtos = ({ navigation }) => {
   };
 
   const handlePesquisa = () => {
-    setNomeProduto(pesquisa);
+    setListaProdutos([])
     setPage(0);
-    handleBuscaPaginada();
+    setNomeProduto(pesquisa);
+
   };
 
   useEffect(() => {
@@ -55,7 +56,7 @@ export const Produtos = ({ navigation }) => {
 
   useEffect(() => {
     handleBuscaPaginada();
-  }, [apagando]);
+  }, [apagando,nomeProduto]);
 
   const handleNavigation = (item) => {
     navigation.navigate("DetalhesProduto", {
