@@ -9,7 +9,7 @@ export const Clientes = () => {
   useEffect(() => {
     const getClients = async () => {
       const clients = await getAllClientes();
-      console.log(clients);
+      // console.log(clients);
       setClientes(clients);
     };
     getClients();

@@ -43,11 +43,11 @@ export const Cadastro = ({ navigation, route }) => {
     } else {
       Alert.alert("Produto editado com sucesso!");//não sta funcionando
       if (!produto) {
-        console.log("isso vai para post " + produto.item)
+        // console.log("isso vai para post " + produto.item)
         handlerPost()
         navigation.goBack();
       } else {
-        console.log("isso vai para put " + produto.item)
+        // console.log("isso vai para put " + produto.item)
         handlerPut();
         navigation.goBack();
       }

@@ -28,7 +28,7 @@ export const Produtos = ({ navigation }) => {
     if (nomeProduto.length === 0) {
       // pega todos
       const produtos = await getAllProdutosPaginados(page, pageSize);
-      console.log(page);
+      // console.log(page);
       setListaProdutos([...listaProdutos, ...produtos.data.content]);
       setPage((page) => page + 1);
       setLoading(false);

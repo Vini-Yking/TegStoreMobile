@@ -12,7 +12,7 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const getCategs = async () => {
             const categ = await getAllCategorias();
-            console.log(categ);
+            // console.log(categ);
             setCategorias(categ.data);
         };
         getCategs();
