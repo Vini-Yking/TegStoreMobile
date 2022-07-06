@@ -21,6 +21,7 @@ import { CardProduto } from "./components/CardProduto";
 import { noAuto } from "@fortawesome/fontawesome-svg-core";
 import { BotaoAdicionar } from "../../components/BotaoAdicionar/index.js";
 import { FooterList } from "./components/FooterList/index.js";
+import { BotaoPesquisa } from "../../components/BotaoPesquisa/index.js";
 
 export const Produtos = ({ navigation }) => {
   const [listaProdutos, setListaProdutos] = useState([]);
@@ -88,7 +89,6 @@ export const Produtos = ({ navigation }) => {
         <View style={styles.headerContainer}>
           <BotaoLogout />
           <Text style={AppStyles.title}>Categoria: x</Text>
-          <BotaoAdicionar />
           <View style={styles.pesquisaContainer}>
             <TextInput
               placeholder="Buscar"
@@ -99,8 +99,11 @@ export const Produtos = ({ navigation }) => {
             <Pressable onPress={handlePesquisa}>
               <Text>Pesquisar</Text>
             </Pressable>
+            <BotaoPesquisa />
           </View>
+          <BotaoAdicionar />
         </View>
+
         <SafeAreaView style={styles.produtosContainer}>
           <FlatList
             style={{ width: "100%" }}
