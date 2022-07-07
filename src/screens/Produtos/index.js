@@ -19,7 +19,7 @@ import ModalConfirmacao from "../../components/ModalConfirmacao/index.js";
 import ModalSucesso from "../../components/ModalSucesso/index";
 
 export const Produtos = ({ navigation, route }) => {
-  const categoria = route;
+  const { categoria } = route.params;
   const semFoto =
     "https://cdn.discordapp.com/attachments/993722091591446629/994427609708507208/unknown.png";
   const [listaProdutos, setListaProdutos] = useState([]);
@@ -67,11 +67,14 @@ export const Produtos = ({ navigation, route }) => {
     handleBuscaPaginada();
   }, [apagando, nomeProduto]);
 
-  // useFocusEffect(
-  //   React.useCallback(() => {
-  //     console.log(apagando)
-  //   }, [navigation])
-  // );
+  useEffect(() => {
+    if (!categoria) return;
+    handleCategoria();
+  }, []);
+
+  const handleCategoria = () => {
+    setOption(categoria);
+  };
 
   const handleNavigation = (item) => {
     navigation.navigate("DetalhesProduto", {
