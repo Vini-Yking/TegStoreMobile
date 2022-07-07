@@ -34,7 +34,7 @@ export const Cadastro = ({ navigation, route }) => {
   const [mensagemSucesso, setMensagemSucesso] = useState("");
   const semFoto =
     "https://cdn.discordapp.com/attachments/993722091591446629/994427609708507208/unknown.png";
-  const [select, setSelect] = useState("");
+  const [select, setSelect] = useState(categorias[0]);
 
   useEffect(() => {
     setIdCategoria(String(select.id));
