@@ -3,6 +3,8 @@ import { BotaoLogout } from "../../components/BotaoLogout";
 import Sobre from "./components/Sobre";
 import { styles } from "./styles";
 import ListaHorizontal from "./components/Carousel";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 export const Home = ({ navigation }) => {
   const { categorias } = useContext(AuthContext);

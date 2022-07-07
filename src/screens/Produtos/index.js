@@ -75,11 +75,6 @@ export const Produtos = ({ navigation, route }) => {
     handleBuscaPaginada();
   }, [apagando, nomeProduto]);
 
-  useEffect(() => {
-    if (!categoria) return;
-    handleCategoria();
-  }, []);
-
   const handleCategoria = () => {
     setOption(categoria);
   };
@@ -142,7 +137,7 @@ export const Produtos = ({ navigation, route }) => {
           pergunta={perguntaConfirmacao}
         />
       </View>
-      <SafeAreaView ref={ref} style={styles.containter}>
+      <SafeAreaView style={styles.containter}>
         <View style={styles.headerContainer}>
           <BotaoLogout />
           <Text style={[AppStyles.title, { marginTop: 3 }]}>
