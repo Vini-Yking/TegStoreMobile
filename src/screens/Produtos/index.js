@@ -1,11 +1,4 @@
-import {
-  View,
-  Text,
-  FlatList,
-  TextInput,
-  SafeAreaView,
-  Alert,
-} from "react-native";
+import { View, Text, FlatList, TextInput, SafeAreaView } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 import { BotaoLogout } from "../../components/BotaoLogout/index.js";
 import { styles } from "./styles";
@@ -25,7 +18,8 @@ import { useFocusEffect } from "@react-navigation/native";
 import ModalConfirmacao from "../../components/ModalConfirmacao/index.js";
 import ModalSucesso from "../../components/ModalSucesso/index";
 
-export const Produtos = ({ navigation }) => {
+export const Produtos = ({ navigation, route }) => {
+  const categoria = route;
   const [listaProdutos, setListaProdutos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [pesquisa, setPesquisa] = useState("");
@@ -33,6 +27,7 @@ export const Produtos = ({ navigation }) => {
   const [apagando, setApagando] = useState(false);
   const { categorias } = useContext(AuthContext);
   const [page, setPage] = useState(0);
+  const [option, setOption] = useState("");
   const [acabou, setAcabou] = useState(false);
   const [mostrarModal, setMostrarModal] = useState(false);
   const [itemSelecionado, setItemSelecionado] = useState(null);
@@ -72,6 +67,7 @@ export const Produtos = ({ navigation }) => {
   useFocusEffect(
     React.useCallback(() => {
       handleBuscaPaginada();
+      console.log(categoria);
     }, [navigation])
   );
 
@@ -134,7 +130,9 @@ export const Produtos = ({ navigation }) => {
       <SafeAreaView style={styles.containter}>
         <View style={styles.headerContainer}>
           <BotaoLogout />
-          <Text style={[AppStyles.title, { marginTop: 3 }]}>Catalogo</Text>
+          <Text style={[AppStyles.title, { marginTop: 3 }]}>
+            Catalogo {option}
+          </Text>
           <View style={styles.pesquisaContainer}>
             <TextInput
               placeholder="Buscar"
