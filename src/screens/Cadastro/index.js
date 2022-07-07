@@ -7,7 +7,6 @@ import {
   Text,
   TextInput,
   View,
-  Alert,
   Image,
   ScrollView,
 } from "react-native";
@@ -16,6 +15,7 @@ import AppStyles from "../../themes/AppStyles";
 import { AuthContext } from "../../context/AuthContext";
 import { postProduto, putProduto } from "../../services/axiosclient";
 import ModalErro from "../../components/ModalErro";
+import ModalSucesso from "../../components/ModalSucesso";
 
 export const Cadastro = ({ navigation, route }) => {
   const { produto } = route.params;
@@ -29,6 +29,8 @@ export const Cadastro = ({ navigation, route }) => {
   const [categs, setCategs] = useState([]);
   const [mostrarModalErro, setMostrarModalErro] = useState(false);
   const [mensagemErro, setMensagemErro] = useState("");
+  const [mostrarModalSucesso, setmostrarModalSucesso] = useState(false);
+  const [mensagemSucesso, setMensagemSucesso] = useState("");
   const semFoto =
     "https://cdn.discordapp.com/attachments/993722091591446629/994427609708507208/unknown.png";
 
@@ -53,26 +55,20 @@ export const Cadastro = ({ navigation, route }) => {
       if (response.status === 400) {
         setMensagemErro(response.erros.reduce((a, b) => a + " \n" + b));
         setMostrarModalErro(true);
-      } else {
-        Alert.alert(
-          "Sucesso",
-          `O produto ${nomeProduto} foi cadastrado com sucesso`
-        );
-        navigation.goBack();
+        return;
       }
-    } else {
-      const response = await handlerPut();
-      if (response.status === 400) {
-        setMensagemErro(response.erros.reduce((a, b) => a + " \n" + b));
-        setMostrarModalErro(true);
-      } else {
-        Alert.alert(
-          "Sucesso",
-          `O produto ${nomeProduto} foi alterado com sucesso`
-        );
-        navigation.goBack();
-      }
+      setMensagemSucesso(`O produto ${nomeProduto} foi adicionado com sucesso`);
+      setmostrarModalSucesso(true);
+      return;
     }
+    const response = await handlerPut();
+    if (response.status === 400) {
+      setMensagemErro(response.erros.reduce((a, b) => a + " \n" + b));
+      setMostrarModalErro(true);
+      return;
+    }
+    setMensagemSucesso(`O produto ${nomeProduto} foi alterado com sucesso`);
+    setmostrarModalSucesso(true);
   };
 
   const handlerPut = async () => {
@@ -103,6 +99,12 @@ export const Cadastro = ({ navigation, route }) => {
         modalVisible={mostrarModalErro}
         mensagemErro={mensagemErro}
         setModalVisible={setMostrarModalErro}
+      />
+      <ModalSucesso
+        mensagemSucesso={mensagemSucesso}
+        modalVisible={mostrarModalSucesso}
+        setModalVisible={setmostrarModalSucesso}
+        onClose={() => navigation.goBack()}
       />
       <View style={styles.box}>
         <Image
