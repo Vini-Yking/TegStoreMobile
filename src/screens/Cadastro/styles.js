@@ -4,7 +4,7 @@ export const styles = StyleSheet.create({
   container: {
     backgroundColor: "indigo",
     padding: 10,
-    height:"100%"
+    height: "100%"
   },
   inputs: {
     justifyContent: "center",
@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
   input: {
     borderColor: "indigo",
     borderWidth: 2,
-    marginVertical: 15,
+    marginVertical: 10,
     padding: 10,
     width: 200,
     alignSelf: "center",
@@ -22,11 +22,11 @@ export const styles = StyleSheet.create({
   box: {
     flex: 1,
     justifyContent: "center",
-    alignSelf:"center",
+    alignSelf: "center",
     backgroundColor: "white",
     width: '90%',
     borderRadius: 10,
-    padding:10,
+    padding: 10,
     marginTop: StatusBar.currentHeight + 10 || 10
   },
   button: {
@@ -37,5 +37,15 @@ export const styles = StyleSheet.create({
     marginHorizontal: 3,
     paddingHorizontal: 20,
     borderRadius: 8,
+  }, dropdownButonstyle: {
+    borderWidth: 2,
+    borderColor: "indigo",
+    borderRadius: 8,
+    width: 200,
+    height: 35,
+    marginVertical: 10,
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center"
   },
 });

@@ -136,32 +136,37 @@ export const Cadastro = ({ navigation, route }) => {
           placeholder="nome do produto"
           style={[styles.input, AppStyles.text]}
         />
-        <Text style={[AppStyles.text, { textAlign: "center" }]}>
-          Categoria: - aqui é pra ter um dropdown
-        </Text>
+        <Text style={[AppStyles.text, { textAlign: "center" }]}>Categoria</Text>
         <View style={{ alignSelf: "center" }}>
           <SelectDropdown
             data={categorias}
+            rowStyle={{ alignItems: "center", height: 25, marginVertical: 5 }}
             rowTextForSelection={(item, index) => item.categoria}
             defaultValueByIndex={idCategoria - 1}
             buttonTextAfterSelection={(item, index) => item.categoria}
             onSelect={setSelect}
+            dropdownStyle={{
+              backgroundColor: "indigo",
+              height: 230,
+              borderRadius: 5,
+              borderWidth: 2,
+            }}
+            rowTextStyle={{ fontSize: 15, color: "white" }}
             buttonStyle={{
               borderWidth: 2,
               borderColor: "indigo",
-              borderRadius: 5,
-              backgroundColor: "#8a39e1",
+              borderRadius: 8,
+              width: 200,
+              height: 35,
+              marginVertical: 10,
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
             }}
           />
         </View>
-        <TextInput
-          value={idCategoria}
-          onChangeText={setIdCategoria}
-          placeholder="categoria"
-          style={[styles.input, AppStyles.text]}
-        />
         <Text style={[AppStyles.text, { textAlign: "center" }]}>
-          valor unitário - ajeitar para numero xxx,xx
+          valor unitário
         </Text>
         <TextInput
           value={valorUnitario}
@@ -170,7 +175,7 @@ export const Cadastro = ({ navigation, route }) => {
           style={[styles.input, AppStyles.text]}
         />
         <Text style={[AppStyles.text, { textAlign: "center" }]}>
-          quantidade estoque - ajeitar pra numero inteiro
+          Quantidade estoque
         </Text>
         <TextInput
           value={quantidadeEstoque}
@@ -178,6 +183,7 @@ export const Cadastro = ({ navigation, route }) => {
           placeholder="quantidade em estoque"
           style={[styles.input, AppStyles.text]}
         />
+        <Text style={{ textAlign: "center" }}>Url da foto</Text>
         <TextInput
           value={produtoFoto}
           onChangeText={setProdutoFoto}
