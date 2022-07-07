@@ -9,6 +9,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
   const [categorias, setCategorias] = useState([]);
+  const [mostraErro, setMostraErro] = useState(false);
 
   const handleEntrar = async (nomeInput, senhaInput) => {
     const nome = "admin"; // dado mockado
@@ -19,7 +20,7 @@ const AuthProvider = ({ children }) => {
       setUser(user);
       return;
     }
-    Alert.alert("não logado", "Usuário e senha incorretos!");
+    setMostraErro(true);
   };
 
   useEffect(() => {
@@ -45,6 +46,8 @@ const AuthProvider = ({ children }) => {
         handleEntrar,
         sair,
         categorias,
+        mostraErro,
+        setMostraErro,
       }}
     >
       {children}

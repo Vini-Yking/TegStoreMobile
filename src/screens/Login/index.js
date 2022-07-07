@@ -1,18 +1,25 @@
-import { View, Text, TextInput, Alert, Image, Pressable } from "react-native";
+import { View, Text, TextInput, Image, Pressable } from "react-native";
 import { useState, useContext } from "react";
 import { styles } from "./styles";
-import { AuthContext, useAuth } from "../../context/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 import PngImg from "../../../assets/imgs/imagemlogos/LogoRoxo.png";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import AppStyles from "../../themes/AppStyles";
+import ModalErro from "../../components/ModalErro";
 
 export const Login = () => {
-  const { handleEntrar } = useContext(AuthContext);
+  const { handleEntrar, mostraErro, setMostraErro } = useContext(AuthContext);
   const [usuario, setUsuario] = useState("");
   const [senha, setSenha] = useState("");
 
   return (
     <View style={styles.containter}>
+      <View>
+        <ModalErro
+          mensagemErro="Usuário ou senha inválidos"
+          modalVisible={mostraErro}
+          setModalVisible={setMostraErro}
+        />
+      </View>
       <View style={styles.logoContainer}>
         <Image source={PngImg} resizeMethod="scale" style={styles.logo} />
       </View>

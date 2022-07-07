@@ -69,7 +69,6 @@ export const Produtos = ({ navigation, route }) => {
   useFocusEffect(
     React.useCallback(() => {
       handleBuscaPaginada();
-      console.log(categoria);
     }, [navigation])
   );
 
