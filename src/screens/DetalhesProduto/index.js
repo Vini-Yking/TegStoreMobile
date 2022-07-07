@@ -20,7 +20,7 @@ export const DetalhesProduto = ({ navigation, route }) => {
   const handleDelete = async () => {
     const response = await deleteProduto(produto.item.idProduto);
     Alert.alert("Produto excluir com sucesso!");
-    navigation.navigate("Produtos");
+    navigation.goBack();//não mexer pois isso da o gatilho no useEffect em produtos
   };
 
   return (
