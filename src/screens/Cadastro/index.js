@@ -2,15 +2,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faBan } from "@fortawesome/free-solid-svg-icons/faBan";
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { useContext, useEffect, useState } from "react";
-import { Pressable, Text, TextInput, View, Alert, Image, ScrollView, } from "react-native";
+import {
+  Pressable,
+  Text,
+  TextInput,
+  View,
+  Image,
+  ScrollView,
+} from "react-native";
 import { styles } from "./styles";
 import AppStyles from "../../themes/AppStyles";
 import { AuthContext } from "../../context/AuthContext";
-import {
-  deleteProduto,
-  postProduto,
-  putProduto,
-} from "../../services/axiosclient";
+import { postProduto, putProduto } from "../../services/axiosclient";
+import ModalErro from "../../components/ModalErro";
+import ModalSucesso from "../../components/ModalSucesso";
 
 export const Cadastro = ({ navigation, route }) => {
   const { produto } = route.params;
@@ -22,7 +27,12 @@ export const Cadastro = ({ navigation, route }) => {
   const { categorias } = useContext(AuthContext);
   const [loadingImage, setLoadingImage] = useState(true);
   const [categs, setCategs] = useState([]);
-  const semFoto = 'https://cdn.discordapp.com/attachments/993722091591446629/994427609708507208/unknown.png'
+  const [mostrarModalErro, setMostrarModalErro] = useState(false);
+  const [mensagemErro, setMensagemErro] = useState("");
+  const [mostrarModalSucesso, setmostrarModalSucesso] = useState(false);
+  const [mensagemSucesso, setMensagemSucesso] = useState("");
+  const semFoto =
+    "https://cdn.discordapp.com/attachments/993722091591446629/994427609708507208/unknown.png";
 
   useEffect(() => {
     if (produto) {
@@ -43,27 +53,23 @@ export const Cadastro = ({ navigation, route }) => {
     if (!produto) {
       const response = await handlerPost();
       if (response.status === 400) {
-        Alert.alert(
-          "Tem erros aqui",
-          response.erros.reduce((a, b) => a + " \n" + b)
-        );
-      } else {
-        Alert.alert("Sucesso", `O produto ${nomeProduto} foi cadastrado com sucesso`)
-        navigation.goBack();//não mexer pois isso da o gatilho no useEffect em produtos
+        setMensagemErro(response.erros.reduce((a, b) => a + " \n" + b));
+        setMostrarModalErro(true);
+        return;
       }
-    } else {
-      const response = await handlerPut();
-      if (response.status === 400) {
-        Alert.alert(
-          "Tem erros aqui",
-          response.erros.reduce((a, b) => a + " \n" + b)
-        );
-      } else {
-        Alert.alert("Sucesso", `O produto ${nomeProduto} foi alterado com sucesso`)
-        navigation.goBack();//não mexer pois isso da o gatilho no useEffect em produtos
-      }
-    };
-  }
+      setMensagemSucesso(`O produto ${nomeProduto} foi adicionado com sucesso`);
+      setmostrarModalSucesso(true);
+      return;
+    }
+    const response = await handlerPut();
+    if (response.status === 400) {
+      setMensagemErro(response.erros.reduce((a, b) => a + " \n" + b));
+      setMostrarModalErro(true);
+      return;
+    }
+    setMensagemSucesso(`O produto ${nomeProduto} foi alterado com sucesso`);
+    setmostrarModalSucesso(true);
+  };
 
   const handlerPut = async () => {
     const response = await putProduto(
@@ -89,6 +95,17 @@ export const Cadastro = ({ navigation, route }) => {
 
   return (
     <ScrollView style={styles.container}>
+      <ModalErro
+        modalVisible={mostrarModalErro}
+        mensagemErro={mensagemErro}
+        setModalVisible={setMostrarModalErro}
+      />
+      <ModalSucesso
+        mensagemSucesso={mensagemSucesso}
+        modalVisible={mostrarModalSucesso}
+        setModalVisible={setmostrarModalSucesso}
+        onClose={() => navigation.goBack()}
+      />
       <View style={styles.box}>
         <Image
           source={{ uri: produtoFoto ? produtoFoto : semFoto }}
