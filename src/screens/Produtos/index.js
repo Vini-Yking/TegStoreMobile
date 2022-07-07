@@ -69,6 +69,7 @@ export const Produtos = ({ navigation, route }) => {
     setListaProdutos([]);
     setPage(0);
     setNomeProduto(pesquisa);
+    setApagando(!apagando)
   };
 
   useEffect(() => {
