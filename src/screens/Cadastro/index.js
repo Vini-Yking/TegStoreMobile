@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faBan } from "@fortawesome/free-solid-svg-icons/faBan";
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { useContext, useEffect, useState } from "react";
-import { Pressable, Text, TextInput, View, Alert, Image } from "react-native";
+import { Pressable, Text, TextInput, View, Alert, Image, ScrollView, } from "react-native";
 import { styles } from "./styles";
 import AppStyles from "../../themes/AppStyles";
 import { AuthContext } from "../../context/AuthContext";
@@ -74,7 +74,6 @@ export const Cadastro = ({ navigation, route }) => {
       valorUnitario,
       produtoFoto
     );
-    console.log(response)
     return response;
   };
   const handlerPost = async () => {
@@ -89,15 +88,13 @@ export const Cadastro = ({ navigation, route }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.box}>
-        {produtoFoto && (
           <Image
-            source={{ uri: produtoFoto }}
+            source={{ uri: produtoFoto ? produtoFoto : "https://cdn.discordapp.com/attachments/993722091591446629/994427609708507208/unknown.png" }}
             style={{ width: 200, height: 200, alignSelf: "center" }}
             onLoad={() => setLoadingImage(false)}
           />
-        )}
         <Text style={[AppStyles.text, { textAlign: "center" }]}>
           Nome do produto:
         </Text>
@@ -162,6 +159,6 @@ export const Cadastro = ({ navigation, route }) => {
           </Pressable>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };

@@ -1,32 +1,33 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, StatusBar } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: "center",
     backgroundColor: "indigo",
-    justifyContent: "center",
     padding: 10,
+    height:"100%"
   },
   inputs: {
-    flex: 1,
     justifyContent: "center",
   },
   input: {
     borderColor: "indigo",
     borderWidth: 2,
-    marginVertical: 20,
+    marginVertical: 15,
     padding: 10,
     width: 200,
     alignSelf: "center",
     borderRadius: 10,
+    height: 35
   },
   box: {
     flex: 1,
     justifyContent: "center",
+    alignSelf:"center",
     backgroundColor: "white",
     width: '90%',
     borderRadius: 10,
+    padding:10,
+    marginTop: StatusBar.currentHeight + 10 || 10
   },
   button: {
     alignSelf: "center",
