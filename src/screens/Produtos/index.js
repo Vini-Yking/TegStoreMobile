@@ -28,17 +28,12 @@ export const Produtos = ({ navigation }) => {
     setLoading(true);
     const pageSize = 15; // número de itens por page
     if (nomeProduto.length === 0) {
-      // pega todos
       const produtos = await getAllProdutosPaginados(page, pageSize);
-      // console.log(page);
       setListaProdutos([...listaProdutos, ...produtos.data.content]);
-      setPage((page) => page + 1);
-      setLoading(false);
-      return;
+    } else {
+      const produtosByName = await getProdutoByName(nomeProduto, page, pageSize);
+      setListaProdutos([...listaProdutos, ...produtosByName.data.content]);
     }
-    // pesquisa pelo nome
-    const produtosByName = await getProdutoByName(nomeProduto, page, pageSize);
-    setListaProdutos([...listaProdutos, ...produtosByName.data.content]);
     setPage((page) => page + 1);
     setLoading(false);
   };
@@ -56,7 +51,7 @@ export const Produtos = ({ navigation }) => {
 
   useEffect(() => {
     handleBuscaPaginada();
-  }, [apagando,nomeProduto]);
+  }, [apagando, nomeProduto]);
 
   const handleNavigation = (item) => {
     navigation.navigate("DetalhesProduto", {
