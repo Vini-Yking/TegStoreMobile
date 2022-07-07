@@ -22,9 +22,9 @@ import { FooterList } from "./components/FooterList/index.js";
 import { BotaoPesquisa } from "../../components/BotaoPesquisa/index.js";
 
 export const Produtos = ({ navigation }) => {
+
   const [listaProdutos, setListaProdutos] = useState([]);
   const [loading, setLoading] = useState(false);
-  // const [primeiraVez, setPrimeiraVez] = useState(true);
   const [pesquisa, setPesquisa] = useState("");
   const [nomeProduto, setNomeProduto] = useState("");
   const [apagando, setApagando] = useState(false);
@@ -36,7 +36,6 @@ export const Produtos = ({ navigation }) => {
     if (loading) return;
     if (acabou) return;
     setLoading(true);
-    console.log(page);
     const pageSize = 15;
     if (nomeProduto.length === 0) {
       const produtos = await getAllProdutosPaginados(page, pageSize);
@@ -45,7 +44,6 @@ export const Produtos = ({ navigation }) => {
       setListaProdutos([...listaProdutos, ...produtos.data.content]);
     } else {
       const produtos = await getProdutoByName(nomeProduto, page, pageSize);
-      console.log(produtos);
       if (produtos.data.content.length < pageSize) setAcabou(true);
       setListaProdutos([...listaProdutos, ...produtos.data.content]);
     }

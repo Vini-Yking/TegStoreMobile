@@ -29,6 +29,7 @@ export const Clientes = () => {
           style={{ width: "100%" }}
           data={clientes.data}
           showsVerticalScrollIndicator={true}
+          keyExtractor={(item) => String(item.id)}
           renderItem={({ item }) => (
             <View style={AppStyles.card}>
               <Text
@@ -42,7 +43,7 @@ export const Clientes = () => {
               <Text style={AppStyles.text}>Foto aqui</Text>
             </View>
           )}
-          keyExtractor={(item) => item.id}
+
         />
       </SafeAreaView>
     </>

@@ -22,6 +22,7 @@ export const Cadastro = ({ navigation, route }) => {
   const { categorias } = useContext(AuthContext);
   const [loadingImage, setLoadingImage] = useState(true);
   const [categs, setCategs] = useState([]);
+  const semFoto = 'https://cdn.discordapp.com/attachments/993722091591446629/994427609708507208/unknown.png'
 
   useEffect(() => {
     if (produto) {
@@ -48,8 +49,7 @@ export const Cadastro = ({ navigation, route }) => {
         );
       } else {
         Alert.alert("Sucesso", `O produto ${nomeProduto} foi cadastrado com sucesso`)
-
-        navigation.goBack();
+        navigation.navigate("Home");//não mexer pois isso da o gatilho no useEffect em produtos
       }
     } else {
       const response = await handlerPut();
@@ -60,7 +60,7 @@ export const Cadastro = ({ navigation, route }) => {
         );
       } else {
         Alert.alert("Sucesso", `O produto ${nomeProduto} foi alterado com sucesso`)
-        navigation.goBack();
+        navigation.navigate("Home");//não mexer pois isso da o gatilho no useEffect em produtos
       }
     };
   }
@@ -91,13 +91,12 @@ export const Cadastro = ({ navigation, route }) => {
   return (
     <View style={styles.container}>
       <View style={styles.box}>
-        {produtoFoto && (
-          <Image
-            source={{ uri: produtoFoto }}
-            style={{ width: 200, height: 200, alignSelf: "center" }}
-            onLoad={() => setLoadingImage(false)}
-          />
-        )}
+        <Image
+          source={{ uri: produtoFoto ? produtoFoto : semFoto }}
+          style={{ width: 200, height: 200, alignSelf: "center" }}
+          onLoad={() => setLoadingImage(false)}
+        />
+
         <Text style={[AppStyles.text, { textAlign: "center" }]}>
           Nome do produto:
         </Text>
