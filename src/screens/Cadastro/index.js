@@ -16,7 +16,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { postProduto, putProduto } from "../../services/axiosclient";
 import ModalErro from "../../components/ModalErro";
 import ModalSucesso from "../../components/ModalSucesso";
-import SelectDropdown from "react-native-select-dropdown";
+import SelectDropdown from 'react-native-select-dropdown'
 
 export const Cadastro = ({ navigation, route }) => {
   const { produto } = route.params;
@@ -34,11 +34,11 @@ export const Cadastro = ({ navigation, route }) => {
   const [mensagemSucesso, setMensagemSucesso] = useState("");
   const semFoto =
     "https://cdn.discordapp.com/attachments/993722091591446629/994427609708507208/unknown.png";
-  const [select, setSelect] = useState(categorias[0]);
+  const [select, setSelect] = useState("");
 
   useEffect(() => {
-    setIdCategoria(String(select.id));
-  }, [select]);
+    setIdCategoria(String(select.id))
+  }, [select])
 
   useEffect(() => {
     if (produto) {
@@ -58,26 +58,23 @@ export const Cadastro = ({ navigation, route }) => {
   const handleInput = async () => {
     if (!produto) {
       const response = await handlerPost();
-      if (response.status === 200) {
-        setMensagemSucesso(
-          `O produto ${nomeProduto} foi adicionado com sucesso`
-        );
-        setmostrarModalSucesso(true);
-      } else {
-        console.log(response);
-        setMensagemErro(response.data.erros.reduce((a, b) => a + " \n" + b));
+      if (response.status === 400) {
+        setMensagemErro(response.erros.reduce((a, b) => a + " \n" + b));
         setMostrarModalErro(true);
+        return;
       }
-    } else {
-      const response = await handlerPut();
-      if (response.status === 200) {
-        setMensagemSucesso(`O produto ${nomeProduto} foi alterado com sucesso`);
-        setmostrarModalSucesso(true);
-      } else {
-        setMensagemErro(response.data.erros.reduce((a, b) => a + " \n" + b));
-        setMostrarModalErro(true);
-      }
+      setMensagemSucesso(`O produto ${nomeProduto} foi adicionado com sucesso`);
+      setmostrarModalSucesso(true);
+      return;
     }
+    const response = await handlerPut();
+    if (response.status === 400) {
+      setMensagemErro(response.erros.reduce((a, b) => a + " \n" + b));
+      setMostrarModalErro(true);
+      return;
+    }
+    setMensagemSucesso(`O produto ${nomeProduto} foi alterado com sucesso`);
+    setmostrarModalSucesso(true);
   };
 
   const handlerPut = async () => {
@@ -91,7 +88,6 @@ export const Cadastro = ({ navigation, route }) => {
     );
     return response;
   };
-
   const handlerPost = async () => {
     const response = await postProduto(
       idCategoria,
@@ -136,7 +132,9 @@ export const Cadastro = ({ navigation, route }) => {
           placeholder="nome do produto"
           style={[styles.input, AppStyles.text]}
         />
-        <Text style={[AppStyles.text, { textAlign: "center" }]}>Categoria</Text>
+        <Text style={[AppStyles.text, { textAlign: "center" }]}>
+          Categoria
+        </Text>
         <View style={{ alignSelf: "center" }}>
           <SelectDropdown
             data={categorias}
@@ -145,13 +143,8 @@ export const Cadastro = ({ navigation, route }) => {
             defaultValueByIndex={idCategoria - 1}
             buttonTextAfterSelection={(item, index) => item.categoria}
             onSelect={setSelect}
-            dropdownStyle={{
-              backgroundColor: "indigo",
-              height: 230,
-              borderRadius: 5,
-              borderWidth: 2,
-            }}
-            rowTextStyle={{ fontSize: 15, color: "white" }}
+            dropdownStyle={{ backgroundColor: "indigo", height: 230, borderRadius: 5, borderWidth: 2 }}
+            rowTextStyle={{ fontSize: 15, color: 'white' }}
             buttonStyle={{
               borderWidth: 2,
               borderColor: "indigo",
@@ -161,7 +154,8 @@ export const Cadastro = ({ navigation, route }) => {
               marginVertical: 10,
               flexDirection: "column",
               alignItems: "center",
-              justifyContent: "center",
+              justifyContent: "center"
+
             }}
           />
         </View>
@@ -183,7 +177,9 @@ export const Cadastro = ({ navigation, route }) => {
           placeholder="quantidade em estoque"
           style={[styles.input, AppStyles.text]}
         />
-        <Text style={{ textAlign: "center" }}>Url da foto</Text>
+        <Text style={{ textAlign: "center" }}>
+          Url da foto
+        </Text>
         <TextInput
           value={produtoFoto}
           onChangeText={setProdutoFoto}

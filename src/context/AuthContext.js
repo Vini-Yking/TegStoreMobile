@@ -10,6 +10,7 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [categorias, setCategorias] = useState([]);
   const [mostraErro, setMostraErro] = useState(false);
+  const [cadastro, setCadastro] = useState(false)
 
   const handleEntrar = async (nomeInput, senhaInput) => {
     const nome = "admin"; // dado mockado
@@ -48,6 +49,8 @@ const AuthProvider = ({ children }) => {
         categorias,
         mostraErro,
         setMostraErro,
+        cadastro,
+        setCadastro
       }}
     >
       {children}

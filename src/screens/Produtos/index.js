@@ -36,7 +36,7 @@ export const Produtos = ({ navigation, route }) => {
   const [perguntaConfirmacao, setPerguntaConfirmacao] = useState("");
   const [mostrarModalSucesso, setMostrarModalSucesso] = useState(false);
   const [mensagemSucesso, setMensagemSucesso] = useState("");
-
+  const { cadastro, setCadastro } = useContext(AuthContext)
   const handleBuscaPaginada = async () => {
     if (loading) return;
     if (acabou) return;
@@ -64,13 +64,13 @@ export const Produtos = ({ navigation, route }) => {
 
   useEffect(() => {
     handleBuscaPaginada();
-  }, [apagando, nomeProduto]);
+  }, [apagando, nomeProduto, cadastro]);
 
-  useFocusEffect(
-    React.useCallback(() => {
-      handleBuscaPaginada();
-    }, [navigation])
-  );
+  // useFocusEffect(
+  //   React.useCallback(() => {
+  //     console.log(apagando)
+  //   }, [navigation])
+  // );
 
   const handleNavigation = (item) => {
     navigation.navigate("DetalhesProduto", {
@@ -79,6 +79,7 @@ export const Produtos = ({ navigation, route }) => {
   };
 
   const handleEditar = (item) => {
+    setCadastro(true)
     navigation.navigate("Cadastro", {
       produto: { item },
     });
