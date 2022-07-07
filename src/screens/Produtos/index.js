@@ -18,7 +18,7 @@ import ModalConfirmacao from "../../components/ModalConfirmacao/index.js";
 import ModalSucesso from "../../components/ModalSucesso/index";
 
 export const Produtos = ({ navigation, route }) => {
-  //const { categoria } = route.params;
+  const { categoria } = route.params;
   const semFoto =
     "https://cdn.discordapp.com/attachments/993722091591446629/994427609708507208/unknown.png";
   const [listaProdutos, setListaProdutos] = useState([]);
@@ -28,7 +28,7 @@ export const Produtos = ({ navigation, route }) => {
   const [apagando, setApagando] = useState(false);
   const { categorias } = useContext(AuthContext);
   const [page, setPage] = useState(0);
-  const [option, setOption] = useState("");
+  const [option, setOption] = useState(categoria);
   const [acabou, setAcabou] = useState(false);
   const [mostrarModal, setMostrarModal] = useState(false);
   const [itemSelecionado, setItemSelecionado] = useState(null);
@@ -39,18 +39,20 @@ export const Produtos = ({ navigation, route }) => {
   const handleBuscaPaginada = async () => {
     if (loading) return;
     if (acabou) return;
-    //console.log(categoria);
     setLoading(true);
     const pageSize = 15;
-    //if (categoria) {
-    //  const produtos = await getAllProdutosByCategoria(
-    //    categoria.id,
-    //    page,
-    //    pageSize
-    //  );
-    //  if (produtos.data.content.length < pageSize) setAcabou(true);
-    //  setListaProdutos([...listaProdutos, ...produtos.data.content]);
-    //} else
+    // if (option) {
+    //   // handleCategoria()
+    //   const produtos = await getAllProdutosByCategoria(
+    //     option.categoria.id,
+    //     page,
+    //     pageSize
+    //   );
+    //   setListaProdutos([...listaProdutos, ...produtos.data.content])
+    //   setOption(null)
+    //   handleCategoria()
+    //   if (produtos.data.content.length < pageSize) setAcabou(true);
+    // }else
     if (nomeProduto.length === 0) {
       const produtos = await getAllProdutosPaginados(page, pageSize);
       if (produtos.data.content.length < pageSize) setAcabou(true);
@@ -69,12 +71,13 @@ export const Produtos = ({ navigation, route }) => {
     setListaProdutos([]);
     setPage(0);
     setNomeProduto(pesquisa);
-    setApagando(!apagando)
+    setApagando(!apagando);
   };
 
   useEffect(() => {
+    handleCategoria()
     handleBuscaPaginada();
-  }, [apagando, nomeProduto]);
+  }, [apagando, nomeProduto , categoria]);
 
   const handleCategoria = () => {
     setOption(categoria);
@@ -142,7 +145,8 @@ export const Produtos = ({ navigation, route }) => {
         <View style={styles.headerContainer}>
           <BotaoLogout />
           <Text style={[AppStyles.title, { marginTop: 3 }]}>
-            Catalogo {option}
+            Catalogo 
+            {/* { categoria ? categoria.categoria.categoria : ""} */}
           </Text>
           <View style={styles.pesquisaContainer}>
             <TextInput

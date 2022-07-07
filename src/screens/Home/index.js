@@ -10,6 +10,7 @@ export const Home = ({ navigation }) => {
   const { categorias } = useContext(AuthContext);
 
   const handleCategoria = (categoria) => {
+    // console.log(categoria)
     navigation.navigate("Produtos", { categoria: { categoria } });
   };
 

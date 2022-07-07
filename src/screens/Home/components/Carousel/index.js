@@ -31,7 +31,7 @@ const ListaHorizontal = ({ handleCategoria }) => {
             justifyContent: "center",
             alignItems: "center"
           }}
-          onPress={() => handleCategoria(item.categoria)}
+          onPress={() => handleCategoria(item)}
         >
           <Image source={{ uri: item.imgUrl }}
             resizeMode="contain"
