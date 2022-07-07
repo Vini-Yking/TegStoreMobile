@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { Pressable, Text, View, StatusBar } from "react-native";
 import { AuthContext } from "../../context/AuthContext";
 import { styles } from "./styles";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons/faArrowRightFromBracket";
 
 export const BotaoLogout = () => {
   const { sair } = useContext(AuthContext);
@@ -15,7 +17,7 @@ export const BotaoLogout = () => {
     >
       <View
         style={{
-          justifyContent: "flex-start",
+          justifyContent: "center",
           alignSelf: "flex-end",
           position: "absolute",
           top: 0,
@@ -23,7 +25,11 @@ export const BotaoLogout = () => {
         }}
       >
         <Pressable style={styles.button} title="sair" onPress={sair}>
-          <Text style={styles.buttonText}>Sair</Text>
+          <FontAwesomeIcon
+            icon={faArrowRightFromBracket}
+            size={20}
+            color="white"
+          />
         </Pressable>
       </View>
     </View>

@@ -3,10 +3,9 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   button: {
     zIndex: 1,
-    width: 50,
     padding: 10,
-    borderRadius: 10,
-    backgroundColor: "red",
+    borderBottomLeftRadius: 10,
+    backgroundColor: "#8b0000",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
