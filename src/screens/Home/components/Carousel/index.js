@@ -3,7 +3,7 @@ import { FlatList, View, Dimensions, Image, TouchableOpacity, Text } from "react
 import data from "./data";
 
 const { width } = Dimensions.get("window");
-const valor = (width /2) - 20
+const valor = (width / 2) - 20
 
 const ListaHorizontal = ({ handleCategoria }) => {
   return (
@@ -11,32 +11,33 @@ const ListaHorizontal = ({ handleCategoria }) => {
       data={data}
       showsHorizontalScrollIndicator={false}
       snapToOffsets={[...Array(data.length)].map(
-         (x, i) => x= (i * valor) + (i * 10) )}
+        (x, i) => x = (i * valor) + (i * 10))}
       horizontal
       pagingEnabled
       snapToAlignment={"start"}
       scrollEventThorottle={16}
       decelerationRate="fast"
+      keyExtractor={(item) => (item.categoria)}
       renderItem={({ item }) => (
-          <TouchableOpacity 
+        <TouchableOpacity
           style={{
-            backgroundColor:'#fff',
-            margin: 5, 
+            backgroundColor: '#fff',
+            margin: 5,
             borderRadius: 45,
-            width:valor ,
+            width: valor,
             maxWidth: 200,
-            maxHeight:200,
-             height:valor,
-             justifyContent:"center",
-             alignItems:"center" 
-            }}
-            onPress={()=>handleCategoria(item.categoria)}
-            >
-          <Image  source={{ uri: item.imgUrl }} 
-          resizeMode="contain"
-          style={{width:"75%" , height:"75%",}}
-           />
-          </TouchableOpacity>
+            maxHeight: 200,
+            height: valor,
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+          onPress={() => handleCategoria(item.categoria)}
+        >
+          <Image source={{ uri: item.imgUrl }}
+            resizeMode="contain"
+            style={{ width: "75%", height: "75%", }}
+          />
+        </TouchableOpacity>
       )}
     />
   );

@@ -20,11 +20,13 @@ import { CardProduto } from "./components/CardProduto";
 import { BotaoAdicionar } from "../../components/BotaoAdicionar/index.js";
 import { FooterList } from "./components/FooterList/index.js";
 import { BotaoPesquisa } from "../../components/BotaoPesquisa/index.js";
+import { TapGestureHandler } from "react-native-gesture-handler";
+import { useFocusEffect } from "@react-navigation/native";
 
 export const Produtos = ({ navigation }) => {
+
   const [listaProdutos, setListaProdutos] = useState([]);
   const [loading, setLoading] = useState(false);
-  // const [primeiraVez, setPrimeiraVez] = useState(true);
   const [pesquisa, setPesquisa] = useState("");
   const [nomeProduto, setNomeProduto] = useState("");
   const [apagando, setApagando] = useState(false);
@@ -60,6 +62,10 @@ export const Produtos = ({ navigation }) => {
   useEffect(() => {
     handleBuscaPaginada();
   }, [apagando, nomeProduto]);
+
+  useFocusEffect(React.useCallback(() => {
+    handleBuscaPaginada()
+  }, [navigation]))
 
   const handleNavigation = (item) => {
     navigation.navigate("DetalhesProduto", {

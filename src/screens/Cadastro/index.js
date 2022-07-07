@@ -29,6 +29,8 @@ export const Cadastro = ({ navigation, route }) => {
   const [categs, setCategs] = useState([]);
   const [mostrarModalErro, setMostrarModalErro] = useState(false);
   const [mensagemErro, setMensagemErro] = useState("");
+  const semFoto =
+    "https://cdn.discordapp.com/attachments/993722091591446629/994427609708507208/unknown.png";
 
   useEffect(() => {
     if (produto) {
@@ -104,14 +106,11 @@ export const Cadastro = ({ navigation, route }) => {
       />
       <View style={styles.box}>
         <Image
-          source={{
-            uri: produtoFoto
-              ? produtoFoto
-              : "https://cdn.discordapp.com/attachments/993722091591446629/994427609708507208/unknown.png",
-          }}
+          source={{ uri: produtoFoto ? produtoFoto : semFoto }}
           style={{ width: 200, height: 200, alignSelf: "center" }}
           onLoad={() => setLoadingImage(false)}
         />
+
         <Text style={[AppStyles.text, { textAlign: "center" }]}>
           Nome do produto:
         </Text>
