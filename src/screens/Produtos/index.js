@@ -36,7 +36,8 @@ export const Produtos = ({ navigation, route }) => {
   const [perguntaConfirmacao, setPerguntaConfirmacao] = useState("");
   const [mostrarModalSucesso, setMostrarModalSucesso] = useState(false);
   const [mensagemSucesso, setMensagemSucesso] = useState("");
-  const { cadastro, setCadastro } = useContext(AuthContext)
+  const ref = React.useRef();
+
   const handleBuscaPaginada = async () => {
     if (loading) return;
     if (acabou) return;
@@ -64,7 +65,7 @@ export const Produtos = ({ navigation, route }) => {
 
   useEffect(() => {
     handleBuscaPaginada();
-  }, [apagando, nomeProduto, cadastro]);
+  }, [apagando, nomeProduto]);
 
   // useFocusEffect(
   //   React.useCallback(() => {
@@ -79,7 +80,7 @@ export const Produtos = ({ navigation, route }) => {
   };
 
   const handleEditar = (item) => {
-    setCadastro(true)
+    setCadastro(true);
     navigation.navigate("Cadastro", {
       produto: { item },
     });
@@ -94,15 +95,16 @@ export const Produtos = ({ navigation, route }) => {
   const handleDelete = async (item) => {
     setListaProdutos([]);
     const response = await deleteProduto(item.idProduto);
-    setPage(0);
-    !apagando ? setApagando(true) : setApagando(false);
     setMostrarModal(false);
+    window.scrollTo({ top: 0 });
+    setPage(0);
+    setAcabou(false);
+    setApagando(!apagando);
     setMensagemSucesso(`${item.nomeProduto} excluido com sucesso!`);
     setMostrarModalSucesso(true);
   };
 
   const handleModal = (item) => {
-    //setProdutoSelecionado(item);
     setPerguntaConfirmacao(
       `Tem certeza que deseja apagar o item ${item.nomeProduto}?`
     );
@@ -129,7 +131,7 @@ export const Produtos = ({ navigation, route }) => {
           pergunta={perguntaConfirmacao}
         />
       </View>
-      <SafeAreaView style={styles.containter}>
+      <SafeAreaView ref={ref} style={styles.containter}>
         <View style={styles.headerContainer}>
           <BotaoLogout />
           <Text style={[AppStyles.title, { marginTop: 3 }]}>
