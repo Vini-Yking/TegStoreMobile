@@ -24,6 +24,21 @@ export const getAllProdutosPaginados = async (pageNumber, pageSize) => {
   }
 };
 
+export const getAllProdutosByCategoria = async (
+  idCategoria,
+  pageNumber,
+  pageSize
+) => {
+  try {
+    const response = await api.get(
+      `/categorias/${idCategoria}/produtos/pagina?pageNumber=${pageNumber}&pageSize=${pageSize}`
+    );
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const getProdutoByName = async (nome, pageNumber, pageSize) => {
   try {
     const response = await api.get(

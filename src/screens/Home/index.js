@@ -5,8 +5,10 @@ import { styles } from "./styles";
 import ListaHorizontal from "./components/Carousel";
 
 export const Home = ({ navigation }) => {
+  const { categorias } = useContext(AuthContext);
+
   const handleCategoria = (categoria) => {
-    navigation.navigate("Produtos", {categoria: { categoria }});
+    navigation.navigate("Produtos", { categoria: { categoria } });
   };
 
   return (

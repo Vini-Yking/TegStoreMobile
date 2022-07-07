@@ -6,6 +6,7 @@ import {
   getProdutoByName,
   getAllProdutosPaginados,
   deleteProduto,
+  getAllProdutosByCategoria,
 } from "../../services/axiosclient";
 import { AuthContext } from "../../context/AuthContext";
 import AppStyles from "../../themes/AppStyles";
@@ -41,12 +42,18 @@ export const Produtos = ({ navigation, route }) => {
   const handleBuscaPaginada = async () => {
     if (loading) return;
     if (acabou) return;
+    console.log(categoria);
     setLoading(true);
     const pageSize = 15;
-    if(categoria){
-      //getProdutoByCategoria(categoria.id)
-    }
-    if (nomeProduto.length === 0) {
+    if (categoria) {
+      const produtos = await getAllProdutosByCategoria(
+        categoria.id,
+        page,
+        pageSize
+      );
+      if (produtos.data.content.length < pageSize) setAcabou(true);
+      setListaProdutos([...listaProdutos, ...produtos.data.content]);
+    } else if (nomeProduto.length === 0) {
       const produtos = await getAllProdutosPaginados(page, pageSize);
       if (produtos.data.content.length < pageSize) setAcabou(true);
       setListaProdutos([...listaProdutos, ...produtos.data.content]);
