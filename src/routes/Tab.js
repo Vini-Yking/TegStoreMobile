@@ -47,11 +47,11 @@ const Tab = () => {
         component={Produtos}
         options={{ headerShown: false }}
       />
-      <MyTab.Screen
+      {/*<MyTab.Screen
         name="Clientes"
         component={Clientes}
         options={{ headerShown: false }}
-      />
+    />*/}
       <MyTab.Screen
         name="Perfil"
         component={Perfil}

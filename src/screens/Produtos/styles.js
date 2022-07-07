@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
     elevation: 6,
   },
   input: {
-    padding: 4,
+    padding: 6,
     borderColor: "indigo",
     borderWidth: 2,
     width: 200,
@@ -45,7 +45,6 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     // alignContent:"center"
-    
   },
   produtosContainer: {
     backgroundColor: "indigo",
