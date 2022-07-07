@@ -6,7 +6,7 @@ import ListaHorizontal from "./components/Carousel";
 
 export const Home = ({ navigation }) => {
   const handleCategoria = (categoria) => {
-    navigation.navigate("Produtos", { categoria });
+    navigation.navigate("Produtos", {categoria: { categoria }});
   };
 
   return (

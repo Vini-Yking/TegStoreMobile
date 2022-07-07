@@ -43,6 +43,9 @@ export const Produtos = ({ navigation, route }) => {
     if (acabou) return;
     setLoading(true);
     const pageSize = 15;
+    if(categoria){
+      //getProdutoByCategoria(categoria.id)
+    }
     if (nomeProduto.length === 0) {
       const produtos = await getAllProdutosPaginados(page, pageSize);
       if (produtos.data.content.length < pageSize) setAcabou(true);
