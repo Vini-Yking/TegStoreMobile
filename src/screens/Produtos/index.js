@@ -1,4 +1,11 @@
-import { View, Text, FlatList, TextInput, SafeAreaView, Alert } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  TextInput,
+  SafeAreaView,
+  Alert,
+} from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 import { BotaoLogout } from "../../components/BotaoLogout/index.js";
 import { styles } from "./styles";
@@ -17,46 +24,45 @@ import { BotaoPesquisa } from "../../components/BotaoPesquisa/index.js";
 export const Produtos = ({ navigation }) => {
   const [listaProdutos, setListaProdutos] = useState([]);
   const [loading, setLoading] = useState(false);
+  // const [primeiraVez, setPrimeiraVez] = useState(true);
   const [pesquisa, setPesquisa] = useState("");
   const [nomeProduto, setNomeProduto] = useState("");
   const [apagando, setApagando] = useState(false);
   const { categorias } = useContext(AuthContext);
   const [page, setPage] = useState(0);
+  const [acabou, setAcabou] = useState(false);
 
   const handleBuscaPaginada = async () => {
     if (loading) return;
+    if (acabou) return;
     setLoading(true);
-    const pageSize = 15; // número de itens por page
+    console.log(page);
+    const pageSize = 15;
     if (nomeProduto.length === 0) {
-      // pega todos
       const produtos = await getAllProdutosPaginados(page, pageSize);
-      // console.log(page);
+      console.log(produtos);
+      if (produtos.data.content.length < pageSize) setAcabou(true);
       setListaProdutos([...listaProdutos, ...produtos.data.content]);
-      setPage((page) => page + 1);
-      setLoading(false);
-      return;
+    } else {
+      const produtos = await getProdutoByName(nomeProduto, page, pageSize);
+      console.log(produtos);
+      if (produtos.data.content.length < pageSize) setAcabou(true);
+      setListaProdutos([...listaProdutos, ...produtos.data.content]);
     }
-    // pesquisa pelo nome
-    const produtosByName = await getProdutoByName(nomeProduto, page, pageSize);
-    setListaProdutos([...listaProdutos, ...produtosByName.data.content]);
     setPage((page) => page + 1);
     setLoading(false);
   };
 
   const handlePesquisa = () => {
-    setListaProdutos([])
+    setAcabou(false);
+    setListaProdutos([]);
     setPage(0);
     setNomeProduto(pesquisa);
-
   };
 
   useEffect(() => {
     handleBuscaPaginada();
-  }, []);
-
-  useEffect(() => {
-    handleBuscaPaginada();
-  }, [apagando,nomeProduto]);
+  }, [apagando, nomeProduto]);
 
   const handleNavigation = (item) => {
     navigation.navigate("DetalhesProduto", {
@@ -74,14 +80,13 @@ export const Produtos = ({ navigation }) => {
     navigation.navigate("Cadastro", {
       produto: "",
     });
-
   };
 
   const handleDelete = async (item) => {
-    setListaProdutos([])
+    setListaProdutos([]);
     const response = await deleteProduto(item.idProduto);
-    setPage(0)
-    !apagando ? setApagando(true) : setApagando(false)
+    setPage(0);
+    !apagando ? setApagando(true) : setApagando(false);
     if (loading) return;
     Alert.alert("Produto excluido com sucesso!");
   };
