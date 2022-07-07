@@ -20,6 +20,8 @@ import ModalSucesso from "../../components/ModalSucesso/index";
 
 export const Produtos = ({ navigation, route }) => {
   const categoria = route;
+  const semFoto =
+    "https://cdn.discordapp.com/attachments/993722091591446629/994427609708507208/unknown.png";
   const [listaProdutos, setListaProdutos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [pesquisa, setPesquisa] = useState("");
@@ -156,7 +158,7 @@ export const Produtos = ({ navigation, route }) => {
                 nomeProduto={item.nomeProduto}
                 valorUnitario={item.valorUnitario}
                 categoria={item.categoria.categoria}
-                urlFoto={item.urlFoto}
+                urlFoto={item.urlFoto ? item.urlFoto : semFoto}
                 item={item}
                 navigation={() => handleNavigation(item)}
                 handleEditar={handleEditar}
