@@ -95,17 +95,21 @@ export const Cadastro = ({ navigation, route }) => {
 
   return (
     <ScrollView style={styles.container}>
-      <ModalErro
-        modalVisible={mostrarModalErro}
-        mensagemErro={mensagemErro}
-        setModalVisible={setMostrarModalErro}
-      />
-      <ModalSucesso
-        mensagemSucesso={mensagemSucesso}
-        modalVisible={mostrarModalSucesso}
-        setModalVisible={setmostrarModalSucesso}
-        onClose={() => navigation.goBack()}
-      />
+      <View>
+        <ModalErro
+          modalVisible={mostrarModalErro}
+          mensagemErro={mensagemErro}
+          setModalVisible={setMostrarModalErro}
+        />
+      </View>
+      <View>
+        <ModalSucesso
+          mensagemSucesso={mensagemSucesso}
+          modalVisible={mostrarModalSucesso}
+          setModalVisible={setmostrarModalSucesso}
+          onClose={() => navigation.goBack()}
+        />
+      </View>
       <View style={styles.box}>
         <Image
           source={{ uri: produtoFoto ? produtoFoto : semFoto }}

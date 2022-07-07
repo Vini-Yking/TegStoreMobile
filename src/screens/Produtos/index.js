@@ -22,9 +22,10 @@ import { FooterList } from "./components/FooterList/index.js";
 import { BotaoPesquisa } from "../../components/BotaoPesquisa/index.js";
 import { TapGestureHandler } from "react-native-gesture-handler";
 import { useFocusEffect } from "@react-navigation/native";
+import ModalConfirmacao from "../../components/ModalConfirmacao/index.js";
+import ModalSucesso from "../../components/ModalSucesso/index";
 
 export const Produtos = ({ navigation }) => {
-
   const [listaProdutos, setListaProdutos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [pesquisa, setPesquisa] = useState("");
@@ -33,6 +34,11 @@ export const Produtos = ({ navigation }) => {
   const { categorias } = useContext(AuthContext);
   const [page, setPage] = useState(0);
   const [acabou, setAcabou] = useState(false);
+  const [mostrarModal, setMostrarModal] = useState(false);
+  const [itemSelecionado, setItemSelecionado] = useState(null);
+  const [perguntaConfirmacao, setPerguntaConfirmacao] = useState("");
+  const [mostrarModalSucesso, setMostrarModalSucesso] = useState(false);
+  const [mensagemSucesso, setMensagemSucesso] = useState("");
 
   const handleBuscaPaginada = async () => {
     if (loading) return;
@@ -63,9 +69,11 @@ export const Produtos = ({ navigation }) => {
     handleBuscaPaginada();
   }, [apagando, nomeProduto]);
 
-  useFocusEffect(React.useCallback(() => {
-    handleBuscaPaginada()
-  }, [navigation]))
+  useFocusEffect(
+    React.useCallback(() => {
+      handleBuscaPaginada();
+    }, [navigation])
+  );
 
   const handleNavigation = (item) => {
     navigation.navigate("DetalhesProduto", {
@@ -90,12 +98,39 @@ export const Produtos = ({ navigation }) => {
     const response = await deleteProduto(item.idProduto);
     setPage(0);
     !apagando ? setApagando(true) : setApagando(false);
-    if (loading) return;
-    Alert.alert("Produto excluido com sucesso!");
+    setMostrarModal(false);
+    setMensagemSucesso(`${item.nomeProduto} excluido com sucesso!`);
+    setMostrarModalSucesso(true);
+  };
+
+  const handleModal = (item) => {
+    //setProdutoSelecionado(item);
+    setPerguntaConfirmacao(
+      `Tem certeza que deseja apagar o item ${item.nomeProduto}?`
+    );
+    setItemSelecionado(item);
+    setMostrarModal(true);
   };
 
   return (
     <>
+      <View>
+        <ModalSucesso
+          mensagemSucesso={mensagemSucesso}
+          modalVisible={mostrarModalSucesso}
+          onClose={() => setMostrarModalSucesso(false)}
+          setModalVisible={setMostrarModalSucesso}
+        />
+      </View>
+      <View>
+        <ModalConfirmacao
+          modalVisible={mostrarModal}
+          setModalVisible={setMostrarModal}
+          onCancel={() => setMostrarModal(false)}
+          onConfirm={() => handleDelete(itemSelecionado)}
+          pergunta={perguntaConfirmacao}
+        />
+      </View>
       <SafeAreaView style={styles.containter}>
         <View style={styles.headerContainer}>
           <BotaoLogout />
@@ -127,7 +162,7 @@ export const Produtos = ({ navigation }) => {
                 item={item}
                 navigation={() => handleNavigation(item)}
                 handleEditar={handleEditar}
-                handleDelete={handleDelete}
+                handleDelete={() => handleModal(item)}
               />
             )}
             keyExtractor={(item) => String(item.idProduto)}
