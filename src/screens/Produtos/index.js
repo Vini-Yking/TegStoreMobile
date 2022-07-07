@@ -23,8 +23,8 @@ import { BotaoPesquisa } from "../../components/BotaoPesquisa/index.js";
 import { TapGestureHandler } from "react-native-gesture-handler";
 import { useFocusEffect } from "@react-navigation/native";
 
-export const Produtos = ({ navigation }) => {
-
+export const Produtos = ({ navigation ,route}) => {
+  const categoria = route
   const [listaProdutos, setListaProdutos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [pesquisa, setPesquisa] = useState("");
@@ -32,6 +32,7 @@ export const Produtos = ({ navigation }) => {
   const [apagando, setApagando] = useState(false);
   const { categorias } = useContext(AuthContext);
   const [page, setPage] = useState(0);
+  const [option, setOption] = useState("")
   const [acabou, setAcabou] = useState(false);
 
   const handleBuscaPaginada = async () => {
@@ -65,6 +66,7 @@ export const Produtos = ({ navigation }) => {
 
   useFocusEffect(React.useCallback(() => {
     handleBuscaPaginada()
+    console.log(categoria)
   }, [navigation]))
 
   const handleNavigation = (item) => {
@@ -99,7 +101,7 @@ export const Produtos = ({ navigation }) => {
       <SafeAreaView style={styles.containter}>
         <View style={styles.headerContainer}>
           <BotaoLogout />
-          <Text style={[AppStyles.title, { marginTop: 3 }]}>Catalogo</Text>
+          <Text style={[AppStyles.title, { marginTop: 3 }]}>Catalogo {option}</Text>
           <View style={styles.pesquisaContainer}>
             <TextInput
               placeholder="Buscar"
