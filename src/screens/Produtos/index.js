@@ -14,13 +14,11 @@ import { CardProduto } from "./components/CardProduto";
 import { BotaoAdicionar } from "../../components/BotaoAdicionar/index.js";
 import { FooterList } from "./components/FooterList/index.js";
 import { BotaoPesquisa } from "../../components/BotaoPesquisa/index.js";
-import { TapGestureHandler } from "react-native-gesture-handler";
-import { useFocusEffect } from "@react-navigation/native";
 import ModalConfirmacao from "../../components/ModalConfirmacao/index.js";
 import ModalSucesso from "../../components/ModalSucesso/index";
 
 export const Produtos = ({ navigation, route }) => {
-  const { categoria } = route.params;
+  //const { categoria } = route.params;
   const semFoto =
     "https://cdn.discordapp.com/attachments/993722091591446629/994427609708507208/unknown.png";
   const [listaProdutos, setListaProdutos] = useState([]);
@@ -37,23 +35,23 @@ export const Produtos = ({ navigation, route }) => {
   const [perguntaConfirmacao, setPerguntaConfirmacao] = useState("");
   const [mostrarModalSucesso, setMostrarModalSucesso] = useState(false);
   const [mensagemSucesso, setMensagemSucesso] = useState("");
-  const ref = React.useRef();
 
   const handleBuscaPaginada = async () => {
     if (loading) return;
     if (acabou) return;
-    console.log(categoria);
+    //console.log(categoria);
     setLoading(true);
     const pageSize = 15;
-    if (categoria) {
-      const produtos = await getAllProdutosByCategoria(
-        categoria.id,
-        page,
-        pageSize
-      );
-      if (produtos.data.content.length < pageSize) setAcabou(true);
-      setListaProdutos([...listaProdutos, ...produtos.data.content]);
-    } else if (nomeProduto.length === 0) {
+    //if (categoria) {
+    //  const produtos = await getAllProdutosByCategoria(
+    //    categoria.id,
+    //    page,
+    //    pageSize
+    //  );
+    //  if (produtos.data.content.length < pageSize) setAcabou(true);
+    //  setListaProdutos([...listaProdutos, ...produtos.data.content]);
+    //} else
+    if (nomeProduto.length === 0) {
       const produtos = await getAllProdutosPaginados(page, pageSize);
       if (produtos.data.content.length < pageSize) setAcabou(true);
       setListaProdutos([...listaProdutos, ...produtos.data.content]);
