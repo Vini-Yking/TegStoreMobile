@@ -96,14 +96,14 @@ export const Produtos = ({ navigation }) => {
       <SafeAreaView style={styles.containter}>
         <View style={styles.headerContainer}>
           <BotaoLogout />
-          <Text style={[AppStyles.title, { marginTop: 3 }]}>Categoria: x</Text>
+          <Text style={[AppStyles.title, { marginTop: 3 }]}>Catalogo</Text>
           <View style={styles.pesquisaContainer}>
             <TextInput
               placeholder="Buscar"
               style={[styles.input, AppStyles.text]}
               value={pesquisa}
               onChangeText={setPesquisa}
-            ></TextInput>
+            />
             <BotaoPesquisa onPress={handlePesquisa} />
           </View>
           <BotaoAdicionar onPress={handleCriar} />
