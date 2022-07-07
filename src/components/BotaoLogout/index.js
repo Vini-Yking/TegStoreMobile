@@ -30,7 +30,6 @@ export const BotaoLogout = () => {
       >
         <View
           style={{
-            justifyContent: "center",
             alignSelf: "flex-end",
             position: "absolute",
             top: 0,
