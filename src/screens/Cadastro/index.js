@@ -22,6 +22,7 @@ export const Cadastro = ({ navigation, route }) => {
   const { categorias } = useContext(AuthContext);
   const [loadingImage, setLoadingImage] = useState(true);
   const [categs, setCategs] = useState([]);
+  const [apagando, setApagando] = useState();
 
   useEffect(() => {
     if (produto) {
@@ -99,7 +100,7 @@ export const Cadastro = ({ navigation, route }) => {
           />
         )}
         <Text style={[AppStyles.text, { textAlign: "center" }]}>
-          Nome do produto:{" "}
+          Nome do produto:
         </Text>
         <TextInput
           value={nomeProduto}
@@ -110,7 +111,6 @@ export const Cadastro = ({ navigation, route }) => {
         <Text style={[AppStyles.text, { textAlign: "center" }]}>
           Categoria: - aqui é pra ter um dropdown
         </Text>
-
         <TextInput
           value={idCategoria}
           onChangeText={setIdCategoria}

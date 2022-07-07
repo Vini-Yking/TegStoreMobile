@@ -26,7 +26,7 @@ export const DetalhesProduto = ({ navigation, route }) => {
   return (
     <View style={styles.container}>
       <View style={styles.box}>
-        <View style={{ alignSelf: "start", right: "1%", borderRadius: 4 }}>
+        <View style={{ right: "45%", borderRadius: 4 }}>
           <Pressable styles={[styles.backButton]} onPress={navigation.goBack}>
             <FontAwesomeIcon
               icon={faArrowTurnRight}
