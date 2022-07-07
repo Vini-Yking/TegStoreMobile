@@ -2,7 +2,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faBan } from "@fortawesome/free-solid-svg-icons/faBan";
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { useContext, useEffect, useState } from "react";
-import { Pressable, Text, TextInput, View, Alert, Image, ScrollView, } from "react-native";
+import {
+  Pressable,
+  Text,
+  TextInput,
+  View,
+  Alert,
+  Image,
+  ScrollView,
+} from "react-native";
 import { styles } from "./styles";
 import AppStyles from "../../themes/AppStyles";
 import { AuthContext } from "../../context/AuthContext";
@@ -11,6 +19,7 @@ import {
   postProduto,
   putProduto,
 } from "../../services/axiosclient";
+import SelectDropdown from "react-native-select-dropdown";
 
 export const Cadastro = ({ navigation, route }) => {
   const { produto } = route.params;
@@ -22,6 +31,11 @@ export const Cadastro = ({ navigation, route }) => {
   const { categorias } = useContext(AuthContext);
   const [loadingImage, setLoadingImage] = useState(true);
   const [categs, setCategs] = useState([]);
+  const [select, setSelect] = useState("");
+
+  useEffect(() => {
+    setIdCategoria(String(select.id));
+  }, [select]);
 
   useEffect(() => {
     if (produto) {
@@ -47,7 +61,10 @@ export const Cadastro = ({ navigation, route }) => {
           response.erros.reduce((a, b) => a + " \n" + b)
         );
       } else {
-        Alert.alert("Sucesso", `O produto ${nomeProduto} foi cadastrado com sucesso`)
+        Alert.alert(
+          "Sucesso",
+          `O produto ${nomeProduto} foi cadastrado com sucesso`
+        );
 
         navigation.goBack();
       }
@@ -59,11 +76,14 @@ export const Cadastro = ({ navigation, route }) => {
           response.erros.reduce((a, b) => a + " \n" + b)
         );
       } else {
-        Alert.alert("Sucesso", `O produto ${nomeProduto} foi alterado com sucesso`)
+        Alert.alert(
+          "Sucesso",
+          `O produto ${nomeProduto} foi alterado com sucesso`
+        );
         navigation.goBack();
       }
-    };
-  }
+    }
+  };
 
   const handlerPut = async () => {
     const response = await putProduto(
@@ -90,11 +110,15 @@ export const Cadastro = ({ navigation, route }) => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.box}>
-          <Image
-            source={{ uri: produtoFoto ? produtoFoto : "https://cdn.discordapp.com/attachments/993722091591446629/994427609708507208/unknown.png" }}
-            style={{ width: 200, height: 200, alignSelf: "center" }}
-            onLoad={() => setLoadingImage(false)}
-          />
+        <Image
+          source={{
+            uri: produtoFoto
+              ? produtoFoto
+              : "https://cdn.discordapp.com/attachments/993722091591446629/994427609708507208/unknown.png",
+          }}
+          style={{ width: 200, height: 200, alignSelf: "center" }}
+          onLoad={() => setLoadingImage(false)}
+        />
         <Text style={[AppStyles.text, { textAlign: "center" }]}>
           Nome do produto:
         </Text>
@@ -107,6 +131,16 @@ export const Cadastro = ({ navigation, route }) => {
         <Text style={[AppStyles.text, { textAlign: "center" }]}>
           Categoria: - aqui é pra ter um dropdown
         </Text>
+        <View style={{alignSelf:"center"}}>
+          <SelectDropdown
+            data={categorias}
+            rowTextForSelection={(item, index) => item.categoria}
+            defaultValueByIndex={idCategoria - 1}
+            buttonTextAfterSelection={(item, index) => item.categoria} 
+            onSelect={setSelect}
+            buttonStyle={{borderWidth:2 , borderColor:"indigo" , borderRadius:5, backgroundColor:"#8a39e1"}}
+          />
+        </View>
         <TextInput
           value={idCategoria}
           onChangeText={setIdCategoria}
