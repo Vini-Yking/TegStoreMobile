@@ -73,7 +73,7 @@ export const Produtos = ({ navigation }) => {
   const handleEditar = (item) => {
     navigation.navigate("Cadastro", {
       produto: { item },
-    }, handlePesquisa = handlePesquisa());
+    });
   };
 
   const handleCriar = () => {
@@ -125,7 +125,6 @@ export const Produtos = ({ navigation }) => {
                 navigation={() => handleNavigation(item)}
                 handleEditar={handleEditar}
                 handleDelete={handleDelete}
-                handlePesquisa={handlePesquisa}
               />
             )}
             keyExtractor={(item) => String(item.idProduto)}

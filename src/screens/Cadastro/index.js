@@ -22,7 +22,6 @@ export const Cadastro = ({ navigation, route }) => {
   const { categorias } = useContext(AuthContext);
   const [loadingImage, setLoadingImage] = useState(true);
   const [categs, setCategs] = useState([]);
-  const [apagando, setApagando] = useState();
 
   useEffect(() => {
     if (produto) {
@@ -49,6 +48,7 @@ export const Cadastro = ({ navigation, route }) => {
         );
       } else {
         Alert.alert("Sucesso", `O produto ${nomeProduto} foi cadastrado com sucesso`)
+
         navigation.goBack();
       }
     } else {
@@ -62,7 +62,6 @@ export const Cadastro = ({ navigation, route }) => {
         Alert.alert("Sucesso", `O produto ${nomeProduto} foi alterado com sucesso`)
         navigation.goBack();
       }
-
     };
   }
 
