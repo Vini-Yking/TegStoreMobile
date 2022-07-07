@@ -20,6 +20,7 @@ import SelectDropdown from "react-native-select-dropdown";
 
 export const Cadastro = ({ navigation, route }) => {
   const { produto } = route.params;
+  const { handlePesquisa } = route.params;
   const [nomeProduto, setNomeProduto] = useState("");
   const [produtoFoto, setProdutoFoto] = useState("");
   const [idCategoria, setIdCategoria] = useState("");
@@ -75,6 +76,7 @@ export const Cadastro = ({ navigation, route }) => {
     }
     setMensagemSucesso(`O produto ${nomeProduto} foi alterado com sucesso`);
     setmostrarModalSucesso(true);
+    handlePesquisa()
   };
 
   const handlerPut = async () => {

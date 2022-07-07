@@ -87,9 +87,10 @@ export const Produtos = ({ navigation, route }) => {
   };
 
   const handleEditar = (item) => {
-    setCadastro(true);
+    // setCadastro(true);
     navigation.navigate("Cadastro", {
-      produto: { item },
+      produto: { item }, handlePesquisa: handlePesquisa
+
     });
   };
 
@@ -127,6 +128,7 @@ export const Produtos = ({ navigation, route }) => {
           modalVisible={mostrarModalSucesso}
           onClose={() => setMostrarModalSucesso(false)}
           setModalVisible={setMostrarModalSucesso}
+
         />
       </View>
       <View>
@@ -172,6 +174,7 @@ export const Produtos = ({ navigation, route }) => {
                 navigation={() => handleNavigation(item)}
                 handleEditar={handleEditar}
                 handleDelete={() => handleModal(item)}
+
               />
             )}
             keyExtractor={(item) => String(item.idProduto)}
