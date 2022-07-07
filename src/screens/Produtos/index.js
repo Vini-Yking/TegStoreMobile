@@ -18,7 +18,7 @@ import ModalConfirmacao from "../../components/ModalConfirmacao/index.js";
 import ModalSucesso from "../../components/ModalSucesso/index";
 
 export const Produtos = ({ navigation, route }) => {
-  const { categoria } = route.params;
+  // const { categoria } = route.params;
   const semFoto =
     "https://cdn.discordapp.com/attachments/993722091591446629/994427609708507208/unknown.png";
   const [listaProdutos, setListaProdutos] = useState([]);
@@ -28,7 +28,7 @@ export const Produtos = ({ navigation, route }) => {
   const [apagando, setApagando] = useState(false);
   const { categorias } = useContext(AuthContext);
   const [page, setPage] = useState(0);
-  const [option, setOption] = useState(categoria);
+  // const [option, setOption] = useState(categoria);
   const [acabou, setAcabou] = useState(false);
   const [mostrarModal, setMostrarModal] = useState(false);
   const [itemSelecionado, setItemSelecionado] = useState(null);
@@ -75,13 +75,13 @@ export const Produtos = ({ navigation, route }) => {
   };
 
   useEffect(() => {
-    handleCategoria()
+    // handleCategoria()
     handleBuscaPaginada();
-  }, [apagando, nomeProduto , categoria]);
+  }, [apagando, nomeProduto]);
 
-  const handleCategoria = () => {
-    setOption(categoria);
-  };
+  // const handleCategoria = () => {
+  //   setOption(categoria);
+  // };
 
   const handleNavigation = (item) => {
     navigation.navigate("DetalhesProduto", {
