@@ -2,15 +2,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faBan } from "@fortawesome/free-solid-svg-icons/faBan";
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { useContext, useEffect, useState } from "react";
-import { Pressable, Text, TextInput, View, Alert, Image, ScrollView, } from "react-native";
+import {
+  Pressable,
+  Text,
+  TextInput,
+  View,
+  Alert,
+  Image,
+  ScrollView,
+} from "react-native";
 import { styles } from "./styles";
 import AppStyles from "../../themes/AppStyles";
 import { AuthContext } from "../../context/AuthContext";
-import {
-  deleteProduto,
-  postProduto,
-  putProduto,
-} from "../../services/axiosclient";
+import { postProduto, putProduto } from "../../services/axiosclient";
+import ModalErro from "../../components/ModalErro";
 
 export const Cadastro = ({ navigation, route }) => {
   const { produto } = route.params;
@@ -22,6 +27,8 @@ export const Cadastro = ({ navigation, route }) => {
   const { categorias } = useContext(AuthContext);
   const [loadingImage, setLoadingImage] = useState(true);
   const [categs, setCategs] = useState([]);
+  const [mostrarModalErro, setMostrarModalErro] = useState(false);
+  const [mensagemErro, setMensagemErro] = useState("");
 
   useEffect(() => {
     if (produto) {
@@ -42,28 +49,29 @@ export const Cadastro = ({ navigation, route }) => {
     if (!produto) {
       const response = await handlerPost();
       if (response.status === 400) {
-        Alert.alert(
-          "Tem erros aqui",
-          response.erros.reduce((a, b) => a + " \n" + b)
-        );
+        setMensagemErro(response.erros.reduce((a, b) => a + " \n" + b));
+        setMostrarModalErro(true);
       } else {
-        Alert.alert("Sucesso", `O produto ${nomeProduto} foi cadastrado com sucesso`)
-
+        Alert.alert(
+          "Sucesso",
+          `O produto ${nomeProduto} foi cadastrado com sucesso`
+        );
         navigation.goBack();
       }
     } else {
       const response = await handlerPut();
       if (response.status === 400) {
-        Alert.alert(
-          "Tem erros aqui",
-          response.erros.reduce((a, b) => a + " \n" + b)
-        );
+        setMensagemErro(response.erros.reduce((a, b) => a + " \n" + b));
+        setMostrarModalErro(true);
       } else {
-        Alert.alert("Sucesso", `O produto ${nomeProduto} foi alterado com sucesso`)
+        Alert.alert(
+          "Sucesso",
+          `O produto ${nomeProduto} foi alterado com sucesso`
+        );
         navigation.goBack();
       }
-    };
-  }
+    }
+  };
 
   const handlerPut = async () => {
     const response = await putProduto(
@@ -89,12 +97,21 @@ export const Cadastro = ({ navigation, route }) => {
 
   return (
     <ScrollView style={styles.container}>
+      <ModalErro
+        modalVisible={mostrarModalErro}
+        mensagemErro={mensagemErro}
+        setModalVisible={setMostrarModalErro}
+      />
       <View style={styles.box}>
-          <Image
-            source={{ uri: produtoFoto ? produtoFoto : "https://cdn.discordapp.com/attachments/993722091591446629/994427609708507208/unknown.png" }}
-            style={{ width: 200, height: 200, alignSelf: "center" }}
-            onLoad={() => setLoadingImage(false)}
-          />
+        <Image
+          source={{
+            uri: produtoFoto
+              ? produtoFoto
+              : "https://cdn.discordapp.com/attachments/993722091591446629/994427609708507208/unknown.png",
+          }}
+          style={{ width: 200, height: 200, alignSelf: "center" }}
+          onLoad={() => setLoadingImage(false)}
+        />
         <Text style={[AppStyles.text, { textAlign: "center" }]}>
           Nome do produto:
         </Text>
