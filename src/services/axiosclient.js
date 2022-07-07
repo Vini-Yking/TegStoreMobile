@@ -28,11 +28,11 @@ export const getProdutoByName = async (nome, pageNumber, pageSize) => {
   try {
     const response = await api.get(
       "/produtos/pesquisar?nome=" +
-      nome +
-      "&page=" +
-      pageNumber +
-      "&size=" +
-      pageSize
+        nome +
+        "&page=" +
+        pageNumber +
+        "&size=" +
+        pageSize
     );
     return response;
   } catch (error) {
@@ -62,11 +62,11 @@ export const postProduto = async (
       nomeProduto: nomeProduto,
       quantidadeEstoque: quantidadeEstoque,
       valorUnitario: valorUnitario,
-      urlFoto: urlFoto
+      urlFoto: urlFoto,
     });
     return response;
   } catch (error) {
-    return error.response.data
+    return error.response;
   }
 };
 
@@ -97,7 +97,7 @@ export const putProduto = async (
     });
     return response;
   } catch (error) {
-    return error.response.data
+    return error.response;
   }
 };
 

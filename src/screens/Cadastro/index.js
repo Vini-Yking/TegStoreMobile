@@ -16,7 +16,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { postProduto, putProduto } from "../../services/axiosclient";
 import ModalErro from "../../components/ModalErro";
 import ModalSucesso from "../../components/ModalSucesso";
-import SelectDropdown from 'react-native-select-dropdown'
+import SelectDropdown from "react-native-select-dropdown";
 
 export const Cadastro = ({ navigation, route }) => {
   const { produto } = route.params;
@@ -37,8 +37,8 @@ export const Cadastro = ({ navigation, route }) => {
   const [select, setSelect] = useState("");
 
   useEffect(() => {
-    setIdCategoria(String(select.id))
-  },[select])
+    setIdCategoria(String(select.id));
+  }, [select]);
 
   useEffect(() => {
     if (produto) {
@@ -58,23 +58,26 @@ export const Cadastro = ({ navigation, route }) => {
   const handleInput = async () => {
     if (!produto) {
       const response = await handlerPost();
-      if (response.status === 400) {
-        setMensagemErro(response.erros.reduce((a, b) => a + " \n" + b));
+      if (response.status === 200) {
+        setMensagemSucesso(
+          `O produto ${nomeProduto} foi adicionado com sucesso`
+        );
+        setmostrarModalSucesso(true);
+      } else {
+        console.log(response);
+        setMensagemErro(response.data.erros.reduce((a, b) => a + " \n" + b));
         setMostrarModalErro(true);
-        return;
       }
-      setMensagemSucesso(`O produto ${nomeProduto} foi adicionado com sucesso`);
-      setmostrarModalSucesso(true);
-      return;
+    } else {
+      const response = await handlerPut();
+      if (response.status === 200) {
+        setMensagemSucesso(`O produto ${nomeProduto} foi alterado com sucesso`);
+        setmostrarModalSucesso(true);
+      } else {
+        setMensagemErro(response.data.erros.reduce((a, b) => a + " \n" + b));
+        setMostrarModalErro(true);
+      }
     }
-    const response = await handlerPut();
-    if (response.status === 400) {
-      setMensagemErro(response.erros.reduce((a, b) => a + " \n" + b));
-      setMostrarModalErro(true);
-      return;
-    }
-    setMensagemSucesso(`O produto ${nomeProduto} foi alterado com sucesso`);
-    setmostrarModalSucesso(true);
   };
 
   const handlerPut = async () => {
@@ -88,6 +91,7 @@ export const Cadastro = ({ navigation, route }) => {
     );
     return response;
   };
+
   const handlerPost = async () => {
     const response = await postProduto(
       idCategoria,
@@ -135,14 +139,19 @@ export const Cadastro = ({ navigation, route }) => {
         <Text style={[AppStyles.text, { textAlign: "center" }]}>
           Categoria: - aqui é pra ter um dropdown
         </Text>
-        <View style={{alignSelf:"center"}}>
+        <View style={{ alignSelf: "center" }}>
           <SelectDropdown
             data={categorias}
             rowTextForSelection={(item, index) => item.categoria}
             defaultValueByIndex={idCategoria - 1}
-            buttonTextAfterSelection={(item, index) => item.categoria} 
+            buttonTextAfterSelection={(item, index) => item.categoria}
             onSelect={setSelect}
-            buttonStyle={{borderWidth:2 , borderColor:"indigo" , borderRadius:5, backgroundColor:"#8a39e1"}}
+            buttonStyle={{
+              borderWidth: 2,
+              borderColor: "indigo",
+              borderRadius: 5,
+              backgroundColor: "#8a39e1",
+            }}
           />
         </View>
         <TextInput
