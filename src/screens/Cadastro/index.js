@@ -49,7 +49,7 @@ export const Cadastro = ({ navigation, route }) => {
         );
       } else {
         Alert.alert("Sucesso", `O produto ${nomeProduto} foi cadastrado com sucesso`)
-        navigation.navigate("Home");//não mexer pois isso da o gatilho no useEffect em produtos
+        navigation.goBack();//não mexer pois isso da o gatilho no useEffect em produtos
       }
     } else {
       const response = await handlerPut();
@@ -60,7 +60,7 @@ export const Cadastro = ({ navigation, route }) => {
         );
       } else {
         Alert.alert("Sucesso", `O produto ${nomeProduto} foi alterado com sucesso`)
-        navigation.navigate("Home");//não mexer pois isso da o gatilho no useEffect em produtos
+        navigation.goBack();//não mexer pois isso da o gatilho no useEffect em produtos
       }
     };
   }
