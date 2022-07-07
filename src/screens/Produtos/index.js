@@ -39,7 +39,6 @@ export const Produtos = ({ navigation }) => {
     const pageSize = 15;
     if (nomeProduto.length === 0) {
       const produtos = await getAllProdutosPaginados(page, pageSize);
-      console.log(produtos);
       if (produtos.data.content.length < pageSize) setAcabou(true);
       setListaProdutos([...listaProdutos, ...produtos.data.content]);
     } else {
